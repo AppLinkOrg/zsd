@@ -23,8 +23,8 @@ export class AppBase {
   static QQMAPKEY = "IDVBZ-TSAKD-TXG43-H442I-74KVK-6LFF5";
   static UserInfo = {};
   static InstInfo = {};
-  unicode = "aaaa";
-  needauth = false;
+  unicode = "zsd";
+  needauth = true;
   pagetitle = null;
   app = null;
   options = null;

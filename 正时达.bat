@@ -1,1 +1,1 @@
-applink-cli syncapi mini alucard263096   aaaa   ./source/APIS
+applink-cli syncapi mini alucard263096   zsd   ./source/APIS

@@ -9,7 +9,7 @@ import { ApiConfig } from 'apiconfig';
 export class TestApi{
 
 
-    card(json, callback, showLoading = true) {
+    test(json, callback, showLoading = true) {
 
         if (showLoading)
             ApiConfig.ShowLoading();
@@ -18,39 +18,7 @@ export class TestApi{
         console.log(header);
         console.log(json);
         wx.request({
-            url: ApiConfig.GetApiUrl() + 'test/card',
-            data: json,
-            method: 'POST',
-            dataType: 'json',
-            header: header,
-            success: function (res) {
-                if (callback != null) {
-                    callback(res.data);
-                }
-            },
-            fail: function (res) {
-                console.log(res);
-                callback(false);
-            },
-            complete: function (res) {
-                console.log(res);
-            
-                if (showLoading)
-                    ApiConfig.CloseLoading();
-            }
-        })
-    }
-
-    upload(json, callback, showLoading = true) {
-
-        if (showLoading)
-            ApiConfig.ShowLoading();
-
-        var header = ApiConfig.GetHeader();
-        console.log(header);
-        console.log(json);
-        wx.request({
-            url: ApiConfig.GetApiUrl() + 'test/upload',
+            url: ApiConfig.GetApiUrl() + 'test/test',
             data: json,
             method: 'POST',
             dataType: 'json',
