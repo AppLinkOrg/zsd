@@ -1,0 +1,17 @@
+/* pages/lanhuo/lanhuo.wxss */
+.fh {
+  /* width: 100vw; */
+  height: 400rpx;
+  background: #2d9149;
+  border-radius: 8rpx;
+}
+
+.padding-1718 {
+  padding: 0 36rpx 0 34rpx;
+}
+
+.pl {
+  height: 400rpx;
+  background: #ed9605;
+  border-radius: 8rpx;
+}

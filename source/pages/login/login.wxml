@@ -1,0 +1,21 @@
+<!--pages/login/login.wxml-->
+
+<view class="flex-row flex-column">
+  <view style="height:36rpx;"></view>
+  <image src="{{uploadpath}}resource/{{res.logo}}" class="icon-100"></image>
+  <view class="f-44 txt-bold" style="color:#2D9149;">欢迎使用</view>
+  <view class="f-44 txt-bold" style="color:#2D9149;">正时达识别扫描系统</view>
+  <view style="height:100rpx;"></view>
+  <view class="ym">
+    <view class="txt-bold margin-bottom-20">用户名</view>
+    <input placeholder="请输入用户名" placeholder-style="color:#A9A6AB;" bindinput="nameFn"></input>
+    <view class="line"></view>
+    <view class="txt-bold margin-bottom-20">密码</view>
+    <input placeholder="请输入密码" type="password" placeholder-style="color:#A9A6AB;" bindinput="pwdFn"></input>
+    <view class="line"></view>
+  </view>
+
+  <view class="h5" style="color:#101010;" bindtap="lianxi">密码重置请<text class="h5" style="color:#F0AA36;">联系客服</text>修改</view>
+  <view style="height:62rpx;"></view>
+  <view class="dl" bindtap="login">登录</view>
+</view>
