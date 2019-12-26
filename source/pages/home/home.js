@@ -12,7 +12,7 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
-    this.Base.setMyData({ test: '' })
+    this.Base.setMyData({ test: '', s: "0", c: "3" })
   }
   onMyShow() {
     var that = this;
@@ -36,6 +36,8 @@ class Content extends AppBase {
         var dizhi1;
         var dizhi2;
         var shulian;
+        var name;
+        var shouji;
         list.map((item, idx) => {
 
           if (item.words.indexOf("订单号:") != -1) {
@@ -43,7 +45,7 @@ class Content extends AppBase {
             dindanhao = item.words.split('订单号:')[1];
             housiwei = dindanhao.substring(dindanhao.length - 4);
 
-       
+
           }
           if (item.words.indexOf("地址:") != -1) {
             dizhi = item.words.split('地址:')[1];
@@ -58,30 +60,47 @@ class Content extends AppBase {
 
             var dizhilist = dizhi.match(reg);
 
-             dizhi1 = '';
+            dizhi1 = '';
             for (var i = 0; i < dizhilist.length; i++) {
               dizhi1 += dizhilist[i];
 
             }
 
 
-             dizhi2 = dizhi.split(dizhi1)[1];
+            dizhi2 = dizhi.split(dizhi1)[1];
 
 
           }
           if (item.words.indexOf("数量:") != -1) {
 
             shulian = item.words.split('数量:')[1];
-          
 
-            console.log(  shulian);
-            
+
+            console.log(shulian);
+
           }
-         
+          if (item.words.indexOf("姓名:") != -1) {
+
+            name = item.words.split('姓名:')[1];
+
+
+            console.log(name);
+
+          }
+
+          if (item.words.indexOf("电话:") != -1) {
+
+            shouji = item.words.split('电话:')[1];
+
+
+            console.log(shouji);
+
+          }
+
 
 
         })
-        this.Base.setMyData({dindanhao,housiwei,dizhi1,dizhi2,shulian,test:1})
+        this.Base.setMyData({ dindanhao, housiwei, dizhi1, dizhi2, name, shouji, shulian, test: 1 })
         console.log(dindanhao);
         console.log(housiwei);
         console.log(dizhi1);
@@ -97,10 +116,28 @@ class Content extends AppBase {
 
 
   }
+  qwe(e) {
+    console.log(e);
+  }
+  asd(e) {
+    var value = e.detail.value
+    var pos = e.detail.cursor
+    var left
+    if (pos !== -1) {
+      // 光标在中间
+      left = e.detail.value.slice(0, pos)
+      // 计算光标的位置
+      pos = left.replace(/11/g, '2').length
+    }
+    console.log(left);
+    console.log(pos);
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
 body.test = content.test;
+body.qwe = content.qwe;
+body.asd = content.asd;
 Page(body)
