@@ -24,7 +24,7 @@ export class AppBase {
   static UserInfo = {};
   static InstInfo = {};
   unicode = "zsd";
-  needauth = true;
+  needauth = false;
   pagetitle = null;
   app = null;
   options = null;
@@ -282,6 +282,7 @@ export class AppBase {
   }
   checkPermission() {
     console.log('oooo');
+    console.log(this.Base.needauth,'pp');
     var memberapi = new MemberApi();
     var that = this;
     memberapi.renyuaninfo({}, (info) => {
