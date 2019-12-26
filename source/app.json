@@ -1,11 +1,13 @@
 {
   "pages": [
+    "pages/fahuo/fahuo",
+    "pages/jiaodui/jiaodui",
+    "pages/lanhuo/lanhuo",
     "pages/home/home",
     "pages/auth/auth",
     "pages/login/login",
-    "pages/fahuo/fahuo",
-    "pages/jiaodui/jiaodui",
-    "pages/lanhuo/lanhuo"
+    "pages/fhshibie/fhshibie",
+    "pages/plshibie/plshibie"
   ],
   "permission": {
     "scope.userLocation": {

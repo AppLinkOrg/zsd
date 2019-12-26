@@ -63,6 +63,27 @@
 					"id": -1,
 					"name": "pages/fahuo/fahuo",
 					"pathName": "pages/fahuo/fahuo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/home/home",
+					"pathName": "pages/home/home",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/fhshibie/fhshibie",
+					"pathName": "pages/fhshibie/fhshibie",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/plshibie/plshibie",
+					"pathName": "pages/plshibie/plshibie",
 					"scene": null
 				}
 			]

@@ -1,7 +1,13 @@
 // pages/content/content.js
-import { AppBase } from "../../appbase";
-import { ApiConfig } from "../../apis/apiconfig";
-import { InstApi } from "../../apis/inst.api.js";
+import {
+  AppBase
+} from "../../appbase";
+import {
+  ApiConfig
+} from "../../apis/apiconfig";
+import {
+  InstApi
+} from "../../apis/inst.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -14,11 +20,60 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
+
+  }
+  test() {
+    var that = this;
+
+
+    this.Base.uploadOneImage("test", (ret) => {
+      console.log(ret);
+      console.log(ApiConfig.GetUploadPath() + 'test/' + ret);
+
+      var uri = ApiConfig.GetUploadPath() + 'test/' + ret;
+
+      wx.navigateTo({
+        url: '/pages/fhshibie/fhshibie?uri=' + uri,
+      })
+
+    }, undefined);
+  }
+  test2() {
+    var that = this;
+    var imgs = [];
+
+    this.Base.uploadImage("test", (ret,q) => {
+      console.log(q);
+      console.log(ApiConfig.GetUploadPath() + 'test/' + ret);
+
+      var uri = ApiConfig.GetUploadPath() + 'test/' + ret;
+
+      imgs.push(uri);
+      
+      if(imgs.length==q.length){
+        that.detail(imgs);
+      }
+
+    }, undefined);
+   
+
+  }
+  detail(imgs){
+ 
     
+    console.log(imgs,'qqq')
+      wx.navigateTo({
+        url: '/pages/plshibie/plshibie?imgs=' + JSON.stringify(imgs) ,
+      })
   }
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
-Page(body) 
+
+body.test = content.test;
+body.test2 = content.test2;
+body.detail = content.detail;
+
+Page(body)

@@ -1,0 +1,48 @@
+<view style="background:#EDEDED;">
+  <view class="flex-row flex-column">
+    <image src="{{uri}}" class="imgs"></image>
+    <view class="xx">
+      <view class="bg-white padding-left-30 padding-right-26">
+        <view class="txt-78 margin-top-22">订单号：{{dindanhao}}</view>
+        <view class="line"></view>
+        <view class="txt-78">订单号后四位：{{housiwei}}</view>
+        <view class="line"></view>
+        <view class="txt-78">一级地址：{{dizhi1}}</view>
+        <view class="line"></view>
+        <view class="txt-78">二级地址：{{dizhi2}}</view>
+        <view class="line"></view>
+        <view class="txt-78">数量：{{shulian}}</view>
+        <view class="line"></view>
+        <view class="txt-78">姓名：{{name}}</view>
+        <view class="line"></view>
+        <view class="txt-78">手机号：{{shouji}}</view>
+        <view class="line"></view>
+        <view class="flex-row flex-center txt-78">重量（吨）：
+          <input placeholder="手动填写" bindinput="zlFn"></input>
+        </view>
+        <view class="line"></view>
+        <view class="flex-row flex-center txt-78">体积（L）：
+          <input placeholder="手动填写" bindinput="tjFn"></input>
+        </view>
+        <view class="line"></view>
+        <view class="flex-row flex-center txt-78">品类：
+          <input placeholder="手动填写" bindinput="plFn"></input>
+        </view>
+        <view class="line"></view>
+        <view class="flex-row flex-center txt-78">贷款：
+          <input placeholder="手动填写" bindinput="dkFn"></input>
+        </view>
+        <view class="line"></view>
+        <view class="flex-row flex-center txt-78">特准送：
+          <input placeholder="手动填写" bindinput="bzFn"></input>
+        </view>
+        <view class="line"></view>
+        <view class="txt-78">备注：</view>
+        <view class="line"></view>
+        <textarea placeholder="请输入备注信息..." bindinput="reFn"></textarea>
+      </view>
+    </view>
+    <view class="tj" bindtap="tijiao">提交</view>
+    <view style="height:50rpx;"></view>
+  </view>
+</view>

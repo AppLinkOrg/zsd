@@ -61,7 +61,7 @@ class Content extends AppBase {
             var dizhilist = dizhi.match(reg);
 
             dizhi1 = '';
-            for (var i = 0; i < dizhilist.length; i++) {
+            for (var i = 0; i < dizhilist.length&&i<1; i++) {
               dizhi1 += dizhilist[i];
 
             }

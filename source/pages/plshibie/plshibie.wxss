@@ -1,0 +1,63 @@
+/* pages/fhshibie/fhshibie.wxss */
+
+.imgs {
+  width: 238rpx;
+}
+
+.xx {
+  width: 93.6%;
+}
+
+.padding-right-26 {
+  padding-right: 26rpx;
+}
+
+.height-86 {
+  height: 86rpx;
+}
+
+.txt-78 {
+  color: #787979;
+}
+
+.line {
+  /* width: 100vw; */
+  height: 2rpx;
+  background: #ededed;
+  margin: 22rpx 0;
+  /* padding-left: 26rpx; */
+}
+
+.margin-top-22 {
+  margin-top: 22rpx;
+}
+
+.tj {
+  width: 340rpx;
+  height: 80rpx;
+  border-radius: 8rpx;
+  color: rgba(255, 255, 255, 1);
+  font-size: 40rpx;
+  text-align: center;
+  font-family: Microsoft Yahei;
+  line-height: 80rpx;
+  margin-top: 36rpx;
+  margin-right: 20rpx;
+}
+
+.bg-45 {
+  background-color: rgba(45, 145, 73, 1);
+}
+
+.bg-ed {
+  background-color: #ed9605;
+}
+
+.ii {
+  height: 600rpx;
+  width: 100vw;
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 99;
+}

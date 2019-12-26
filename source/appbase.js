@@ -497,7 +497,7 @@ export class AppBase {
         "field": "file"
       },
       success: function(res) {
-        console.log(res);
+       
         var data = res.data
         if (data.substr(0, 7) == "success") {
           data = data.split("|");
@@ -514,7 +514,9 @@ export class AppBase {
       }
     });
   }
-  uploadImage(modul, callback, count = 1, completecallback) {
+  uploadImage(modul, callback, count, completecallback) {
+    var that = this;
+
     wx.chooseImage({
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
@@ -526,6 +528,8 @@ export class AppBase {
         //  photos: that.data.photos.concat(res.tempFilePaths)
         //});
         var tempFilePaths = res.tempFilePaths
+        console.log(tempFilePaths);
+        
         for (var i = 0; i < tempFilePaths.length; i++) {
 
           wx.uploadFile({
@@ -542,7 +546,9 @@ export class AppBase {
               if (data.substr(0, 7) == "success") {
                 data = data.split("|");
                 var photo = data[2];
-                callback(photo);
+                console.log(tempFilePaths);
+                console.log(555555555);
+                callback(photo,tempFilePaths);
               } else {
                 console.error(res.data);
                 wx.showToast({

@@ -1,0 +1,60 @@
+<view style="background:#EDEDED;">
+  <view class="flex-row flex-column">
+
+    <image src="{{currentImg}}" class="imgs"></image>
+
+    <view class="flex-row flex-center" style="width:100vw;padding-right:70rpx;margin-bottom:20rpx;">
+      <view class="flex-1"></view>
+      <view>{{current+1}}/{{imgs.length}}</view>
+
+    </view>
+    <view class="xx">
+      <view class="bg-white padding-left-30 padding-right-26">
+        <view class="txt-78 margin-top-22">订单号：{{dindanhao}}</view>
+        <view class="line"></view>
+        <view class="txt-78">订单号后四位：{{housiwei}}</view>
+        <view class="line"></view>
+        <view class="txt-78">一级地址：{{dizhi1}}</view>
+        <view class="line"></view>
+        <view class="txt-78">二级地址：{{dizhi2}}</view>
+        <view class="line"></view>
+        <view class="txt-78">数量：{{shulian}}</view>
+        <view class="line"></view>
+        <view class="txt-78">姓名：{{name}}</view>
+        <view class="line"></view>
+        <view class="txt-78">手机号：{{shouji}}</view>
+        <view class="line"></view>
+        <view class="flex-row flex-center txt-78">重量（吨）：
+          <input placeholder="手动填写" bindinput="zlFn" value="{{zl}}"></input>
+        </view>
+        <view class="line"></view>
+        <view class="flex-row flex-center txt-78">体积（L）：
+          <input placeholder="手动填写" bindinput="tjFn" value="{{tj}}"></input>
+        </view>
+        <view class="line"></view>
+        <view class="flex-row flex-center txt-78">品类：
+          <input placeholder="手动填写" bindinput="plFn" value="{{pl}}"></input>
+        </view>
+        <view class="line"></view>
+        <view class="flex-row flex-center txt-78">贷款：
+          <input placeholder="手动填写" bindinput="dkFn" value="{{dk}}"></input>
+        </view>
+        <view class="line"></view>
+        <view class="flex-row flex-center txt-78">特准送：
+          <input placeholder="手动填写" bindinput="bzFn" value="{{bz}}"></input>
+        </view>
+        <view class="line"></view>
+        <view class="txt-78">备注：</view>
+        <view class="line"></view>
+        <textarea placeholder="请输入备注信息..." bindinput="reFn" value="{{remark}}"></textarea>
+      </view>
+    </view>
+    <view class="flex-row flex-center">
+     <view wx:if='{{current!=0}}' class="tj {{current!=0?'bg-45': ''}}" bindtap="prePage">上一张</view>
+     <view class="tj {{current==0?'bg-45':'bg-ed'}}" wx:if='{{current!=(imgs.length-1)}}'  bindtap="nexPage">下一张</view>
+     <view wx:if='{{current==(imgs.length-1)}}' class="tj {{current==(imgs.length-1)?'bg-ed':''}}" bindtap="tijiao">提交</view>
+    </view>
+   
+    <view style="height:50rpx;"></view>
+  </view>
+</view>
