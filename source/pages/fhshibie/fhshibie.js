@@ -26,6 +26,9 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
+    this.Base.setMyData({
+      zl: '', tj: '', pl: '', dk: '', bz: '', remark:''
+    })
     this.getinfo();
     this.getyiji();
     this.geterji();

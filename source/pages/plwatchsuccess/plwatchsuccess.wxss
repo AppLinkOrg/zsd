@@ -1,1 +1,17 @@
 /* pages/plwatchsuccess/plwatchsuccess.wxss */
+
+.aa {
+  width: 94%;
+  border-top: 1rpx solid #ccc;
+  border-bottom: 1rpx solid #ccc;
+}
+
+.pa {
+  padding: 20rpx 0 20rpx 0;
+}
+
+.di {
+  width: 100vw;
+  position: fixed;
+  top: 186rpx;
+}
