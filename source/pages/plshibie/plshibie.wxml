@@ -1,7 +1,7 @@
 <view style="background:#EDEDED;">
   <view class="flex-row flex-column">
 
-    <image src="{{currentImg}}" class="imgs"></image>
+    <image src="{{currentImg}}" class="imgs" bindtap="viewPhoto" id='{{currentImg}}'></image>
 
     <view class="flex-row flex-center" style="width:100vw;padding-right:70rpx;margin-bottom:20rpx;">
       <view class="flex-1"></view>

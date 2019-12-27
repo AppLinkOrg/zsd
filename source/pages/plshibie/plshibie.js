@@ -13,13 +13,15 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
+    var current = 0;
+    this.Base.setMyData({current})
   }
   onMyShow() {
     var that = this;
     var imgs = JSON.parse(this.Base.options.imgs);
     // var imgs = ["https://alioss.app-link.org/alucard263096/zsd/test…98c76f1ea15eeefd719555_19122617017_2113217248.jpg", "https://alioss.app-link.org/alucard263096/zsd/test…61103ea24588cc7a43d4b6_19122617017_1884148576.jpg", "https://alioss.app-link.org/alucard263096/zsd/test…f1c61b6aba546d3cfd3629_19122617017_1324924670.jpg", "https://alioss.app-link.org/alucard263096/zsd/test…79148cc476eb7c78a675ccb_19122617017_291968097.jpg"];
     console.log(imgs[0],'imgs');
-    var current = 0;
+    var current = this.Base.getMyData().current;
     var arr =[];
     var currentImg = imgs[current];
     this.Base.setMyData({

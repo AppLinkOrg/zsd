@@ -103,6 +103,16 @@ class Content extends AppBase {
       url: '/pages/rengong/rengong',
     })
   }
+  denchu() {
+    wx.redirectTo({
+      url: '/pages/login/login',
+    })
+  }
+  zong(){
+    wx.redirectTo({
+      url: '/pages/rengong/rengong',
+    })
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -114,5 +124,7 @@ body.getinfo = content.getinfo;
 body.checkno = content.checkno;
 body.checkyijiaodui = content.checkyijiaodui;
 body.rengong = content.rengong;
+body.denchu = content.denchu;
+body.zong = content.zong;
 
 Page(body)

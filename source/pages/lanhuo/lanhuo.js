@@ -35,6 +35,7 @@ class Content extends AppBase {
     wx.scanCode({
       scanType: ['barCode'],
       success(res) {
+        console.log(res);
         console.log(res.result)
         var index = res.result.indexOf('-');
         var code = res.result.slice(0, index);

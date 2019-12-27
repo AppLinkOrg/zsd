@@ -42,11 +42,41 @@ class Content extends AppBase {
     var dianhao = this.Base.getMyData().dianhao;
     console.log(names,dianhao);
     var api = new OrderApi;
-    api.addjiaodui({ danhao: dianhao, dingdanzhuangtai:'D'},(ret)=>{
+  
+    api.addjiaodui({ danhao: dianhao, dingdanzhuangtai: 'C'},(ret)=>{
       if(ret.code=='0'){
         wx.redirectTo({
           url: '/pages/rengongsuccess/rengongsuccess?diandan=' + dianhao +'&xuanze='+names,
         })
+      }else if(ret.code == '-1'){
+
+        if(names=='强制校对'){
+          api.jiaodui({ danhao: dianhao},(ret)=>{
+            if(ret.code=='0'){
+              wx.redirectTo({
+                url: '/pages/rengongsuccess/rengongsuccess?diandan=' + dianhao + '&xuanze=' + names,
+              })
+            }
+          })
+        }else if(names == '删除此条'){
+          api.deleteorder({ danhao: dianhao},(ret)=>{
+            if(ret.code=='0'){
+              wx.redirectTo({
+                url: '/pages/rengongsuccess/rengongsuccess?diandan=' + dianhao + '&xuanze=' + names,
+              })
+            }
+          })
+        } else if (names == '未返还') {
+          api.jiaodui({ danhao: dianhao }, (ret) => {
+            if (ret.code == '0') {
+              wx.redirectTo({
+                url: '/pages/rengongsuccess/rengongsuccess?diandan=' + dianhao + '&xuanze=' + names,
+              })
+            }
+          })
+        }
+
+        
       }
     })
   }

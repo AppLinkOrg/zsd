@@ -24,6 +24,7 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
+    console.log(123);
   }
   nameFn(e) {
     console.log(e);
