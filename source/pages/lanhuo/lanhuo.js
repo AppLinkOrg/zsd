@@ -20,10 +20,12 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
+
   }
   onMyShow() {
     var that = this;
     this.getinfo();
+
   }
   bindtodetail(e) {
     var weilanhuo = this.Base.getMyData().weilanhuo;
@@ -33,7 +35,6 @@ class Content extends AppBase {
     wx.scanCode({
       scanType: ['barCode'],
       success(res) {
-        console.log(res.result)
         console.log(res.result)
         var index = res.result.indexOf('-');
         var code = res.result.slice(0, index);

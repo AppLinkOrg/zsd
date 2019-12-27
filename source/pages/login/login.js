@@ -38,6 +38,7 @@ class Content extends AppBase {
   }
   
   login() {
+
     var name = this.Base.getMyData().name;
     var password = this.Base.getMyData().password;
     console.log(name, password);
