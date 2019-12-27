@@ -28,7 +28,7 @@ class Content extends AppBase {
           arr.push(lanhuolist[i]);
         }
       }
-      this.Base.setMyData({ lanhuolist, arr})
+      this.Base.setMyData({ lanhuolist, arr,item})
     })  
   }
   fanhui() {

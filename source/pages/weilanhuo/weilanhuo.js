@@ -43,7 +43,7 @@ class Content extends AppBase {
   detail(e){
     console.log(e)
     var item = e.currentTarget.dataset.current;
-    wx.redirectTo({
+    wx.navigateTo({
       url: '/pages/weilanhuodetail/weilanhuodetail?item=' + JSON.stringify(item) ,
     })
   }
