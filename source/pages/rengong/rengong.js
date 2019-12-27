@@ -42,8 +42,12 @@ class Content extends AppBase {
     var dianhao = this.Base.getMyData().dianhao;
     console.log(names,dianhao);
     var api = new OrderApi;
-  
-    api.addjiaodui({ danhao: dianhao, dingdanzhuangtai: 'C'},(ret)=>{
+    if(names == '未返还' ){
+      var dingdanzhuangtai = 'D';
+    }else if('强制校对'){
+      var dingdanzhuangtai ='C';
+    }
+    api.addjiaodui({ danhao: dianhao, dingdanzhuangtai: dingdanzhuangtai},(ret)=>{
       if(ret.code=='0'){
         wx.redirectTo({
           url: '/pages/rengongsuccess/rengongsuccess?diandan=' + dianhao +'&xuanze='+names,
@@ -67,7 +71,7 @@ class Content extends AppBase {
             }
           })
         } else if (names == '未返还') {
-          api.jiaodui({ danhao: dianhao }, (ret) => {
+          api.jiaodui({ danhao: dianhao, flag:'Y' }, (ret) => {
             if (ret.code == '0') {
               wx.redirectTo({
                 url: '/pages/rengongsuccess/rengongsuccess?diandan=' + dianhao + '&xuanze=' + names,
