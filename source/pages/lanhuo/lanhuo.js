@@ -108,7 +108,11 @@ class Content extends AppBase {
       url: '/pages/weilanhuo/weilanhuo',
     })
   }
-
+  denchu() {
+    wx.redirectTo({
+      url: '/pages/login/login',
+    })
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -120,5 +124,6 @@ body.getinfo = content.getinfo;
 body.checkno = content.checkno;
 body.checklanhuo = content.checklanhuo;
 body.zong = content.zong;
+body.denchu = content.denchu;
 
 Page(body)
