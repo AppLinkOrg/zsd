@@ -1,9 +1,19 @@
 // pages/content/content.js
-import { AppBase } from "../../appbase";
-import { ApiConfig } from "../../apis/apiconfig";
-import { InstApi } from "../../apis/inst.api.js";
-import { TestApi } from "../../apis/test.api.js";
-import { OrderApi } from "../../apis/order.api.js";
+import {
+  AppBase
+} from "../../appbase";
+import {
+  ApiConfig
+} from "../../apis/apiconfig";
+import {
+  InstApi
+} from "../../apis/inst.api.js";
+import {
+  TestApi
+} from "../../apis/test.api.js";
+import {
+  OrderApi
+} from "../../apis/order.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -18,12 +28,14 @@ class Content extends AppBase {
     var that = this;
     this.getinfo();
   }
-  getinfo(){
+  getinfo() {
     var uri = this.Base.options.uri;
-  //  var uri = 'https://alioss.app-link.org/alucard263096/zsd/test/0e267aec7231bbfbc9c9c2ea8d3107c4_19122614005_1012978076.jpg';
+    //  var uri = 'https://alioss.app-link.org/alucard263096/zsd/test/0e267aec7231bbfbc9c9c2ea8d3107c4_19122614005_1012978076.jpg';
     console.log(uri);
     var api = new TestApi();
-    api.test({ photo: uri }, (res) => {
+    api.test({
+      photo: uri
+    }, (res) => {
       var list = res.words_result;
       console.log(list);
       var dindanhao;
@@ -48,8 +60,7 @@ class Content extends AppBase {
 
           if (list[idx + 1].words.indexOf("*请核对以上信息,") != -1) {
 
-          }
-          else {
+          } else {
             dizhi += list[idx + 1].words;
           }
           var reg = /.+?(省|市|自治区|自治州|县|区)/g;
@@ -96,7 +107,16 @@ class Content extends AppBase {
 
 
       })
-      this.Base.setMyData({ dindanhao, housiwei, dizhi1, dizhi2, name, shouji, shulian ,uri})
+      this.Base.setMyData({
+        dindanhao,
+        housiwei,
+        dizhi1,
+        dizhi2,
+        name,
+        shouji,
+        shulian,
+        uri
+      })
       console.log(dindanhao);
       console.log(housiwei);
       console.log(dizhi1);
@@ -105,7 +125,7 @@ class Content extends AppBase {
 
     })
   }
-  zlFn(e){
+  zlFn(e) {
     this.Base.setMyData({
       zl: e.detail.value
     })
@@ -135,7 +155,7 @@ class Content extends AppBase {
       remark: e.detail.value
     })
   }
-  tijiao(){
+  tijiao() {
     var dindanhao = this.Base.getMyData().dindanhao;
     var housiwei = this.Base.getMyData().housiwei;
     var dizhi1 = this.Base.getMyData().dizhi1;
@@ -166,8 +186,17 @@ class Content extends AppBase {
       tezhunsong: bz,
       beizhu: remark
     }
-    api.addfuhuo(json,(ret)=>{
+    api.addfuhuo(json, (ret) => {
       console.log(ret);
+      if (ret.code == '0') {
+        wx.navigateTo({
+          url: '/pages/fhsuccess/fhsuccess?diandan=' + dindanhao + '&fhsb=' + 'A',
+        })
+      } else if (ret.code == '-1') {
+        wx.navigateTo({
+          url: '/pages/fhrepeart/fhrepeart?diandan=' + dindanhao,
+        })
+      }
     })
   }
 }

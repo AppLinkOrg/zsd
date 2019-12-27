@@ -84,6 +84,41 @@
 					"id": -1,
 					"name": "pages/plshibie/plshibie",
 					"pathName": "pages/plshibie/plshibie",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/fhsuccess/fhsuccess",
+					"pathName": "pages/fhsuccess/fhsuccess",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/jiaodui/jiaodui",
+					"pathName": "pages/jiaodui/jiaodui",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/rengong/rengong",
+					"pathName": "pages/rengong/rengong",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/lanhuo/lanhuo",
+					"pathName": "pages/lanhuo/lanhuo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/weilanhuo/weilanhuo",
+					"pathName": "pages/weilanhuo/weilanhuo",
 					"scene": null
 				}
 			]

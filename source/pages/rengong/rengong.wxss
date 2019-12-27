@@ -1,0 +1,7 @@
+/* pages/rengong/rengong.wxss */
+.inp {
+  width: 89%;
+  height: 80rpx;
+  border: 2rpx solid #888888;
+  padding-left: 10rpx; 
+}

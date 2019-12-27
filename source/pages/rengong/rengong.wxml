@@ -1,0 +1,12 @@
+
+<view class="flex-row flex-column">
+
+  <input placeholder="请输入订单号" class="inp" bindinput="dianFn"></input>
+   <view style="height:50rpx;"></view>
+  <picker range='{{cont}}' mode='selector' bindchange='pickerchange' id='id' range-key='name'>
+      <view class='h5 txt-black' wx:if='{{names==null}}'>{{names}}</view>
+      <input placeholder='请输入'  name='names' disabled='{{true}}' class='txt-black text-right h5 ' value='{{names}}' placeholder-class='h5 txt-gray'></input>
+    </picker>
+    <view style="height:50rpx;"></view>
+    <view bindtap="tijiao">提交</view>
+</view> 

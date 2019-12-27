@@ -1,0 +1,10 @@
+
+
+<view>
+<view>订单号：{{barcode}}</view>
+  <view>重复提交</view>
+  <view class="flex-row flex-center">
+    <view class="margin-right-20" bindtap="fanhui">返回首页</view>
+    <view bindtap="jixu">继续校对</view>
+  </view>
+</view>

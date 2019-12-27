@@ -1,0 +1,6 @@
+/* pages/weilanhuo/weilanhuo.wxss */
+.aa {
+  width: 94%;
+  border-top: 2rpx solid #BBBBBB;
+  border-bottom: 2rpx solid #BBBBBB;
+}

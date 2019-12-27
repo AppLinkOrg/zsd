@@ -1,16 +1,8 @@
 // pages/content/content.js
-import {
-  AppBase
-} from "../../appbase";
-import {
-  ApiConfig
-} from "../../apis/apiconfig";
-import {
-  InstApi
-} from "../../apis/inst.api.js";
-import {
-  OrderApi
-} from "../../apis/order.api.js";
+import { AppBase } from "../../appbase";
+import { ApiConfig } from "../../apis/apiconfig";
+import { InstApi } from "../../apis/inst.api.js";
+import { OrderApi } from "../../apis/order.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -23,9 +15,31 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
+    var diandan = this.Base.options.barcode;
+      console.log(diandan)
+    this.Base.setMyData({
+      diandan
+    })
     this.getinfo();
   }
-  bindtodetail(e) {
+  fanhui() {
+    var memberinfo = this.Base.getMyData().memberinfo;
+    if (memberinfo.juese == 'A') {
+      wx.navigateTo({
+        url: '/pages/fahuo/fahuo',
+      })
+    } else if (memberinfo.juese == 'B') {
+      wx.navigateTo({
+        url: '/pages/jiaodui/jiaodui',
+      })
+    } else if (memberinfo.juese == 'C') {
+      wx.navigateTo({
+        url: '/pages/lanhuo/lanhuo',
+      })
+    }
+  }
+  
+  jixu(e) {
     var weilanhuo = this.Base.getMyData().weilanhuo;
     var yilanhuo = this.Base.getMyData().yilanhuo;
     var api = new OrderApi;
@@ -39,15 +53,15 @@ class Content extends AppBase {
         var code = res.result.slice(0, index);
         console.log(index, 'index', code);
         if (that.checkno(code, weilanhuo)) {
-          api.yilanhuo({ danhao:code}, (ret) => {
+          api.yilanhuo({ danhao: code }, (ret) => {
             if (ret.code == '0') {
               wx.navigateTo({
                 url: '/pages/lhsuccess/lhsuccess?barcode=' + code
               })
             }
           })
-        }else {
-          if (that.checklanhuo(code, yilanhuo)){
+        } else {
+          if (that.checklanhuo(code, yilanhuo)) {
             wx.navigateTo({
               url: '/pages/lhrepeart/lhrepeart?barcode=' + code
             })
@@ -60,8 +74,8 @@ class Content extends AppBase {
               }
             })
           }
-           
           
+
         }
 
       }
@@ -76,7 +90,7 @@ class Content extends AppBase {
     }
     return false
   }
-  checklanhuo(code,arr){
+  checklanhuo(code, arr) {
     for (var i = 0; i < arr.length; i++) {
       if (code == arr[i].danhao) {
         return true
@@ -110,9 +124,10 @@ var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
 
-body.bindtodetail = content.bindtodetail;
+body.fanhui = content.fanhui;
+body.jixu = content.jixu;
 body.getinfo = content.getinfo;
-body.checkno = content.checkno;
 body.checklanhuo = content.checklanhuo;
+body.checkno = content.checkno;
 
 Page(body)

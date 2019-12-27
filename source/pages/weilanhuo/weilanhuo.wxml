@@ -1,0 +1,10 @@
+<view class="flex-row flex-column">
+  <view>未揽收列表</view>
+  <view wx:for="{{lanhuolist}}" wx:key='k' class=" aa">
+    <view class="flex-row flex-center">
+      <view class="h4 flex-1">{{item.daorushijian}}</view>
+      <image src="{{uploadpath}}resource/{{res.arrowright}}" class="icon-30"></image>
+    </view>
+  </view>
+
+</view>

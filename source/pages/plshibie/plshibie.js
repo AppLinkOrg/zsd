@@ -23,7 +23,7 @@ class Content extends AppBase {
     var arr =[];
     var currentImg = imgs[current];
     this.Base.setMyData({
-      imgs, current: current,currentImg,arr
+      imgs, current: current, currentImg, arr, zl: '', tj: '', pl: '', dk: '', bz: '', remark: ''
     })
     this.getinfo(currentImg);
   }
@@ -215,12 +215,21 @@ class Content extends AppBase {
     for(var i=0;i<arr.length;i++){
         this.add(i,arr[i]);
     }
+
+    setTimeout(()=>{
+    
+        wx.navigateTo({
+          url: '/pages/fhsuccess/fhsuccess?fhsb=' + 'B',
+        })
+    }, (arr.length+1)*300)
+
   }
   add(i,json){
     var api = new OrderApi;
     setTimeout(()=>{
       api.addfuhuo(json, (ret) => {
         console.log(ret);
+        
       })   
     },i*300)
   }

@@ -1,13 +1,24 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/fahuo/fahuo",
     "pages/jiaodui/jiaodui",
     "pages/lanhuo/lanhuo",
     "pages/home/home",
     "pages/auth/auth",
-    "pages/login/login",
     "pages/fhshibie/fhshibie",
-    "pages/plshibie/plshibie"
+    "pages/plshibie/plshibie",
+    "pages/fhsuccess/fhsuccess",
+    "pages/fhrepeart/fhrepeart",
+    "pages/jddetails/jddetails",
+    "pages/jdtijiao/jdtijiao",
+    "pages/jdrepeart/jdrepeart",
+    "pages/rengong/rengong",
+    "pages/rengongsuccess/rengongsuccess",
+    "pages/lhsuccess/lhsuccess",
+    "pages/lhtijiao/lhtijiao",
+    "pages/lhrepeart/lhrepeart",
+    "pages/weilanhuo/weilanhuo"
   ],
   "permission": {
     "scope.userLocation": {

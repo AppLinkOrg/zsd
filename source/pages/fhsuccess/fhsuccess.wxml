@@ -1,0 +1,9 @@
+<view>
+<view>订单号：{{diandan}}</view>
+  <view>提交成功</view>
+  <view class="flex-row flex-center">
+    <view class="margin-right-20" bindtap="fanhui">返回首页</view>
+    <view bindtap="jixu">继续识别</view>
+  </view>
+  <view wx:if='{{fhsb!="A"}}'>查看重复提交</view>
+</view>

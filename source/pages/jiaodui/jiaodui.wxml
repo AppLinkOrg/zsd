@@ -5,13 +5,13 @@
   </view>
   <view style="height:74rpx;"></view>
   <view class="padding-1718">
-    <view class="fh flex-row flex-column ">
+    <view class="fh flex-row flex-column " bindtap="bindtodetail">
       <view style="height:58rpx;"></view>
       <image src="{{uploadpath}}resource/{{res.jdsm}}" class="icon-100"></image>
       <view class="h2 txt-white txt-bold margin-top-20">校对扫描</view>
     </view>
     <view style="height:48rpx;"></view>
-     <view class="pl flex-row flex-column ">
+     <view class="pl flex-row flex-column " bindtap="rengong">
       <view style="height:58rpx;"></view>
       <image src="{{uploadpath}}resource/{{res.rgjd}}" class="icon-100"></image>
       <view class="h2 txt-white txt-bold margin-top-20">人工校对</view>
