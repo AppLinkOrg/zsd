@@ -1,7 +1,7 @@
 <view class="margin-top-30">
   <view class="padding-left-32 ">
     <view style="color:#787979;margin-bottom:12rpx;" class="h4">欢迎使用正时达识别扫码系统</view>
-    <view style='color#101010;' >你好！ 揽货员 {{memberinfo.name}}<view class="deng" bindtap="denchu">登出</view></view>
+    <view style='color#101010;' class="flex-row flex-center" >你好！ 揽货员 {{memberinfo.name}}<view class="deng" bindtap="denchu">登出</view></view>
   </view>
   <view style="height:74rpx;"></view>
 
@@ -16,7 +16,7 @@
 
     <view style="height:48rpx;"></view>
 
-     <view class="pl flex-row flex-column ">
+     <view class="pl flex-row flex-column " bindtap="zong">
       <view style="height:58rpx;"></view>
       <image src="{{uploadpath}}resource/{{res.zjd}}" class="icon-100"></image>
       <view class="h2 txt-white txt-bold margin-top-20">总校对</view>
