@@ -23,9 +23,9 @@
   </view>
 
 
- <view class="flex-row flex-center margin-top">
+ <view class="flex-row flex-column margin-top">
  <view class='flex-1'></view>
     <view class="f-40 txt-green" wx:if='{{repnos.length>0}}' bindtap="watch">查看重复提交</view>
-    <view bindtap="watch2"class="f-40 txt-green">查看提交成功</view>
      <view class='flex-1'></view>
+    <view bindtap="watch2"class="f-40 txt-green margin-top">查看提交成功</view>
   </view>

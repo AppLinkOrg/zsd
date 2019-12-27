@@ -3,7 +3,6 @@
 .aa {
   width: 94%;
   border-top: 1rpx solid #ccc;
-  border-bottom: 1rpx solid #ccc;
 }
 
 .pa {
@@ -13,5 +12,5 @@
 .di {
   width: 100vw;
   position: fixed;
-  top: 186rpx;
+  bottom: 186rpx;
 }
