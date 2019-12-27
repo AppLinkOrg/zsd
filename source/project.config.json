@@ -11,16 +11,14 @@
 		"newFeature": true,
 		"autoAudits": false
 	},
-	"compileType": "zsd",
+	"compileType": "miniprogram",
 	"libVersion": "2.5.0",
 	"appid": "wxc5a4caa95726a40d",
 	"projectname": "%E6%AD%A3%E6%97%B6%E8%BE%BE",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
+	"scripts": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -35,15 +33,10 @@
 			"list": []
 		},
 		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 12,
 			"list": [
 				{
 					"id": -1,
@@ -124,8 +117,15 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/plrepeart/plrepeart",
-					"pathName": "pages/plrepeart/plrepeart",
+					"name": "重复校队提交",
+					"pathName": "pages/jddetails/jddetails",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "重复校队提交",
+					"pathName": "pages/lanhuo/lanhuo",
 					"scene": null
 				}
 			]
