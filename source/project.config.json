@@ -43,7 +43,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 11,
 			"list": [
 				{
 					"id": -1,
@@ -119,6 +119,13 @@
 					"id": -1,
 					"name": "pages/weilanhuo/weilanhuo",
 					"pathName": "pages/weilanhuo/weilanhuo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "重复校队提交",
+					"pathName": "pages/jddetails/jddetails",
 					"scene": null
 				}
 			]
