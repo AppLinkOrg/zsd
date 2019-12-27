@@ -22,21 +22,34 @@ class Content extends AppBase {
   fanhui() {
     var memberinfo = this.Base.getMyData().memberinfo;
     if (memberinfo.juese == 'A') {
-      wx.navigateTo({
+      wx.redirectTo({
         url: '/pages/fahuo/fahuo',
       })
     } else if (memberinfo.juese == 'B') {
-      wx.navigateTo({
+      wx.redirectTo({
         url: '/pages/jiaodui/jiaodui',
       })
     } else if (memberinfo.juese == 'C') {
-      wx.navigateTo({
+      wx.redirectTo({
         url: '/pages/lanhuo/lanhuo',
       })
     }
   }
   jixu() {
+    var that = this;
 
+
+    this.Base.uploadOneImage("test", (ret) => {
+      console.log(ret);
+      console.log(ApiConfig.GetUploadPath() + 'test/' + ret);
+
+      var uri = ApiConfig.GetUploadPath() + 'test/' + ret;
+
+      wx.redirectTo({
+        url: '/pages/fhshibie/fhshibie?uri=' + uri,
+      })
+
+    }, undefined);
   }
 }
 var content = new Content();

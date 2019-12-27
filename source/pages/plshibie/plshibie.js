@@ -23,9 +23,25 @@ class Content extends AppBase {
     var arr =[];
     var currentImg = imgs[current];
     this.Base.setMyData({
-      imgs, current: current, currentImg, arr, zl: '', tj: '', pl: '', dk: '', bz: '', remark: ''
+      imgs, current: current, currentImg, arr, zl: '', tj: '', pl: '', dk: '', bz: '', remark: '', ordernos: [], repnos: []
     })
     this.getinfo(currentImg);
+    this.geterji();
+    this.getyiji();
+  }
+  getyiji() {
+    var api = new OrderApi;
+    var that = this;
+    api.yijilist({}, (yijilist) => {
+      this.Base.setMyData({ yijilist })
+    })
+  }
+  geterji() {
+    var api = new OrderApi;
+    var that = this;
+    api.erjilist({}, (erjilist) => {
+      this.Base.setMyData({ erjilist })
+    })
   }
   getinfo(uri) {
     // var uri = this.Base.options.uri;
@@ -192,7 +208,7 @@ class Content extends AppBase {
     current = current -1;
     currentImg = imgs[current];
     this.Base.setMyData({
-      current, currentImg
+      current, currentImg,
     })
     this.getinfo(currentImg);
   }
@@ -206,6 +222,7 @@ class Content extends AppBase {
     this.Base.setMyData({
       current, currentImg
     })
+    this.goTop();
     this.getinfo(currentImg);
   }
   tijiao(){
@@ -215,23 +232,66 @@ class Content extends AppBase {
     for(var i=0;i<arr.length;i++){
         this.add(i,arr[i]);
     }
-
+    var ordernos = this.Base.getMyData().ordernos;
+    var repnos = this.Base.getMyData().repnos;
     setTimeout(()=>{
-    
-        wx.navigateTo({
-          url: '/pages/fhsuccess/fhsuccess?fhsb=' + 'B',
-        })
+        if(ordernos.length>0){
+          wx.redirectTo({
+            url: '/pages/plsuccess/plsuccess?ordernos=' + JSON.stringify(ordernos) + "&repnos=" + JSON.stringify(repnos),
+          }) 
+        }else {
+          wx.redirectTo({
+            url: '/pages/plrepeart/plrepeart?repnos=' + JSON.stringify(repnos),
+          })
+        }
+        
     }, (arr.length+1)*300)
 
   }
   add(i,json){
     var api = new OrderApi;
+    var ordernos = this.Base.getMyData().ordernos;
+    var repnos = this.Base.getMyData().repnos;
     setTimeout(()=>{
       api.addfuhuo(json, (ret) => {
         console.log(ret);
-        
+        if(ret.code=='0'){
+          ordernos.push(json.danhao);
+        }else if(ret.code == '-1'){
+          repnos.push(json.danhao);
+        }
+        this.Base.setMyData({ ordernos, repnos })
       })   
     },i*300)
+    console.log(ordernos, 'orderno');
+    console.log(repnos,'orderno');
+  }
+
+  goTop(e) {
+    if (wx.pageScrollTo) {
+      wx.pageScrollTo({
+        scrollTop: 0
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+      })
+    }
+  }
+  pickerchange(e) {
+    console.log(e);
+    var yijilist = this.Base.getMyData().yijilist;
+    this.Base.setMyData({
+      dizhi1: yijilist[e.detail.value].name
+    })
+  }
+  pickerchange2(e) {
+    console.log(e);
+    var erjilist = this.Base.getMyData().erjilist;
+    this.Base.setMyData({
+      dizhi2: erjilist[e.detail.value].name
+    })
   }
 }
 var content = new Content();
@@ -251,5 +311,9 @@ body.prePage = content.prePage;
 body.nexPage = content.nexPage;
 body.tijiao = content.tijiao;
 body.add = content.add;
-
+body.goTop = content.goTop;
+body.getyiji = content.getyiji;
+body.geterji = content.geterji;
+body.pickerchange = content.pickerchange;
+body.pickerchange2 = content.pickerchange2;
 Page(body)

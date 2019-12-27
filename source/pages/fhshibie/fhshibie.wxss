@@ -44,3 +44,16 @@
   line-height: 80rpx;
   margin-top: 36rpx;
 }
+
+.inip {
+  height: 100rpx;
+ 
+}
+.cy {
+  width: 60rpx;
+  height: 40rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  background: rgba(45, 145, 73, 1);
+  color: #ffffff;
+}

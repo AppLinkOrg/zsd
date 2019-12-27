@@ -23,21 +23,21 @@ class Content extends AppBase {
   fanhui() {
     var memberinfo = this.Base.getMyData().memberinfo;
     if (memberinfo.juese == 'A') {
-      wx.navigateTo({
+      wx.redirectTo({
         url: '/pages/fahuo/fahuo',
       })
     } else if (memberinfo.juese == 'B') {
-      wx.navigateTo({
+      wx.redirectTo({
         url: '/pages/jiaodui/jiaodui',
       })
     } else if (memberinfo.juese == 'C') {
-      wx.navigateTo({
+      wx.redirectTo({
         url: '/pages/lanhuo/lanhuo',
       })
     }
   }
   jixu() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '/pages/rengong/rengong',
     })
   }

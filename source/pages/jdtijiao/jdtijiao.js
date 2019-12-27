@@ -33,15 +33,15 @@ class Content extends AppBase {
   fanhui() {
     var memberinfo = this.Base.getMyData().memberinfo;
     if (memberinfo.juese == 'A') {
-      wx.navigateTo({
+      wx.redirectTo({
         url: '/pages/fahuo/fahuo',
       })
     } else if (memberinfo.juese == 'B') {
-      wx.navigateTo({
+      wx.redirectTo({
         url: '/pages/jiaodui/jiaodui',
       })
     } else if (memberinfo.juese == 'C') {
-      wx.navigateTo({
+      wx.redirectTo({
         url: '/pages/lanhuo/lanhuo',
       })
     }
@@ -66,7 +66,7 @@ class Content extends AppBase {
             danhao: code
           }, (ret) => {
             if (ret.code == '0') {
-              wx.navigateTo({
+              wx.redirectTo({
                 url: '/pages/jddetails/jddetails?barcode=' + code
               })
             }
@@ -75,7 +75,7 @@ class Content extends AppBase {
         } else {
           if (that.checkyijiaodui(code, yijiaodui)) {
             console.log('2222222')
-            wx.navigateTo({
+            wx.redirectTo({
               url: '/pages/jdrepeart/jdrepeart?barcode=' + code
             })
           } else {
@@ -84,7 +84,7 @@ class Content extends AppBase {
               danhao: code, dingdanzhuangtai: 'C'
             }, (ret) => {
               if (ret.code == '0') {
-                wx.navigateTo({
+                wx.redirectTo({
                   url: '/pages/jdtijiao/jdtijiao?barcode=' + code
                 })
               }

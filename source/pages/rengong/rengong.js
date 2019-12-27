@@ -44,7 +44,7 @@ class Content extends AppBase {
     var api = new OrderApi;
     api.addjiaodui({ danhao: dianhao, dingdanzhuangtai:'D'},(ret)=>{
       if(ret.code=='0'){
-        wx.navigateTo({
+        wx.redirectTo({
           url: '/pages/rengongsuccess/rengongsuccess?diandan=' + dianhao +'&xuanze='+names,
         })
       }

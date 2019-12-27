@@ -8,6 +8,9 @@
     "pages/auth/auth",
     "pages/fhshibie/fhshibie",
     "pages/plshibie/plshibie",
+    "pages/plsuccess/plsuccess",
+    "pages/plrepeart/plrepeart",
+    "pages/plwatchsuccess/plwatchsuccess",
     "pages/fhsuccess/fhsuccess",
     "pages/fhrepeart/fhrepeart",
     "pages/jddetails/jddetails",
@@ -18,7 +21,8 @@
     "pages/lhsuccess/lhsuccess",
     "pages/lhtijiao/lhtijiao",
     "pages/lhrepeart/lhrepeart",
-    "pages/weilanhuo/weilanhuo"
+    "pages/weilanhuo/weilanhuo",
+    "pages/weilanhuodetail/weilanhuodetail"
   ],
   "permission": {
     "scope.userLocation": {

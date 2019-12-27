@@ -124,8 +124,13 @@
 				},
 				{
 					"id": -1,
+<<<<<<< HEAD
 					"name": "重复校队提交",
 					"pathName": "pages/jddetails/jddetails",
+=======
+					"name": "pages/plrepeart/plrepeart",
+					"pathName": "pages/plrepeart/plrepeart",
+>>>>>>> 35159b021128789d7353fa9f0bb4b0bf6fc9baa4
 					"scene": null
 				}
 			]

@@ -41,20 +41,20 @@ class Content extends AppBase {
         if (that.checkno(code, weilanhuo)) {
           api.yilanhuo({ danhao:code}, (ret) => {
             if (ret.code == '0') {
-              wx.navigateTo({
+              wx.redirectTo({
                 url: '/pages/lhsuccess/lhsuccess?barcode=' + code
               })
             }
           })
         }else {
           if (that.checklanhuo(code, yilanhuo)){
-            wx.navigateTo({
+            wx.redirectTo({
               url: '/pages/lhrepeart/lhrepeart?barcode=' + code
             })
           }else {
             api.lanhuotijiao({ danhao: code }, (ret) => {
               if (ret.code == '0') {
-                wx.navigateTo({
+                wx.redirectTo({
                   url: '/pages/lhtijiao/lhtijiao?barcode=' + code
                 })
               }
@@ -103,6 +103,11 @@ class Content extends AppBase {
       })
     })
   }
+  zong(){
+    wx.redirectTo({
+      url: '/pages/weilanhuo/weilanhuo',
+    })
+  }
 
 }
 var content = new Content();
@@ -114,5 +119,6 @@ body.bindtodetail = content.bindtodetail;
 body.getinfo = content.getinfo;
 body.checkno = content.checkno;
 body.checklanhuo = content.checklanhuo;
+body.zong = content.zong;
 
 Page(body)

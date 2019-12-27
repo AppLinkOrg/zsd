@@ -14,13 +14,13 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
-    var diandan = this.Base.options.diandan;
-    var fhsb = this.Base.options.fhsb;
+    var repnos = JSON.parse(this.Base.options.repnos);
+    var ordernos = JSON.parse(this.Base.options.ordernos);
     this.Base.setMyData({
-      diandan, fhsb
+      repnos, ordernos
     })
   }
-  fanhui(){
+  fanhui() {
     var memberinfo = this.Base.getMyData().memberinfo;
     if (memberinfo.juese == 'A') {
       wx.redirectTo({
@@ -36,23 +36,46 @@ class Content extends AppBase {
       })
     }
   }
-  jixu(){
+  jixu() {
     var that = this;
+    var imgs = [];
 
-
-    this.Base.uploadOneImage("test", (ret) => {
-      console.log(ret);
+    this.Base.uploadImage("test", (ret, q) => {
+      console.log(q);
       console.log(ApiConfig.GetUploadPath() + 'test/' + ret);
 
       var uri = ApiConfig.GetUploadPath() + 'test/' + ret;
 
-      wx.redirectTo({
-        url: '/pages/fhshibie/fhshibie?uri=' + uri,
-      })
+      imgs.push(uri);
+
+      if (imgs.length == q.length) {
+        that.detail(imgs);
+      }
 
     }, undefined);
+
+
   }
- 
+  detail(imgs) {
+
+
+    console.log(imgs, 'qqq')
+    wx.redirectTo({
+      url: '/pages/plshibie/plshibie?imgs=' + JSON.stringify(imgs),
+    })
+  }
+  watch(){
+    var repnos = this.Base.getMyData().repnos;
+    wx.redirectTo({
+      url: '/pages/plrepeart/plrepeart?repnos=' + JSON.stringify(repnos),
+    })
+  }
+  watch2(){
+    var ordernos = this.Base.getMyData().ordernos;
+    wx.redirectTo({
+      url: '/pages/plwatchsuccess/plwatchsuccess?ordernos=' + JSON.stringify(ordernos),
+    })
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -61,5 +84,8 @@ body.onMyShow = content.onMyShow;
 
 body.fanhui = content.fanhui;
 body.jixu = content.jixu;
+body.detail = content.detail;
+body.watch = content.watch;
+body.watch2 = content.watch2;
 
 Page(body)

@@ -1,0 +1,12 @@
+<view class="flex-row flex-column">
+
+  <view>{{item.daorushijian}}</view>
+  <view>未揽收订单号</view>
+  <view class="flex-row flex-column">
+    <view  wx:for='{{arr}}' wx:key='k'>订单号：{{item.danhao}}</view>
+  </view>
+  <view class="flex-row flex-center">
+    <view bindtap="fanhui">返回首页</view>
+    <view bindtap="jixu">继续揽货</view>
+  </view>
+</view>
