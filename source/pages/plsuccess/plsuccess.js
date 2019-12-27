@@ -66,13 +66,13 @@ class Content extends AppBase {
   }
   watch(){
     var repnos = this.Base.getMyData().repnos;
-    wx.redirectTo({
+    wx.navigateTo({
       url: '/pages/plrepeart/plrepeart?repnos=' + JSON.stringify(repnos),
     })
   }
   watch2(){
     var ordernos = this.Base.getMyData().ordernos;
-    wx.redirectTo({
+    wx.navigateTo({
       url: '/pages/plwatchsuccess/plwatchsuccess?ordernos=' + JSON.stringify(ordernos),
     })
   }

@@ -20,7 +20,7 @@
         <view class="line"></view>
         <view class="txt-78 flex-row flex-center">一级地址：
           <!-- <input value="{{dizhi1}}"></input> -->
-           <input  name='dizhi1' disabled='{{true}}' class='txt-black h5 '  value="{{dizhi1}}"></input>
+           <input  name='dizhi1' disabled='{{true}}' class='txt-black h5 flex-1'  value="{{dizhi1}}"></input>
            <picker range='{{yijilist}}' mode='selector' bindchange='pickerchange' id='id' range-key='name'>
             <view class="cy">常用</view>
           </picker>
