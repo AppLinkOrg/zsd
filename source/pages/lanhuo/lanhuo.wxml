@@ -11,7 +11,7 @@
       <view class="h2 txt-white txt-bold margin-top-20">揽货扫描</view>
     </view>
     <view style="height:48rpx;"></view>
-     <view class="pl flex-row flex-column ">
+     <view class="pl flex-row flex-column " bindtap="zong">
       <view style="height:58rpx;"></view>
       <image src="{{uploadpath}}resource/{{res.zjd}}" class="icon-100"></image>
       <view class="h2 txt-white txt-bold margin-top-20">总校对</view>

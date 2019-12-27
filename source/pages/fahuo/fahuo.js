@@ -32,7 +32,7 @@ class Content extends AppBase {
 
       var uri = ApiConfig.GetUploadPath() + 'test/' + ret;
 
-      wx.navigateTo({
+      wx.redirectTo({
         url: '/pages/fhshibie/fhshibie?uri=' + uri,
       })
 
@@ -62,9 +62,14 @@ class Content extends AppBase {
  
     
     console.log(imgs,'qqq')
-      wx.navigateTo({
+    wx.redirectTo({
         url: '/pages/plshibie/plshibie?imgs=' + JSON.stringify(imgs) ,
       })
+  }
+  denchu(){
+    wx.redirectTo({
+      url: '/pages/login/login',
+    })
   }
 }
 var content = new Content();
@@ -75,5 +80,6 @@ body.onMyShow = content.onMyShow;
 body.test = content.test;
 body.test2 = content.test2;
 body.detail = content.detail;
+body.denchu = content.denchu;
 
 Page(body)

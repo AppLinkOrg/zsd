@@ -27,10 +27,26 @@ class Content extends AppBase {
   onMyShow() {
     var that = this;
     this.getinfo();
+    this.getyiji();
+    this.geterji();
+  }
+  getyiji(){
+    var api = new OrderApi;
+    var that = this;
+    api.yijilist({}, (yijilist)=>{
+      this.Base.setMyData({ yijilist})
+    })
+  }
+  geterji(){
+    var api = new OrderApi;
+    var that = this;
+    api.erjilist({}, (erjilist) => {
+      this.Base.setMyData({ erjilist })
+    })
   }
   getinfo() {
     var uri = this.Base.options.uri;
-    //  var uri = 'https://alioss.app-link.org/alucard263096/zsd/test/0e267aec7231bbfbc9c9c2ea8d3107c4_19122614005_1012978076.jpg';
+    // var uri = 'https://alioss.app-link.org/alucard263096/zsd/test/a93f4b00e1f133e3d02ebcafd9846c15_19122715022_705000340.jpg';
     console.log(uri);
     var api = new TestApi();
     api.test({
@@ -189,14 +205,28 @@ class Content extends AppBase {
     api.addfuhuo(json, (ret) => {
       console.log(ret);
       if (ret.code == '0') {
-        wx.navigateTo({
+        wx.redirectTo({
           url: '/pages/fhsuccess/fhsuccess?diandan=' + dindanhao + '&fhsb=' + 'A',
         })
       } else if (ret.code == '-1') {
-        wx.navigateTo({
+        wx.redirectTo({
           url: '/pages/fhrepeart/fhrepeart?diandan=' + dindanhao,
         })
       }
+    })
+  }
+  pickerchange(e){
+    console.log(e);
+    var yijilist = this.Base.getMyData().yijilist;
+    this.Base.setMyData({
+      dizhi1: yijilist[e.detail.value].name
+    })
+  }
+  pickerchange2(e){
+    console.log(e);
+    var erjilist = this.Base.getMyData().erjilist;
+    this.Base.setMyData({
+      dizhi2: erjilist[e.detail.value].name
     })
   }
 }
@@ -213,5 +243,10 @@ body.dkFn = content.dkFn;
 body.bzFn = content.bzFn;
 body.reFn = content.reFn;
 body.tijiao = content.tijiao;
+body.getyiji = content.getyiji;
+body.geterji = content.geterji;
+body.pickerchange = content.pickerchange;
+body.pickerchange2 = content.pickerchange2;
+
 
 Page(body)

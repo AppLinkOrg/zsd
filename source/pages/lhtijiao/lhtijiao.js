@@ -25,15 +25,15 @@ class Content extends AppBase {
   fanhui() {
     var memberinfo = this.Base.getMyData().memberinfo;
     if (memberinfo.juese == 'A') {
-      wx.navigateTo({
+      wx.redirectTo({
         url: '/pages/fahuo/fahuo',
       })
     } else if (memberinfo.juese == 'B') {
-      wx.navigateTo({
+      wx.redirectTo({
         url: '/pages/jiaodui/jiaodui',
       })
     } else if (memberinfo.juese == 'C') {
-      wx.navigateTo({
+      wx.redirectTo({
         url: '/pages/lanhuo/lanhuo',
       })
     }
@@ -55,20 +55,20 @@ class Content extends AppBase {
         if (that.checkno(code, weilanhuo)) {
           api.yilanhuo({ danhao: code }, (ret) => {
             if (ret.code == '0') {
-              wx.navigateTo({
+              wx.redirectTo({
                 url: '/pages/lhsuccess/lhsuccess?barcode=' + code
               })
             }
           })
         } else {
           if (that.checklanhuo(code, yilanhuo)) {
-            wx.navigateTo({
+            wx.redirectTo({
               url: '/pages/lhrepeart/lhrepeart?barcode=' + code
             })
           } else {
             api.lanhuotijiao({ danhao: code }, (ret) => {
               if (ret.code == '0') {
-                wx.navigateTo({
+                wx.redirectTo({
                   url: '/pages/lhtijiao/lhtijiao?barcode=' + code
                 })
               }

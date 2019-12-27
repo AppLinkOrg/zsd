@@ -119,6 +119,13 @@
 					"id": -1,
 					"name": "pages/weilanhuo/weilanhuo",
 					"pathName": "pages/weilanhuo/weilanhuo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/plrepeart/plrepeart",
+					"pathName": "pages/plrepeart/plrepeart",
 					"scene": null
 				}
 			]

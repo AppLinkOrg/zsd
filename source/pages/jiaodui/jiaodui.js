@@ -33,7 +33,7 @@ class Content extends AppBase {
         if (that.checkno(code, weijiaodui)){
           api.jiaodui({ danhao:code},(ret)=>{
             if(ret.code=='0'){
-              wx.navigateTo({
+              wx.redirectTo({
                 url: '/pages/jddetails/jddetails?barcode=' + code
               })
             }
@@ -41,13 +41,13 @@ class Content extends AppBase {
          
         }else {
           if (that.checkyijiaodui(code, yijiaodui)){
-            wx.navigateTo({
+            wx.redirectTo({
               url: '/pages/jdrepeart/jdrepeart?barcode=' + code 
             })
           }else {
             api.addjiaodui({ danhao: code, dingdanzhuangtai:'C'},(ret)=>{
               if(ret.code=='0'){
-                wx.navigateTo({
+                wx.redirectTo({
                   url: '/pages/jdtijiao/jdtijiao?barcode=' + code
                 })
               }
@@ -99,7 +99,7 @@ class Content extends AppBase {
     })
   }
   rengong(){
-    wx.navigateTo({
+    wx.redirectTo({
       url: '/pages/rengong/rengong',
     })
   }

@@ -14,13 +14,13 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
-    var diandan = this.Base.options.diandan;
-    var fhsb = this.Base.options.fhsb;
+    var ordernos = JSON.parse(this.Base.options.ordernos);
+
     this.Base.setMyData({
-      diandan, fhsb
+      ordernos
     })
   }
-  fanhui(){
+  fanhui() {
     var memberinfo = this.Base.getMyData().memberinfo;
     if (memberinfo.juese == 'A') {
       wx.redirectTo({
@@ -36,23 +36,35 @@ class Content extends AppBase {
       })
     }
   }
-  jixu(){
+  jixu() {
     var that = this;
+    var imgs = [];
 
-
-    this.Base.uploadOneImage("test", (ret) => {
-      console.log(ret);
+    this.Base.uploadImage("test", (ret, q) => {
+      console.log(q);
       console.log(ApiConfig.GetUploadPath() + 'test/' + ret);
 
       var uri = ApiConfig.GetUploadPath() + 'test/' + ret;
 
-      wx.redirectTo({
-        url: '/pages/fhshibie/fhshibie?uri=' + uri,
-      })
+      imgs.push(uri);
+
+      if (imgs.length == q.length) {
+        that.detail(imgs);
+      }
 
     }, undefined);
+
+
   }
- 
+  detail(imgs) {
+
+
+    console.log(imgs, 'qqq')
+    wx.redirectTo({
+      url: '/pages/plshibie/plshibie?imgs=' + JSON.stringify(imgs),
+    })
+  }
+
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -61,5 +73,7 @@ body.onMyShow = content.onMyShow;
 
 body.fanhui = content.fanhui;
 body.jixu = content.jixu;
+body.detail = content.detail;
+body.watch = content.watch;
 
 Page(body)

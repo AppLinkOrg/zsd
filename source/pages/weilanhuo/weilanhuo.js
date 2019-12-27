@@ -35,10 +35,17 @@ class Content extends AppBase {
   checkre(item,arr){
     for(var i=0;i<arr.length;i++){
       if (item.daorushijian_timespan == arr[i].daorushijian_timespan){
-        return true
+        return false
       }
     }
-    return false
+    return true
+  }
+  detail(e){
+    console.log(e)
+    var item = e.currentTarget.dataset.current;
+    wx.redirectTo({
+      url: '/pages/weilanhuodetail/weilanhuodetail?item=' + JSON.stringify(item) ,
+    })
   }
 }
 var content = new Content();
@@ -48,5 +55,6 @@ body.onMyShow = content.onMyShow;
 
 body.getinfo = content.getinfo;
 body.checkre = content.checkre;
+body.detail = content.detail;
 
 Page(body)

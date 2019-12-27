@@ -52,15 +52,15 @@ class Content extends AppBase {
         wx.setStorageSync("token", ret.return);
         that.Base.needauth = true;
         if (ret.result == 'A') {
-          wx.navigateTo({
+          wx.redirectTo({
             url: '/pages/fahuo/fahuo',
           })
         } else if (ret.result == 'B'){
-          wx.navigateTo({
+          wx.redirectTo({
             url: '/pages/jiaodui/jiaodui',
           })
         } else if (ret.result == 'C') {
-          wx.navigateTo({
+          wx.redirectTo({
             url: '/pages/lanhuo/lanhuo',
           })
         }
