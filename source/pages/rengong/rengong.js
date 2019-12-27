@@ -37,11 +37,23 @@ class Content extends AppBase {
       dianhao:e.detail.value
     })
   }
+  setPageTitle(instinfo) {
+    wx.setNavigationBarTitle({
+      title: '人工校对',
+    })
+  }
   tijiao(){
     var names = this.Base.getMyData().names;
     var dianhao = this.Base.getMyData().dianhao;
     console.log(names,dianhao);
     var api = new OrderApi;
+    if(names==undefined || names==""){
+      wx.showToast({
+        title: '请选择条件',
+        icon: 'none'
+      })
+      return 
+    }
     if(names == '未返还' ){
       var dingdanzhuangtai = 'D';
     }else if('强制校对'){
