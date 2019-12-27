@@ -1,6 +1,6 @@
 <view class='flex-row flex-center margin-top-100'>
 <view class='flex-1'></view>
-<image src='{{uploadpath}}resource/{{res.logo}}' class='icon-200'></image>
+<image src='{{uploadpath}}resource/{{res.jiaodui}}' class='icon-200'></image>
 <view class='flex-1'></view>
 </view>
 

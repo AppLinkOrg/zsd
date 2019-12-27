@@ -1,12 +1,31 @@
-<view>
-<view wx:for='{{ordernos}}'>订单号：{{item}}</view>
-  <view>提交成功</view>
-  <view class="flex-row flex-center">
-    <view class="margin-right-20" bindtap="fanhui">返回首页</view>
-    <view bindtap="jixu">继续识别</view>
-  </view>
-   <view class="flex-row flex-center">
-    <view class="margin-right-20" wx:if='{{repnos.length>0}}' bindtap="watch">查看重复提交</view>
-    <view bindtap="watch2">查看提交成功</view>
-  </view>
+<view class='flex-row flex-center margin-top-100'>
+<view class='flex-1'></view>
+<image src='{{uploadpath}}resource/{{res.jiaodui}}' class='icon-200'></image>
+<view class='flex-1'></view>
 </view>
+
+<view class='flex-row flex-column margin-top-100'>
+<view class='txt-red txt-bold f-40'wx:for='{{ordernos}}'>订单号：{{item}}</view>
+  <view class='margin-top-20 txt-black txt-bold f-40'>提交成功</view>
+</view>
+
+  <view class='margin-40'></view>
+  <view class="flex-row flex-center ">
+  <view class='flex-1'></view>
+   <view class="text-center"  bindtap="fanhui" >
+    <view class='bg-green txt-white f-40 radius-4 padding-top-10'style='width:320rpx;height:70rpx'>返回首页</view>
+    </view>
+    <view class='flex-1'></view>
+    <view class='text-center' bindtap="jixu">
+   <view class="bg-orange txt-white f-40 radius-4 padding-top-10" style='width:320rpx;height:70rpx'>继续识别</view>
+    </view>
+<view class='flex-1'></view>
+  </view>
+
+
+ <view class="flex-row flex-center margin-top">
+ <view class='flex-1'></view>
+    <view class="f-40 txt-green" wx:if='{{repnos.length>0}}' bindtap="watch">查看重复提交</view>
+    <view bindtap="watch2"class="f-40 txt-green">查看提交成功</view>
+     <view class='flex-1'></view>
+  </view>

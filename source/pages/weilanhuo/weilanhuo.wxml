@@ -1,10 +1,13 @@
-<view class="flex-row flex-column">
-  <view>未揽收列表</view>
-  <view wx:for="{{riqi}}" wx:key='k' class="aa" bindtap="detail" data-current="{{item}}">
+<view class="flex-row flex-column margin-top-30">
+  <view class='f-40 txt-bold'>未揽收列表</view>
+  <view wx:for="{{riqi}}" wx:key='k' class="aa margin-top-20" bindtap="detail" data-current="{{item}}">
     <view class="flex-row flex-center">
-      <view class="h4 flex-1">{{item.daorushijian}}</view>
+      <view class="f-40 flex-1 pa">{{item.daorushijian}}</view>
       <image src="{{uploadpath}}resource/{{res.arrowright}}" class="icon-30"></image>
     </view>
   </view>
+</view>
 
+<view class='flex-row flex-column'>
+<view style='border:1rpx solid #BBBBBB;width:94%'></view>
 </view>
