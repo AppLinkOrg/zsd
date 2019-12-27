@@ -24,6 +24,7 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
+    console.log(123);
   }
   nameFn(e) {
     console.log(e);
@@ -38,6 +39,7 @@ class Content extends AppBase {
   }
   
   login() {
+
     var name = this.Base.getMyData().name;
     var password = this.Base.getMyData().password;
     console.log(name, password);

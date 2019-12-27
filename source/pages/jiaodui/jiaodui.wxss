@@ -15,3 +15,13 @@
   background: #ed9605;
   border-radius: 8rpx;
 }
+.deng {
+  width: 100rpx;
+  height: 50rpx;
+  background: #2d9149;
+  border-radius: 10rpx;
+  color: #ffffff;
+  text-align: center;
+  line-height: 50rpx;
+  margin-left: 30rpx;
+}

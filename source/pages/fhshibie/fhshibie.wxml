@@ -1,6 +1,6 @@
 <view style="background:#EDEDED;">
   <view class="flex-row flex-column">
-    <image src="{{uri}}" class="imgs"></image>
+    <image src="{{uri}}" class="imgs" bindtap="viewPhoto" id='{{uri}}'></image>
     <view class="xx">
       <view class="bg-white padding-left-30 padding-right-26">
         <view class="txt-78 flex-row flex-center margin-top-22">订单号：
