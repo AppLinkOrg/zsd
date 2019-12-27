@@ -1,1 +1,10 @@
 /* pages/weilanhuodetail/weilanhuodetail.wxss */
+.aa {
+  width: 94%;
+  border-top: 1rpx solid #ccc;
+}
+.di {
+  width: 100vw;
+  position: fixed;
+  bottom: 186rpx;
+}

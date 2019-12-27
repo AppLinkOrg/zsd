@@ -8,6 +8,6 @@
   </view>
 </view>
 
-<view class='flex-row flex-column'>
+<view class='flex-row flex-column margin-top-5'>
 <view style='border:1rpx solid #BBBBBB;width:94%'></view>
 </view>
