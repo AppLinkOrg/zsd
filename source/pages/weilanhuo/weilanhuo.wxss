@@ -4,5 +4,5 @@
   border-top: 2rpx solid #BBBBBB;
 }
 .pa{
-  padding: 20rpx 0 5rpx 0;
+  padding: 20rpx 0 13rpx 0;
 }

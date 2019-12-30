@@ -1,12 +1,12 @@
 
 <view class="flex-row flex-column">
-
+    <view style='height:200rpx;'></view>
   <input placeholder="请输入订单号" class="inp" bindinput="dianFn"></input>
-   <view style="height:50rpx;"></view>
+   <view style="height:100rpx;"></view>
   <picker range='{{cont}}' mode='selector' bindchange='pickerchange' id='id' range-key='name'>
       <view class='h5 txt-black' wx:if='{{names==null}}'>{{names}}</view>
-      <input placeholder='请输入'  name='names' disabled='{{true}}' class='txt-black text-right h5 ' value='{{names}}' placeholder-class='h5 txt-gray'></input>
+      <input placeholder='请输入'   name='names' disabled='{{true}}' class='text-right pi' value='{{names}}' placeholder-class='txt-gray'></input>
     </picker>
-    <view style="height:50rpx;"></view>
-    <view bindtap="tijiao">提交</view>
+    <view style="height:100rpx;"></view>
+    <view bindtap="tijiao" class="tijiao">提交</view>
 </view> 

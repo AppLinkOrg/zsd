@@ -44,16 +44,19 @@
   line-height: 80rpx;
   margin-top: 36rpx;
 }
-
+/* .ww{
+  width: 600rpx;
+} */
 .inip {
   height: 100rpx;
  
 }
 .cy {
-  width: 60rpx;
+  width: 100rpx;
   height: 40rpx;
   border-radius: 8rpx;
   font-size: 28rpx;
   background: rgba(45, 145, 73, 1);
   color: #ffffff;
+  text-align: center;
 }
