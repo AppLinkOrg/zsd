@@ -8,7 +8,7 @@
 
 
  <view class='margin-40'></view>
-  <view class="flex-row flex-center di">
+  <view class="flex-row flex-center">
   <view class='flex-1'></view>
    <view class="text-center"  bindtap="fanhui" >
     <view class='bg-green txt-white f-40 radius-4 padding-top-10'style='width:320rpx;height:70rpx'>返回首页</view>

@@ -8,9 +8,3 @@
 .pa {
   padding: 20rpx 0 20rpx 0;
 }
-
-.di {
-  width: 100vw;
-  position: fixed;
-  bottom: 186rpx;
-}
