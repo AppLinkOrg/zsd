@@ -106,7 +106,7 @@ class Content extends AppBase {
     })
   }
   zong(){
-    wx.redirectTo({
+    wx.navigateTo({
       url: '/pages/weilanhuo/weilanhuo',
     })
   }

@@ -85,13 +85,23 @@ class Content extends AppBase {
           var dizhilist = dizhi.match(reg);
 
           dizhi1 = '';
+       var    dizhi3 = '';
+          console.log(dizhilist);
           for (var i = 0; i < dizhilist.length && i < 1; i++) {
             dizhi1 += dizhilist[i];
+             
+          }
+
+          for (var i = 0; i < dizhilist.length-1 ; i++) {
+            dizhi3 += dizhilist[i];
 
           }
 
 
-          dizhi2 = dizhi.split(dizhi1)[1];
+         
+
+
+          dizhi2 = dizhi.split(dizhi3)[1];
 
 
         }

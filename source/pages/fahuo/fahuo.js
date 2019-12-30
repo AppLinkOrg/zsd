@@ -32,7 +32,7 @@ class Content extends AppBase {
 
       var uri = ApiConfig.GetUploadPath() + 'test/' + ret;
 
-      wx.redirectTo({
+      wx.navigateTo({
         url: '/pages/fhshibie/fhshibie?uri=' + uri,
       })
 
@@ -62,7 +62,7 @@ class Content extends AppBase {
  
     
     console.log(imgs,'qqq')
-    wx.redirectTo({
+    wx.navigateTo({
         url: '/pages/plshibie/plshibie?imgs=' + JSON.stringify(imgs) ,
       })
   }
