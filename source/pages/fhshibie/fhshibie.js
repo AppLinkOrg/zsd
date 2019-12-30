@@ -109,7 +109,11 @@ class Content extends AppBase {
 
           dizhi2 = dizhi.split(dizhi3)[1];
 
-
+          for (var i = 0; i < erjidizhi.length; i++) {
+            if (dizhi1.indexOf(erjidizhi[i].name) > -1) {
+              dizhi2 = erjidizhi[i].name
+            }
+          }
         }
         if (item.words.indexOf("数量:") != -1) {
 
