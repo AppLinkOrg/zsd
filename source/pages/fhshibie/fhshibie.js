@@ -23,6 +23,8 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
+    this.getyiji();
+    this.geterji();
   }
   onMyShow() {
     var that = this;
@@ -30,8 +32,7 @@ class Content extends AppBase {
       zl: '手动填写', tj: '手动填写', pl: '手动填写', dk: '手动填写', bz: '手动填写', remark:'请输入备注信息...'
     })
    
-    this.getyiji();
-    this.geterji();
+    this.getinfo();
     
   }
   getyiji(){
@@ -46,7 +47,7 @@ class Content extends AppBase {
     var that = this;
     api.erjilist({}, (erjilist) => {
       this.Base.setMyData({ erjilist })
-      this.getinfo();
+     
     })
   }
   getinfo() {
@@ -340,6 +341,14 @@ class Content extends AppBase {
     }
     this.Base.setMyData({ remark })
   }
+  erjiFn(e){
+    console.log(e);
+    var cur = e.detail.cursor;
+    var dizhi2 = this.Base.getMyData().dizhi2;
+    dizhi2 = dizhi2.slice(cur+1,dizhi2.length);
+     var dizhii2len = dizhi2.length;
+    this.Base.setMyData({ dizhi2, dizhii2len})
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -370,6 +379,7 @@ body.shic = content.shic;
 body.shid = content.shid;
 body.shie = content.shie;
 body.shif = content.shif;
+body.erjiFn = content.erjiFn;
 
 
 Page(body)

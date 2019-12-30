@@ -7,7 +7,7 @@
   <view class="f-44 txt-bold" style="color:#2D9149;">正时达识别扫描系统</view>
   <view style="height:100rpx;"></view>
   <view class="ym">
-    <view class="txt-bold margin-bottom-20">用户名</view>
+    <view class="txt-bold margin-bottom-20">用户名/手机号码</view>
     <input name='asd' placeholder="请输入用户名或者手机号码" placeholder-style="color:#A9A6AB;" bindinput="nameFn"></input>
     <view class="line"></view>
     <view class="txt-bold margin-bottom-20">密码</view>

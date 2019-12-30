@@ -1,0 +1,7 @@
+
+<view class="flex-row flex-column">
+    <view style='height:200rpx;'></view>
+  <input placeholder="请输入订单号" class="inp" bindinput="dianFn"></input>
+    <view style="height:100rpx;"></view>
+    <view bindtap="tijiao" class="tijiao">提交</view>
+</view> 

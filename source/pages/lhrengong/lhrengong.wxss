@@ -1,0 +1,24 @@
+/* pages/lhrengong/lhrengong.wxss */
+.inp {
+  width: 89%;
+  height: 80rpx;
+  border: 2rpx solid #888888;
+  padding-left: 10rpx; 
+}
+.pi {
+    width: 430rpx;
+    height: 80rpx;
+    border: 2rpx solid #888888;
+    text-align: center;
+    line-height: 80rpx;
+    color:#888888 ;
+}
+.tijiao {
+  width: 320rpx;
+  height: 80rpx;
+  background: #2D9149;
+  color: #ffffff;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 8rpx;
+}

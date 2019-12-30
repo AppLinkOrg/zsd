@@ -1,4 +1,4 @@
-<view class="flex-row flex-column margin-top-30">
+<view class="flex-row flex-column margin-top-30" wx:if='{{riqi.length>0}}'>
   <view class='f-40 txt-bold'>未揽收列表</view>
   <view wx:for="{{riqi}}" wx:key='k' class="aa margin-top-20" bindtap="detail" data-current="{{item}}">
     <view class="flex-row flex-center">
@@ -8,6 +8,12 @@
   </view>
 </view>
 
-<view class='flex-row flex-column margin-top-5'>
-<view style='border:1rpx solid #BBBBBB;width:94%'></view>
+<view class='flex-row flex-column margin-top-5' wx:if='{{riqi.length>0}}'>
+  <view style='border:1rpx solid #BBBBBB;width:94%'></view>
 </view>
+
+<view class="flex-row flex-column" wx:if='{{riqi.length==0}}'>
+  <view style='height:100rpx;'></view>
+    <image src="{{uploadpath}}resource/{{res.zong}}" class="icon-200"></image>
+    <view class="margin-top-30">暂无校对</view>
+</view> 

@@ -22,7 +22,8 @@
     "pages/lhtijiao/lhtijiao",
     "pages/lhrepeart/lhrepeart",
     "pages/weilanhuo/weilanhuo",
-    "pages/weilanhuodetail/weilanhuodetail"
+    "pages/weilanhuodetail/weilanhuodetail",
+    "pages/lhrengong/lhrengong"
   ],
   "permission": {
     "scope.userLocation": {

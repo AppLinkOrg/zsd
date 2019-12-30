@@ -43,20 +43,20 @@ class Content extends AppBase {
         if (that.checkno(code, weilanhuo)) {
           api.yilanhuo({ danhao:code}, (ret) => {
             if (ret.code == '0') {
-              wx.redirectTo({
+              wx.navigateTo({
                 url: '/pages/lhsuccess/lhsuccess?barcode=' + code
               })
             }
           })
         }else {
           if (that.checklanhuo(code, yilanhuo)){
-            wx.redirectTo({
+            wx.navigateTo({
               url: '/pages/lhrepeart/lhrepeart?barcode=' + code
             })
           }else {
             api.lanhuotijiao({ danhao: code }, (ret) => {
               if (ret.code == '0') {
-                wx.redirectTo({
+                wx.navigateTo({
                   url: '/pages/lhtijiao/lhtijiao?barcode=' + code
                 })
               }
@@ -115,6 +115,12 @@ class Content extends AppBase {
       url: '/pages/login/login',
     })
   }
+  rengong(){
+    wx.navigateTo({
+      url: '/pages/lhrengong/lhrengong',
+    })
+    
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -127,5 +133,6 @@ body.checkno = content.checkno;
 body.checklanhuo = content.checklanhuo;
 body.zong = content.zong;
 body.denchu = content.denchu;
+body.rengong = content.rengong;
 
 Page(body)

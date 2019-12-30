@@ -17,18 +17,26 @@ class Content extends AppBase {
     var that = this;
     this.getinfo();
   }
+  setPageTitle(instinfo) {
+    wx.setNavigationBarTitle({
+      title: '总校对',
+    })
+  }
   getinfo(){
     var api = new OrderApi;
     var riqi = [];
     var that = this;
     api.lanhuolist({ dingdanzhuangtai: 'A' }, (lanhuolist)=>{
       console.log(lanhuolist);
-      riqi.push(lanhuolist[0])
-      for (var i = 1; i < lanhuolist.length;i++){
-        if (that.checkre(lanhuolist[i],riqi)){
-          riqi.push(lanhuolist[i]);
+      if (lanhuolist.length>0){
+        riqi.push(lanhuolist[0])
+        for (var i = 1; i < lanhuolist.length; i++) {
+          if (that.checkre(lanhuolist[i], riqi)) {
+            riqi.push(lanhuolist[i]);
+          }
         }
       }
+      
       this.Base.setMyData({ lanhuolist, riqi});
     })
   }

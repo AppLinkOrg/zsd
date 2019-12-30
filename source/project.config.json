@@ -37,6 +37,10 @@
 		"game": {
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 12,
 			"list": [
@@ -128,6 +132,13 @@
 					"id": -1,
 					"name": "重复校队提交",
 					"pathName": "pages/lanhuo/lanhuo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/lhrengong/lhrengong",
+					"pathName": "pages/lhrengong/lhrengong",
 					"scene": null
 				}
 			]

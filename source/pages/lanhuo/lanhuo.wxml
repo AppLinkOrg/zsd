@@ -1,7 +1,28 @@
+
+<view class="inaver _30f2b4d flex-row flex-center" style="background:{{background}};color:{{getColor}}">
+  <!-- <view class="left _30f2b4d flex-1" catchtap="goBack">
+    <image class="icon _30f2b4d" src="/images/ic_home_normal.png"/>
+  </view> -->
+  <view class="center _30f2b4d text-center txt-black h5">
+    <!-- 自定义区域 -->
+    <view style="height:32rpx;"></view>
+    正时达
+
+  </view>
+  <!-- <view class="right _30f2b4d flex-1"> -->
+    <!-- 保护右上角胶囊不被污染 -->
+  <!-- </view> -->
+</view>
+<view class="protect-inaver _30f2b4d ">
+  <!-- 占据顶部位置， 伪padding板块 -->
+</view>
+
 <view class="margin-top-30">
   <view class="padding-left-32 ">
     <view style="color:#787979;margin-bottom:12rpx;" class="h4">欢迎使用正时达识别扫码系统</view>
-    <view style='color#101010;' class="flex-row flex-center" >你好！ 揽货员 {{memberinfo.name}}<view class="deng" bindtap="denchu">登出</view></view>
+    <view style='color#101010;' class="flex-row flex-center">你好！ 揽货员 {{memberinfo.name}}
+      <view class="deng" bindtap="denchu">登出</view>
+    </view>
   </view>
   <view style="height:74rpx;"></view>
 
@@ -9,18 +30,25 @@
   <view class="padding-1718">
 
     <view class="fh flex-row flex-column " bindtap="bindtodetail">
-      <view style="height:58rpx;"></view>
+      <view style="height:38rpx;"></view>
       <image src="{{uploadpath}}resource/{{res.lhjd}}" class="icon-100"></image>
-      <view class="h2 txt-white txt-bold margin-top-20">揽货扫描</view>
+      <view class="h2 txt-white txt-bold margin-top-20">揽收扫描</view>
     </view>
 
-    <view style="height:48rpx;"></view>
+    <view style="height:30rpx;"></view>
+    <view class="pl flex-row flex-column " bindtap="rengong">
+      <view style="height:38rpx;"></view>
+      <image src="{{uploadpath}}resource/{{res.rgjd}}" class="icon-100"></image>
+      <view class="h2 txt-white txt-bold margin-top-20">人工揽收</view>
+    </view>
 
-     <view class="pl flex-row flex-column " bindtap="zong">
-      <view style="height:58rpx;"></view>
+    <view style="height:30rpx;"></view>
+
+    <view class="fh flex-row flex-column " bindtap="zong">
+      <view style="height:38rpx;"></view>
       <image src="{{uploadpath}}resource/{{res.zjd}}" class="icon-100"></image>
       <view class="h2 txt-white txt-bold margin-top-20">总校对</view>
     </view>
-    
+    <view style="height:48rpx;"></view>
   </view>
 </view>

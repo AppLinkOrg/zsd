@@ -15,6 +15,8 @@ class Content extends AppBase {
     super.onLoad(options);
     var current = 0;
     this.Base.setMyData({current})
+    
+    
   }
   onMyShow() {
     var that = this;
@@ -25,27 +27,33 @@ class Content extends AppBase {
     var arr =[];
     var currentImg = imgs[current];
     this.Base.setMyData({
-      imgs, current: current, currentImg, arr, zl: '', tj: '', pl: '', dk: '', bz: '', remark: '', ordernos: [], repnos: []
+      imgs, current: current, currentImg, arr, zl: '手动填写', tj: '手动填写', pl: '手动填写', dk: '手动填写', bz: '手动填写', remark: '请输入备注信息...', ordernos: [], repnos: []
     })
-    this.getinfo(currentImg);
-    this.geterji();
     this.getyiji();
+    
+   
+    
   }
   getyiji() {
     var api = new OrderApi;
     var that = this;
     api.yijilist({}, (yijilist) => {
       this.Base.setMyData({ yijilist })
+      this.geterji();
     })
   }
   geterji() {
+    var currentImg = this.Base.getMyData().currentImg;
     var api = new OrderApi;
     var that = this;
     api.erjilist({}, (erjilist) => {
       this.Base.setMyData({ erjilist })
+      this.getinfo(currentImg);
     })
   }
   getinfo(uri) {
+    var yijidizhi = this.Base.getMyData().yijilist;
+    var erjidizhi = this.Base.getMyData().erjilist;
     // var uri = this.Base.options.uri;
     //  var uri = 'https://alioss.app-link.org/alucard263096/zsd/test/0e267aec7231bbfbc9c9c2ea8d3107c4_19122614005_1012978076.jpg';
     console.log(uri);
@@ -92,6 +100,12 @@ class Content extends AppBase {
              
           }
 
+          for (var i = 0; i < yijidizhi.length; i++) {
+            if (dizhi1.indexOf(yijidizhi[i].name) > -1) {
+              dizhi1 = yijidizhi[i].name
+            }
+          }
+
           for (var i = 0; i < dizhilist.length-1 ; i++) {
             dizhi3 += dizhilist[i];
 
@@ -102,7 +116,11 @@ class Content extends AppBase {
 
 
           dizhi2 = dizhi.split(dizhi3)[1];
-
+          for (var i = 0; i < erjidizhi.length; i++) {
+            if (dizhi1.indexOf(erjidizhi[i].name) > -1) {
+              dizhi2 = erjidizhi[i].name
+            }
+          }
 
         }
         if (item.words.indexOf("数量:") != -1) {
@@ -175,6 +193,7 @@ class Content extends AppBase {
   }
   yicishuju() {
     var arr = this.Base.getMyData().arr;
+    var currentImg = this.Base.getMyData().currentImg;
     var dindanhao = this.Base.getMyData().dindanhao;
     var housiwei = this.Base.getMyData().housiwei;
     var dizhi1 = this.Base.getMyData().dizhi1;
@@ -190,7 +209,27 @@ class Content extends AppBase {
     var remark = this.Base.getMyData().remark;
     var api = new OrderApi;
     var that = this;
+    if (zl=='手动填写'){
+      zl=''
+    }
+    if (tj == '手动填写') {
+      tj = ''
+    }
+    if (pl == '手动填写') {
+      pl = ''
+    }
+    if (dk == '手动填写') {
+      dk = ''
+    }
+    if (bz == '手动填写') {
+      bz = ''
+    }
+    if (remark == '请输入备注信息...') {
+      remark = ''
+    }
+
     var json = {
+      imgurl: currentImg,
       danhao: dindanhao,
       housiwei: housiwei,
       yijidizhi: dizhi1,
@@ -206,13 +245,20 @@ class Content extends AppBase {
       beizhu: remark
     }
     arr.push(json);
+    zl='';
+    tj='';
+    pl='';
+    dk='';
+    bz='';
+    remark='';
     this.Base.setMyData({
-      arr, zl: '', tj: '', pl: '', dk: '', bz: '', remark:''
+      arr, zl: '手动填写', tj: '手动填写', pl: '手动填写', dk: '手动填写', bz: '手动填写', remark: '请输入备注信息...'
     })
    
   }
 
   prePage(){
+    var arr = this.Base.getMyData().arr;
     // this.yicishuju();
     var imgs = this.Base.getMyData().imgs;
     var current = this.Base.getMyData().current;
@@ -222,7 +268,29 @@ class Content extends AppBase {
     this.Base.setMyData({
       current, currentImg,
     })
-    this.getinfo(currentImg);
+    var json ={}; 
+    for(var i=0;i<arr.length;i++){
+      if(arr[i].imgurl==currentImg){
+        this.Base.setMyData({
+          dindanhao: arr[i].danhao, 
+          housiwei: arr[i].housiwei, 
+          dizhi1: arr[i].yijidizhi,  
+          dizhi2: arr[i].erjidizhi,  
+          name: arr[i].xingming,  
+          shuliang: arr[i].shuliang,
+          shouji: arr[i].shoujihao,  
+          shulian: arr[i].shuliang,  
+          currentImg: arr[i].imgurl,  
+          zl: arr[i].chongliang,  
+          tj: arr[i].tiji,  
+          pl: arr[i].pinlei,  
+          dk: arr[i].daikuan,  
+          bz: arr[i].tezhunsong,  
+          remark: arr[i].beizhu,  
+        })
+      }
+    }
+    // this.getinfo(currentImg);
   }
   nexPage(){
     this.yicishuju();
@@ -305,6 +373,77 @@ class Content extends AppBase {
       dizhi2: erjilist[e.detail.value].name
     })
   }
+  guang(e){
+    console.log(e)
+    var cur = e.currentTarget.dataset.current;
+    if(cur=='zl'){
+      this.Base.setMyData({
+        zl:''
+      })
+    } else if (cur == 'tj') {
+      this.Base.setMyData({
+        tj: ''
+      })
+    } else if (cur == 'pl') {
+      this.Base.setMyData({
+        pl: ''
+      })
+    } else if (cur == 'dk') {
+      this.Base.setMyData({
+        dk: ''
+      })
+    } else if (cur == 'bz') {
+      this.Base.setMyData({
+        bz: ''
+      })
+    } else if (cur == 'rr') {
+      this.Base.setMyData({
+        remark: ''
+      })
+    }
+  }
+  shiqu(e){
+    var zl = this.Base.getMyData().zl;
+    var tj = this.Base.getMyData().tj;
+    var pl = this.Base.getMyData().pl;
+    var dk = this.Base.getMyData().dk;
+    var bz = this.Base.getMyData().bz;
+    var remark = this.Base.getMyData().remark;
+    var cur = e.currentTarget.dataset.current;
+    if (cur == 'zl' && zl=='') {
+      this.Base.setMyData({
+        zl: '手动填写'
+      })
+    } else if (cur == 'tj' && tj=='') {
+      this.Base.setMyData({
+        tj: '手动填写'
+      })
+    } else if (cur == 'pl' && pl=='') {
+      this.Base.setMyData({
+        pl: '手动填写'
+      })
+    } else if (cur == 'dk' && dk=='') {
+      this.Base.setMyData({
+        dk: '手动填写'
+      })
+    } else if (cur == 'bz' && bz=='') {
+      this.Base.setMyData({
+        bz: '手动填写'
+      })
+    } else if (cur == 'rr' && remark=='') {
+      this.Base.setMyData({
+        remark: '请输入备注信息...'
+      })
+    }
+  }
+  erjiFn(e) {
+    console.log(e);
+    var cur = e.detail.cursor;
+    var dizhi2 = this.Base.getMyData().dizhi2;
+    dizhi2 = dizhi2.slice(cur + 1, dizhi2.length);
+    var dizhii2len = dizhi2.length;
+    this.Base.setMyData({ dizhi2, dizhii2len })
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -328,4 +467,8 @@ body.getyiji = content.getyiji;
 body.geterji = content.geterji;
 body.pickerchange = content.pickerchange;
 body.pickerchange2 = content.pickerchange2;
+body.guang = content.guang;
+body.shiqu = content.shiqu;
+body.erjiFn = content.erjiFn;
+
 Page(body)

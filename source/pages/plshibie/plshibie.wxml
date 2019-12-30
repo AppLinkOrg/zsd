@@ -28,7 +28,7 @@
         <view class="line"></view>
         <view class="txt-78 flex-row flex-center">二级地址：
           <!-- <input value="{{dizhi2}}"></input> -->
-           <textarea class="inip flex-1" value="{{dizhi2}}"></textarea>
+           <input class=" flex-1" value="{{dizhi2}}" bindinput="erjiFn" cursor="{{dizhii2len}}"></input>
           <picker range='{{erjilist}}' mode='selector' bindchange='pickerchange2' id='id' range-key='name'>
             <view class="cy">常用</view>
           </picker>
@@ -47,28 +47,28 @@
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">重量（吨）：
-          <input placeholder="手动填写" bindinput="zlFn" value="{{zl}}"></input>
+          <input placeholder="{{zl}}" class="{{zl=='手动填写'?'txt-78':''}}" placeholder-style="color:#787979;" bindfocus="guang" data-current="zl" bindblur="shiqu" bindinput="zlFn" value="{{zl}}"></input>
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">体积（L）：
-          <input placeholder="手动填写" bindinput="tjFn" value="{{tj}}"></input>
+          <input placeholder="{{tj}}" class="{{tj=='手动填写'?'txt-78':''}}" placeholder-style="color:#787979;" bindinput="tjFn" bindfocus="guang" data-current="tj" bindblur="shiqu" value="{{tj}}"></input>
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">品类：
-          <input placeholder="手动填写" bindinput="plFn" value="{{pl}}"></input>
+          <input placeholder="{{pl}}" class="{{pl=='手动填写'?'txt-78':''}}" placeholder-style="color:#787979;" bindinput="plFn" bindfocus="guang" data-current="pl" bindblur="shiqu" value="{{pl}}"></input>
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">贷款：
-          <input placeholder="手动填写" bindinput="dkFn" value="{{dk}}"></input>
+          <input placeholder="{{dk}}" class="{{dk=='手动填写'?'txt-78':''}}" placeholder-style="color:#787979;" bindinput="dkFn" bindfocus="guang" data-current="dk" bindblur="shiqu" value="{{dk}}"></input>
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">特准送：
-          <input placeholder="手动填写" bindinput="bzFn" value="{{bz}}"></input>
+          <input placeholder="{{bz}}" class="{{bz=='手动填写'?'txt-78':''}}" placeholder-style="color:#787979;" bindinput="bzFn" bindfocus="guang" data-current="bz" bindblur="shiqu" value="{{bz}}"></input>
         </view>
         <view class="line"></view>
         <view class="txt-78">备注：</view>
         <view class="line"></view>
-        <textarea placeholder="请输入备注信息..." bindinput="reFn" value="{{remark}}"></textarea>
+        <textarea placeholder="{{remark}}" class="{{remark=='请输入备注信息...'?'txt-78':''}}" placeholder-style="color:#787979;" bindinput="reFn" bindfocus="guang" data-current="rr" bindblur="shiqu" value="{{remark}}"></textarea>
       </view>
     </view>
     <view class="flex-row flex-center">
