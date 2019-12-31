@@ -23,16 +23,20 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
-    this.getyiji();
-    this.geterji();
+  
   }
   onMyShow() {
     var that = this;
+    var ra = [
+      {id:0,name:'是'},
+      {id:1,name:'否'},
+    ]
     this.Base.setMyData({
-      zl: '手动填写', tj: '手动填写', pl: '手动填写', dk: '手动填写', bz: '手动填写', remark:'请输入备注信息...'
+      zl: '手动填写', tj: '手动填写', pl: '手动填写', dk: '手动填写', bz: '否', remark: '请输入备注信息...', ra
     })
-   
-    this.getinfo();
+    this.getyiji();
+    
+  
     
   }
   getyiji(){
@@ -40,6 +44,7 @@ class Content extends AppBase {
     var that = this;
     api.yijilist({}, (yijilist)=>{
       this.Base.setMyData({ yijilist})
+      this.geterji();
     })
   }
   geterji(){
@@ -47,7 +52,7 @@ class Content extends AppBase {
     var that = this;
     api.erjilist({}, (erjilist) => {
       this.Base.setMyData({ erjilist })
-     
+      this.getinfo();
     })
   }
   getinfo() {
@@ -183,10 +188,15 @@ class Content extends AppBase {
       dk: e.detail.value
     })
   }
-  bzFn(e) {
+  pickerchange3(e) {
+    console.log(e)
+    var ra = this.Base.getMyData().ra;
     this.Base.setMyData({
-      bz: e.detail.value
+      bz: ra[e.detail.value].name
     })
+    // this.Base.setMyData({
+    //   bz: e.detail.value
+    // })
   }
   reFn(e) {
     this.Base.setMyData({
@@ -221,8 +231,10 @@ class Content extends AppBase {
     if (dk == '手动填写') {
       dk = '';
     }
-    if (bz == '手动填写') {
-      bz = '';
+    if (bz == '否') {
+      bz = 'N';
+    }else {
+      bz='Y';
     }
     if (remark == '请输入备注信息...') {
       remark = '';
@@ -360,7 +372,7 @@ body.zlFn = content.zlFn;
 body.tjFn = content.tjFn;
 body.plFn = content.plFn;
 body.dkFn = content.dkFn;
-body.bzFn = content.bzFn;
+body.pickerchange3 = content.pickerchange3;
 body.reFn = content.reFn;
 body.tijiao = content.tijiao;
 body.getyiji = content.getyiji;

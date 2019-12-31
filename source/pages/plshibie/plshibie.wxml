@@ -46,11 +46,11 @@
           <input value="{{shouji}}"></input>
         </view>
         <view class="line"></view>
-        <view class="flex-row flex-center txt-78">重量（吨）：
+        <view class="flex-row flex-center txt-78">重量（公斤）：
           <input placeholder="{{zl}}" class="{{zl=='手动填写'?'txt-78':''}}" placeholder-style="color:#787979;" bindfocus="guang" data-current="zl" bindblur="shiqu" bindinput="zlFn" value="{{zl}}"></input>
         </view>
         <view class="line"></view>
-        <view class="flex-row flex-center txt-78">体积（L）：
+        <view class="flex-row flex-center txt-78">体积（m³）：
           <input placeholder="{{tj}}" class="{{tj=='手动填写'?'txt-78':''}}" placeholder-style="color:#787979;" bindinput="tjFn" bindfocus="guang" data-current="tj" bindblur="shiqu" value="{{tj}}"></input>
         </view>
         <view class="line"></view>
@@ -63,7 +63,12 @@
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">特准送：
-          <input placeholder="{{bz}}" class="{{bz=='手动填写'?'txt-78':''}}" placeholder-style="color:#787979;" bindinput="bzFn" bindfocus="guang" data-current="bz" bindblur="shiqu" value="{{bz}}"></input>
+
+          <!-- <input placeholder="{{bz}}" class="{{bz=='手动填写'?'txt-78':''}}" placeholder-style="color:#787979;" bindinput="bzFn" bindfocus="guang" data-current="bz" bindblur="shiqu" value="{{bz}}"></input> -->
+ <picker range='{{ra}}' mode='selector' bindchange='pickerchange3' id='id' range-key='name'>
+            <!-- <view class="cy">常用</view> -->
+            <input name='bz' value="{{bz}}" disabled='{{true}}' class='txt-black h5 flex-1'></input>
+          </picker>
         </view>
         <view class="line"></view>
         <view class="txt-78">备注：</view>

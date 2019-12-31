@@ -21,10 +21,20 @@ class Content extends AppBase {
     //options.id=5;
     super.onLoad(options);
     this.Base.needauth = true;
+   
   }
   onMyShow() {
     var that = this;
     console.log(123);
+    console.log(this.Base.options.onhide);
+    var onHide = this.Base.options.onhide;
+    if (onHide == 'onHide') {
+      wx.showToast({
+        title: '被挤退了！',
+        icon: 'none'
+      })
+      return 
+    }
   }
   nameFn(e) {
     console.log(e);
@@ -67,6 +77,11 @@ class Content extends AppBase {
           })
         }
 
+      }else {
+        wx.showToast({
+          title: '用户名或者密码错误，请重新输入',
+          icon: 'none'
+        })
       }
     })
   }

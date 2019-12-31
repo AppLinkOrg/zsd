@@ -26,8 +26,12 @@ class Content extends AppBase {
     var current = this.Base.getMyData().current;
     var arr =[];
     var currentImg = imgs[current];
+    var ra = [
+      { id: 0, name: '是' },
+      {id: 1, name: '否'},
+    ]
     this.Base.setMyData({
-      imgs, current: current, currentImg, arr, zl: '手动填写', tj: '手动填写', pl: '手动填写', dk: '手动填写', bz: '手动填写', remark: '请输入备注信息...', ordernos: [], repnos: []
+      imgs, current: current, currentImg, arr, zl: '手动填写', tj: '手动填写', pl: '手动填写', dk: '手动填写', bz: '否', remark: '请输入备注信息...', ordernos: [], repnos: [],ra
     })
     this.getyiji();
     
@@ -221,8 +225,10 @@ class Content extends AppBase {
     if (dk == '手动填写') {
       dk = ''
     }
-    if (bz == '手动填写') {
-      bz = ''
+    if (bz == '否') {
+      bz = 'N';
+    } else {
+      bz = 'Y';
     }
     if (remark == '请输入备注信息...') {
       remark = ''
@@ -249,10 +255,10 @@ class Content extends AppBase {
     tj='';
     pl='';
     dk='';
-    bz='';
+    bz='否';
     remark='';
     this.Base.setMyData({
-      arr, zl: '手动填写', tj: '手动填写', pl: '手动填写', dk: '手动填写', bz: '手动填写', remark: '请输入备注信息...'
+      arr, zl: '手动填写', tj: '手动填写', pl: '手动填写', dk: '手动填写', bz: '否', remark: '请输入备注信息...'
     })
    
   }
@@ -428,7 +434,7 @@ class Content extends AppBase {
       })
     } else if (cur == 'bz' && bz=='') {
       this.Base.setMyData({
-        bz: '手动填写'
+        bz: '否'
       })
     } else if (cur == 'rr' && remark=='') {
       this.Base.setMyData({
@@ -443,6 +449,16 @@ class Content extends AppBase {
     dizhi2 = dizhi2.slice(cur + 1, dizhi2.length);
     var dizhii2len = dizhi2.length;
     this.Base.setMyData({ dizhi2, dizhii2len })
+  }
+  pickerchange3(e) {
+    console.log(e)
+    var ra = this.Base.getMyData().ra;
+    this.Base.setMyData({
+      bz: ra[e.detail.value].name
+    })
+    // this.Base.setMyData({
+    //   bz: e.detail.value
+    // })
   }
 }
 var content = new Content();
@@ -470,5 +486,6 @@ body.pickerchange2 = content.pickerchange2;
 body.guang = content.guang;
 body.shiqu = content.shiqu;
 body.erjiFn = content.erjiFn;
+body.pickerchange3 = content.pickerchange3;
 
 Page(body)

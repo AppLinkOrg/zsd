@@ -41,11 +41,11 @@
           <input value="{{shouji}}"></input>
         </view>
         <view class="line"></view>
-        <view class="flex-row flex-center txt-78">重量（吨）：
+        <view class="flex-row flex-center txt-78">重量（公斤）：
           <input placeholder="{{zl}}" bindfocus="gaunga" bindblur="shia" bindinput="zlFn"></input>
         </view>
         <view class="line"></view>
-        <view class="flex-row flex-center txt-78">体积（L）：
+        <view class="flex-row flex-center txt-78">体积（m³）：
           <input placeholder="{{tj}}" bindfocus="gaungb" bindblur="shib" bindinput="tjFn"></input>
         </view>
         <view class="line"></view>
@@ -58,7 +58,11 @@
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">特准送：
-          <input placeholder="{{bz}}" bindfocus="gaunge" bindblur="shie" bindinput="bzFn"></input>
+          
+          <picker range='{{ra}}' mode='selector' bindchange='pickerchange3' id='id' range-key='name'>
+            <!-- <view class="cy">常用</view> -->
+            <input name='bz' value="{{bz}}" disabled='{{true}}' class='txt-black h5 flex-1'></input>
+          </picker>
         </view>
         <view class="line"></view>
         <view class="txt-78">备注：</view>

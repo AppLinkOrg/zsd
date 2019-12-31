@@ -167,6 +167,7 @@ export class AppBase {
       this.Base.setMyData({
         res
       });
+      
     });
 
     instapi.info({}, (instinfo) => {
@@ -285,12 +286,17 @@ export class AppBase {
     console.log(this.Base.needauth,'pp');
     var memberapi = new MemberApi();
     var that = this;
+    
     memberapi.renyuaninfo({}, (info) => {
       console.log(info,'info');
       if (info==null && this.Base.needauth == false) {
-        wx.navigateTo({
-          url: '/pages/login/login',
+        var onHide = this.Base.getMyData().onHide;
+       
+        wx.reLaunch({
+          url: '/pages/login/login?onhide=' + onHide,
         })
+        return;
+
       } else {
 
         this.Base.setMyData({
@@ -311,6 +317,7 @@ export class AppBase {
   }
   onHide() {
     console.log("onHide");
+    this.Base.setMyData({ onHide:'onHide'});
   }
   onUnload() {
     console.log("onUnload");

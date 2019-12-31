@@ -60,3 +60,9 @@
   color: #ffffff;
   text-align: center;
 }
+
+.ra {
+  width: 20rpx;
+  height: 20rpx;
+  border: 2rpx solid #000;
+}
