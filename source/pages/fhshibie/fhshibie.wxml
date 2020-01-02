@@ -1,20 +1,24 @@
-<view style="background:#EDEDED;">
+<view style="background:#EDEDED;height:100vh">
   <view class="flex-row flex-column">
-    <image src="{{uri}}" class="imgs" bindtap="viewPhoto" id='{{uri}}'></image>
+    <view style="height:20rpx;"></view>
     <view class="xx">
       <view class="bg-white padding-left-30 padding-right-26">
+       <view class="txt-78 flex-row flex-center margin-top-22" bindtap="viewPhotos" id='{{uri}}'>点击查看识别图片
+          <image src="{{uri}}" wx:if='{{watch}}'  ></image>
+        </view>
+        <view class="line"></view>
         <view class="txt-78 flex-row flex-center margin-top-22">订单号：
-          <input value="{{dindanhao}}"></input>
+          <input class="flex-1" value="{{dindanhao}}"></input>
         </view>
         <view class="line"></view>
         <view class="txt-78 flex-row flex-center">订单号后四位：
-          <input value="{{housiwei}}"></input>
+          <input class="flex-1" value="{{housiwei}}"></input>
         </view>
         <view class="line"></view>
         <view class="txt-78 flex-row flex-center">一级地址：
-  
-           <input  name='dizhi1' disabled='{{true}}' class='txt-black h5 flex-1'  value="{{dizhi1}}"></input>
-           <picker range='{{yijilist}}' mode='selector' bindchange='pickerchange' id='id' range-key='name'>
+
+          <input name='dizhi1' disabled='{{true}}' class='txt-black h5 flex-1' value="{{dizhi1}}"></input>
+          <picker range='{{yijilist}}' mode='selector' bindchange='pickerchange' id='id' range-key='name'>
             <view class="cy">常用</view>
           </picker>
 
@@ -30,44 +34,44 @@
         </view>
         <view class="line"></view>
         <view class="txt-78 flex-row flex-center">数量：
-          <input value="{{shulian}}"></input>
+          <input class="flex-1" value="{{shulian}}"></input>
         </view>
         <view class="line"></view>
         <view class="txt-78 flex-row flex-center">姓名：
-          <input value="{{name}}"></input>
+          <input class="flex-1" value="{{name}}"></input>
         </view>
         <view class="line"></view>
         <view class="txt-78 flex-row flex-center">手机号：
-          <input value="{{shouji}}"></input>
+          <input class="flex-1" value="{{shouji}}"></input>
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">重量（公斤）：
-          <input placeholder="{{zl}}" bindfocus="gaunga" bindblur="shia" bindinput="zlFn"></input>
+          <input class="flex-1" placeholder="{{zl}}" bindfocus="gaunga" bindblur="shia" bindinput="zlFn"></input>
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">体积（m³）：
-          <input placeholder="{{tj}}" bindfocus="gaungb" bindblur="shib" bindinput="tjFn"></input>
+          <input class="flex-1" placeholder="{{tj}}" bindfocus="gaungb" bindblur="shib" bindinput="tjFn"></input>
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">品类：
-          <input placeholder="{{pl}}" bindfocus="gaungc" bindblur="shic" bindinput="plFn"></input>
+          <input class="flex-1" placeholder="{{pl}}" bindfocus="gaungc" bindblur="shic" bindinput="plFn"></input>
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">贷款：
-          <input placeholder="{{dk}}" bindfocus="gaungd" bindblur="shid" bindinput="dkFn"></input>
+          <input class="flex-1" placeholder="{{dk}}" bindfocus="gaungd" bindblur="shid" bindinput="dkFn"></input>
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">特准送：
-          
+
           <picker range='{{ra}}' mode='selector' bindchange='pickerchange3' id='id' range-key='name'>
             <!-- <view class="cy">常用</view> -->
-            <input name='bz' value="{{bz}}" disabled='{{true}}' class='txt-black h5 flex-1'></input>
+            <input class="flex-1" name='bz' value="{{bz}}" disabled='{{true}}' class='txt-black h5 flex-1'></input>
           </picker>
         </view>
         <view class="line"></view>
-        <view class="txt-78">备注：</view>
+        <view class="txt-78 flex-row flex-center">备注：<input  class="flex-1" placeholder="{{remark}}" bindfocus="gaungf" bindblur="shif" bindinput="reFn"></input> </view>
         <view class="line"></view>
-        <textarea placeholder="{{remark}}" bindfocus="gaungf" bindblur="shif" bindinput="reFn"></textarea>
+        
       </view>
     </view>
     <view class="tj" bindtap="tijiao">提交</view>

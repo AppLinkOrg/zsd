@@ -1,26 +1,33 @@
-<view style="background:#EDEDED;">
+<view style="background:#EDEDED;height:100vh">
   <view class="flex-row flex-column">
 
-    <image src="{{currentImg}}" class="imgs" bindtap="viewPhoto" id='{{currentImg}}'></image>
+    <!-- <image src="{{currentImg}}" class="imgs" bindtap="viewPhoto" id='{{currentImg}}'></image>
 
     <view class="flex-row flex-center" style="width:100vw;padding-right:70rpx;margin-bottom:20rpx;">
       <view class="flex-1"></view>
-      <view>{{current+1}}/{{imgs.length}}</view>
+      <view>{{current+1}}/{{imgs.length}}</view> -->
 
-    </view>
+    <!-- </view> -->
+    <view style="height:20rpx;"></view>
     <view class="xx">
       <view class="bg-white padding-left-30 padding-right-26">
+      <view class="txt-78 margin-top-22 flex-row flex-center" bindtap="viewPhotos" id='{{currentImg}}'>点击查看识别图片
+          <image src="{{currentImg}}" class="imgs" wx:if='{{watch}}'></image>
+          <view class="flex-1"></view>
+           <view>{{current+1}}/{{imgs.length}}</view>
+        </view>
+        <view class="line"></view>
         <view class="txt-78 margin-top-22 flex-row flex-center">订单号：
-          <input value="{{dindanhao}}"></input>
+          <input class="flex-1" value="{{dindanhao}}"></input>
         </view>
         <view class="line"></view>
         <view class="txt-78 flex-row flex-center">订单号后四位：
-          <input value="{{housiwei}}"></input>
+          <input class="flex-1" value="{{housiwei}}"></input>
         </view>
         <view class="line"></view>
         <view class="txt-78 flex-row flex-center">一级地址：
           <!-- <input value="{{dizhi1}}"></input> -->
-           <input  name='dizhi1' disabled='{{true}}' class='txt-black h5 flex-1'  value="{{dizhi1}}"></input>
+           <input   name='dizhi1' disabled='{{true}}' class='txt-black h5 flex-1'  value="{{dizhi1}}"></input>
            <picker range='{{yijilist}}' mode='selector' bindchange='pickerchange' id='id' range-key='name'>
             <view class="cy">常用</view>
           </picker>
@@ -35,31 +42,31 @@
         </view>
         <view class="line"></view>
         <view class="txt-78 flex-row flex-center">数量：
-          <input value="{{shulian}}"></input>
+          <input class="flex-1" value="{{shulian}}"></input>
         </view>
         <view class="line"></view>
         <view class="txt-78 flex-row flex-center">姓名：
-          <input value="{{name}}"></input>
+          <input class="flex-1" value="{{name}}"></input>
         </view>
         <view class="line"></view>
         <view class="txt-78 flex-row flex-center">手机号：
-          <input value="{{shouji}}"></input>
+          <input class="flex-1" value="{{shouji}}"></input>
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">重量（公斤）：
-          <input placeholder="{{zl}}" class="{{zl=='手动填写'?'txt-78':''}}" placeholder-style="color:#787979;" bindfocus="guang" data-current="zl" bindblur="shiqu" bindinput="zlFn" value="{{zl}}"></input>
+          <input class="flex-1" placeholder="{{zl}}" class="{{zl=='手动填写'?'txt-78':''}}" placeholder-style="color:#787979;" bindfocus="guang" data-current="zl" bindblur="shiqu" bindinput="zlFn" value="{{zl}}"></input>
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">体积（m³）：
-          <input placeholder="{{tj}}" class="{{tj=='手动填写'?'txt-78':''}}" placeholder-style="color:#787979;" bindinput="tjFn" bindfocus="guang" data-current="tj" bindblur="shiqu" value="{{tj}}"></input>
+          <input  placeholder="{{tj}}" class="{{tj=='手动填写'?'txt-78':''}} flex-1" placeholder-style="color:#787979;" bindinput="tjFn" bindfocus="guang" data-current="tj" bindblur="shiqu" value="{{tj}}"></input>
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">品类：
-          <input placeholder="{{pl}}" class="{{pl=='手动填写'?'txt-78':''}}" placeholder-style="color:#787979;" bindinput="plFn" bindfocus="guang" data-current="pl" bindblur="shiqu" value="{{pl}}"></input>
+          <input placeholder="{{pl}}" class="{{pl=='手动填写'?'txt-78':''}} flex-1" placeholder-style="color:#787979;" bindinput="plFn" bindfocus="guang" data-current="pl" bindblur="shiqu" value="{{pl}}"></input>
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">贷款：
-          <input placeholder="{{dk}}" class="{{dk=='手动填写'?'txt-78':''}}" placeholder-style="color:#787979;" bindinput="dkFn" bindfocus="guang" data-current="dk" bindblur="shiqu" value="{{dk}}"></input>
+          <input placeholder="{{dk}}" class="{{dk=='手动填写'?'txt-78':''}} flex-1" placeholder-style="color:#787979;" bindinput="dkFn" bindfocus="guang" data-current="dk" bindblur="shiqu" value="{{dk}}"></input>
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">特准送：
@@ -71,9 +78,9 @@
           </picker>
         </view>
         <view class="line"></view>
-        <view class="txt-78">备注：</view>
+        <view class="txt-78 flex-row flex-center">备注：<input placeholder="{{remark}}" class="{{remark=='请输入备注信息...'?'txt-78':''}} flex-1" placeholder-style="color:#787979;" bindinput="reFn" bindfocus="guang" data-current="rr" bindblur="shiqu" value="{{remark}}"></input></view>
         <view class="line"></view>
-        <textarea placeholder="{{remark}}" class="{{remark=='请输入备注信息...'?'txt-78':''}}" placeholder-style="color:#787979;" bindinput="reFn" bindfocus="guang" data-current="rr" bindblur="shiqu" value="{{remark}}"></textarea>
+        
       </view>
     </view>
     <view class="flex-row flex-center">

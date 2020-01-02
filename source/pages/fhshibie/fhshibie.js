@@ -32,7 +32,7 @@ class Content extends AppBase {
       {id:1,name:'否'},
     ]
     this.Base.setMyData({
-      zl: '手动填写', tj: '手动填写', pl: '手动填写', dk: '手动填写', bz: '否', remark: '请输入备注信息...', ra
+      zl: '手动填写', tj: '手动填写', pl: '手动填写', dk: '手动填写', bz: '否', remark: '请输入备注信息...', ra, watch:false
     })
     this.getyiji();
     
@@ -231,11 +231,11 @@ class Content extends AppBase {
     if (dk == '手动填写') {
       dk = '';
     }
-    if (bz == '否') {
-      bz = 'N';
-    }else {
-      bz='Y';
-    }
+    // if (bz == '否') {
+    //   bz = 'N';
+    // }else {
+    //   bz='Y';
+    // }
     if (remark == '请输入备注信息...') {
       remark = '';
     }
@@ -361,6 +361,14 @@ class Content extends AppBase {
      var dizhii2len = dizhi2.length;
     this.Base.setMyData({ dizhi2, dizhii2len})
   }
+  viewPhotos(e) {
+    this.Base.setMyData({watch:true})
+    var img = e.currentTarget.id;
+    console.log(img);
+    wx.previewImage({
+      urls: [img],
+    })
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -392,6 +400,7 @@ body.shid = content.shid;
 body.shie = content.shie;
 body.shif = content.shif;
 body.erjiFn = content.erjiFn;
+body.viewPhotos = content.viewPhotos;
 
 
 Page(body)
