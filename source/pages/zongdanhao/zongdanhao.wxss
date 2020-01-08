@@ -1,0 +1,5 @@
+/* pages/zongdanhao/zongdanhao.wxss */
+.aa {
+  width: 94%;
+  border-top: 1rpx solid #ccc;
+}

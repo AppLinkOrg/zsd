@@ -23,7 +23,11 @@
     "pages/lhrepeart/lhrepeart",
     "pages/weilanhuo/weilanhuo",
     "pages/weilanhuodetail/weilanhuodetail",
-    "pages/lhrengong/lhrengong"
+    "pages/lhrengong/lhrengong",
+    "pages/zongjiaodui/zongjiaodui",
+    "pages/zongchehao/zongchehao",
+    "pages/zongdanhao/zongdanhao",
+    "pages/xaunzeyuangong/xaunzeyuangong"
   ],
   "permission": {
     "scope.userLocation": {

@@ -45,13 +45,13 @@ class Content extends AppBase {
               url: '/pages/jdrepeart/jdrepeart?barcode=' + code 
             })
           }else {
-            api.addjiaodui({ danhao: code, dingdanzhuangtai:'C'},(ret)=>{
-              if(ret.code=='0'){
+            // api.addjiaodui({ danhao: code, dingdanzhuangtai:'C'},(ret)=>{
+              // if(ret.code=='0'){
                 wx.navigateTo({
                   url: '/pages/jdtijiao/jdtijiao?barcode=' + code
                 })
-              }
-            })
+              // }
+            // })
            
           }
         } 
@@ -113,6 +113,11 @@ class Content extends AppBase {
       url: '/pages/rengong/rengong',
     })
   }
+  zongjiaodui(){
+    wx.navigateTo({
+      url: '/pages/zongjiaodui/zongjiaodui',
+    })
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -126,5 +131,6 @@ body.checkyijiaodui = content.checkyijiaodui;
 body.rengong = content.rengong;
 body.denchu = content.denchu;
 body.zong = content.zong;
+body.zongjiaodui = content.zongjiaodui;
 
 Page(body)

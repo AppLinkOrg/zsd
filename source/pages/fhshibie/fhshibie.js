@@ -100,15 +100,19 @@ class Content extends AppBase {
           var dizhi3 = '';
           for (var i = 0; i < dizhilist.length && i < 1; i++) {
             dizhi1 += dizhilist[i];
-
+         
           }
+
+       
+          console.log(dizhi1);
+          console.log(123);
           for (var i = 0; i < yijidizhi.length;i++){
             if (dizhi1.indexOf(yijidizhi[i].name)>-1) {
               dizhi1 = yijidizhi[i].name
             }
           }
           
-          for (var i = 0; i < dizhilist.length - 1; i++) {
+          for (var i = 0; i < dizhilist.length - 2; i++) {
             dizhi3 += dizhilist[i];
 
           }
@@ -355,11 +359,11 @@ class Content extends AppBase {
   }
   erjiFn(e){
     console.log(e);
-    var cur = e.detail.cursor;
-    var dizhi2 = this.Base.getMyData().dizhi2;
-    dizhi2 = dizhi2.slice(cur+1,dizhi2.length);
-     var dizhii2len = dizhi2.length;
-    this.Base.setMyData({ dizhi2, dizhii2len})
+    // var cur = e.detail.cursor;
+    // var dizhi2 = this.Base.getMyData().dizhi2;
+    // dizhi2 = dizhi2.slice(cur+1,dizhi2.length);
+    //  var dizhii2len = dizhi2.length;
+    // this.Base.setMyData({ dizhi2, dizhii2len})
   }
   viewPhotos(e) {
     this.Base.setMyData({watch:true})

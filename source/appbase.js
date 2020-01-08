@@ -298,6 +298,15 @@ export class AppBase {
         return;
 
       } else {
+        // info.juesename=[];
+        // info.juese_name='';
+        // var jusenames = info.juese.split(',');
+        //   console.log(jusenames,'juesename')
+        //   for(var i=0;i<jusenames.length;i++){
+        //     memberapi.yuangong({ id: jusenames[i] }, (yuangong)=>{
+        //       info.juesename.push(yuangong.name);
+        //     })
+        //   }
 
         this.Base.setMyData({
           memberinfo: info

@@ -1,6 +1,7 @@
 <view class="flex-row flex-column margin-top-20">
-  <view class='f-40 txt-bold' style='padding:20rpx 0 10rpx 0;'>日期：{{item.daorushijian}}</view>
-  <view class='f-40 txt-bold' style='padding:20rpx 0 10rpx 0;'>未揽收订单号</view>
+  <view class='f-40 txt-bold' style='padding:20rpx 0 10rpx 0;'>日期：{{item.fahuoshijian}}</view>
+  <view class='f-40 txt-bold' style='padding:20rpx 0 10rpx 0;'>车号：{{item.chehao}}</view>
+  <view class='f-40 txt-bold' style='padding:20rpx 0 10rpx 0;'>未校对订单号</view>
   <view wx:for='{{arr}}' wx:key='k' class='aa margin-top-20 f-40 txt-red txt-bold' style='padding:20rpx 0 5rpx 0;'>订单号：{{item.danhao}}</view>
 </view>
 <view class='flex-row flex-center margin-top-5'>

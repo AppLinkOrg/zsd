@@ -1,7 +1,7 @@
 /* pages/jiaodui/jiaodui.wxss */
 .fh {
   /* width: 100vw; */
-  height: 400rpx;
+  height: 350rpx;
   background: #2d9149;
   border-radius: 8rpx;
 }
@@ -11,7 +11,7 @@
 }
 
 .pl {
-  height: 400rpx;
+  height: 350rpx;
   background: #ed9605;
   border-radius: 8rpx;
 }

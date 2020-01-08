@@ -1,4 +1,4 @@
-// pages/content/content.js
+ // pages/content/content.js
 import {
   AppBase
 } from "../../appbase";
@@ -63,17 +63,21 @@ class Content extends AppBase {
       if (ret.code == '0') {
         wx.setStorageSync("token", ret.return);
         that.Base.needauth = true;
-        if (ret.result == 'A') {
+        if (ret.result == 1) {
           wx.redirectTo({
             url: '/pages/fahuo/fahuo',
           })
-        } else if (ret.result == 'B'){
+        } else if (ret.result == 2){
           wx.redirectTo({
             url: '/pages/jiaodui/jiaodui',
           })
-        } else if (ret.result == 'C') {
+        } else if (ret.result == 3) {
           wx.redirectTo({
             url: '/pages/lanhuo/lanhuo',
+          })
+        }else {
+          wx.redirectTo({
+            url: '/pages/xaunzeyuangong/xaunzeyuangong',
           })
         }
 

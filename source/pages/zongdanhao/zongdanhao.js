@@ -1,16 +1,9 @@
-// pages/details/details.js
-import {
-  AppBase
-} from "../../appbase";
-import {
-  ApiConfig
-} from "../../apis/apiconfig";
-import {
-  InstApi
-} from "../../apis/inst.api.js";
-import {
-  OrderApi
-} from "../../apis/order.api.js";
+// pages/content/content.js
+import { AppBase } from "../../appbase";
+import { ApiConfig } from "../../apis/apiconfig";
+import { InstApi } from "../../apis/inst.api.js";
+import { OrderApi } from "../../apis/order.api.js";
+
 class Content extends AppBase {
   constructor() {
     super();
@@ -19,17 +12,33 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
-
-    // this.Base.setMyData({ show:0})
   }
   onMyShow() {
     var that = this;
-    var barcode = this.Base.options.barcode;
-    this.Base.setMyData({
-      barcode
-    })
     this.getinfo();
+    this.getinfos();
   }
+
+  getinfo() {
+    var arr = [];
+    var api = new OrderApi;
+    var that = this;
+    var item = JSON.parse(this.Base.options.item);
+    api.fuhuolist({ dingdanzhuangtai: 'A' }, (fuhuolist) => {
+      console.log(fuhuolist, 'fuhuolist');
+      if (fuhuolist.length > 0) {
+        for (var i = 0; i < fuhuolist.length; i++) {
+          if (item.chehao == fuhuolist[i].chehao) {
+              arr.push(fuhuolist[i]);
+          }
+
+        }
+        this.Base.setMyData({ fuhuolist, arr ,item})
+      }
+
+    })
+  }
+
   fanhui() {
     var memberinfo = this.Base.getMyData().memberinfo;
     if (memberinfo.juese == 'A') {
@@ -46,7 +55,6 @@ class Content extends AppBase {
       })
     }
   }
-
   jixu(e) {
     var fuhuolist = this.Base.getMyData().fuhuolist;
     var weijiaodui = this.Base.getMyData().weijiaodui;
@@ -61,6 +69,7 @@ class Content extends AppBase {
         var code = res.result.slice(0, index);
         console.log(index, 'index', code);
         if (that.checkno(code, weijiaodui)) {
+          console.log('111111')
           api.jiaodui({
             danhao: code
           }, (ret) => {
@@ -73,10 +82,12 @@ class Content extends AppBase {
 
         } else {
           if (that.checkyijiaodui(code, yijiaodui)) {
+            console.log('2222222')
             wx.redirectTo({
               url: '/pages/jdrepeart/jdrepeart?barcode=' + code
             })
           } else {
+            console.log('333333')
             // api.addjiaodui({
             //   danhao: code, dingdanzhuangtai: 'C'
             // }, (ret) => {
@@ -113,7 +124,7 @@ class Content extends AppBase {
     return false
   }
 
-  getinfo() {
+  getinfos() {
     var api = new OrderApi;
     var that = this;
     api.fuhuolist({}, (fuhuolist) => {
@@ -134,16 +145,17 @@ class Content extends AppBase {
       })
     })
   }
-
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
 
-body.fanhui = content.fanhui;
-body.jixu = content.jixu;
 body.getinfo = content.getinfo;
+body.fanhui = content.fanhui;
+body.getinfos = content.getinfos;
 body.checkno = content.checkno;
 body.checkyijiaodui = content.checkyijiaodui;
+body.jixu = content.jixu;
+
 Page(body)

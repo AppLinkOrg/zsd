@@ -1,0 +1,48 @@
+/* pages/xaunzeyuangong/xaunzeyuangong.wxss */
+
+.icon-24 {
+  width: 24rpx;
+  height: 24rpx;
+  padding: 10rpx;
+}
+
+.xuan {
+  color: rgba(120, 121, 121, 1);
+  font-size: 40rpx;
+  text-align: left;
+  font-family: PingFangSC-regular;
+  margin: 56rpx 0 70rpx;
+ }
+.margin-38 {
+  margin: 0 76rpx 0 56rpx;
+}
+.margin-right-28 {
+  margin-right: 56rpx;
+}
+.aa {
+  width: 90%;
+  height: 273rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  background-color: rgba(255, 255, 255, 1);
+  text-align: center;
+}
+
+.fa {
+  
+  font-size: 48rpx;
+  text-align: left;
+  font-family: PingFangSC-bold;
+}
+.fc {
+color: rgba(45, 145, 73, 1);
+}
+.jc {
+color: #ED9605;
+}
+
+.lc {
+color: #2C77E5;
+}
+
+

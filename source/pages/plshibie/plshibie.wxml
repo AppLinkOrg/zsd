@@ -10,11 +10,11 @@
     <!-- </view> -->
     <view style="height:20rpx;"></view>
     <view class="xx">
-      <view class="bg-white padding-left-30 padding-right-26">
-      <view class="txt-78 margin-top-22 flex-row flex-center" bindtap="viewPhotos" id='{{currentImg}}'>点击查看识别图片
+      <view class="bg-white padding-left-30 padding-right-26" wx:key='k'>
+        <view class="txt-78 margin-top-22 flex-row flex-center" bindtap="viewPhotos" id='{{currentImg}}'>点击查看识别图片
           <image src="{{currentImg}}" class="imgs" wx:if='{{watch}}'></image>
           <view class="flex-1"></view>
-           <view>{{current+1}}/{{imgs.length}}</view>
+          <view>{{current+1}}/{{imgs.length}}</view>
         </view>
         <view class="line"></view>
         <view class="txt-78 margin-top-22 flex-row flex-center">订单号：
@@ -27,15 +27,15 @@
         <view class="line"></view>
         <view class="txt-78 flex-row flex-center">一级地址：
           <!-- <input value="{{dizhi1}}"></input> -->
-           <input   name='dizhi1' disabled='{{true}}' class='txt-black h5 flex-1'  value="{{dizhi1}}"></input>
-           <picker range='{{yijilist}}' mode='selector' bindchange='pickerchange' id='id' range-key='name'>
+          <input name='dizhi1' disabled='{{true}}' class='txt-black h5 flex-1' value="{{dizhi1}}"></input>
+          <picker range='{{yijilist}}' mode='selector' bindchange='pickerchange' id='id' range-key='name'>
             <view class="cy">常用</view>
           </picker>
         </view>
         <view class="line"></view>
         <view class="txt-78 flex-row flex-center">二级地址：
           <!-- <input value="{{dizhi2}}"></input> -->
-           <input class=" flex-1" value="{{dizhi2}}" bindinput="erjiFn" cursor="{{dizhii2len}}"></input>
+          <input class=" flex-1" value="{{dizhi2}}" bindinput="erjiFn" ></input>
           <picker range='{{erjilist}}' mode='selector' bindchange='pickerchange2' id='id' range-key='name'>
             <view class="cy">常用</view>
           </picker>
@@ -58,7 +58,7 @@
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">体积（m³）：
-          <input  placeholder="{{tj}}" class="{{tj=='手动填写'?'txt-78':''}} flex-1" placeholder-style="color:#787979;" bindinput="tjFn" bindfocus="guang" data-current="tj" bindblur="shiqu" value="{{tj}}"></input>
+          <input placeholder="{{tj}}" class="{{tj=='手动填写'?'txt-78':''}} flex-1" placeholder-style="color:#787979;" bindinput="tjFn" bindfocus="guang" data-current="tj" bindblur="shiqu" value="{{tj}}"></input>
         </view>
         <view class="line"></view>
         <view class="flex-row flex-center txt-78">品类：
@@ -72,15 +72,17 @@
         <view class="flex-row flex-center txt-78">特准送：
 
           <!-- <input placeholder="{{bz}}" class="{{bz=='手动填写'?'txt-78':''}}" placeholder-style="color:#787979;" bindinput="bzFn" bindfocus="guang" data-current="bz" bindblur="shiqu" value="{{bz}}"></input> -->
- <picker range='{{ra}}' mode='selector' bindchange='pickerchange3' id='id' range-key='name'>
+          <picker range='{{ra}}' mode='selector' bindchange='pickerchange3' id='id' range-key='name'>
             <!-- <view class="cy">常用</view> -->
             <input name='bz' value="{{bz}}" disabled='{{true}}' class='txt-black h5 flex-1'></input>
           </picker>
         </view>
         <view class="line"></view>
-        <view class="txt-78 flex-row flex-center">备注：<input placeholder="{{remark}}" class="{{remark=='请输入备注信息...'?'txt-78':''}} flex-1" placeholder-style="color:#787979;" bindinput="reFn" bindfocus="guang" data-current="rr" bindblur="shiqu" value="{{remark}}"></input></view>
+        <view class="txt-78 flex-row flex-center">备注：
+          <input placeholder="{{remark}}" class="{{remark=='请输入备注信息...'?'txt-78':''}} flex-1" placeholder-style="color:#787979;" bindinput="reFn" bindfocus="guang" data-current="rr" bindblur="shiqu" value="{{remark}}"></input>
+        </view>
         <view class="line"></view>
-        
+
       </view>
     </view>
     <view class="flex-row flex-center">

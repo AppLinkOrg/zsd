@@ -139,6 +139,20 @@
 					"id": -1,
 					"name": "pages/lhrengong/lhrengong",
 					"pathName": "pages/lhrengong/lhrengong",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/zongjiaodui/zongjiaodui",
+					"pathName": "pages/zongjiaodui/zongjiaodui",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/xaunzeyuangong/xaunzeyuangong",
+					"pathName": "pages/xaunzeyuangong/xaunzeyuangong",
 					"scene": null
 				}
 			]

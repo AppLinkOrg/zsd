@@ -1,0 +1,20 @@
+<view class="flex-row flex-column margin-top-30" wx:if='{{arr.length>0}}'>
+<view class='f-40 txt-bold' style='padding:20rpx 0 10rpx 0;'>日期：{{item.fahuoshijian}}</view>
+  <view class='f-40 txt-bold'>未校对所属车号</view>
+  <view wx:for="{{arr}}" wx:key='k' class="aa margin-top-20" bindtap="detail" data-current="{{item}}">
+    <view class="flex-row flex-center">
+      <view class="f-40 flex-1 pa">{{item.chehao}}</view>
+      <image src="{{uploadpath}}resource/{{res.arrowright}}" class="icon-30"></image>
+    </view>
+  </view>
+</view>
+
+<view class='flex-row flex-column margin-top-5' wx:if='{{arr.length>0}}'>
+  <view style='border:1rpx solid #BBBBBB;width:94%'></view>
+</view>
+
+<view class="flex-row flex-column" wx:if='{{arr.length==0}}'>
+  <view style='height:100rpx;'></view>
+    <image src="{{uploadpath}}resource/{{res.zong}}" class="icon-200"></image>
+    <view class="margin-top-30">暂无校对</view>
+</view> 

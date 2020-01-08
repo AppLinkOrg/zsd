@@ -24,6 +24,7 @@ class Content extends AppBase {
     this.Base.setMyData({
       cont, names:''
     })
+    this.getinfo();
   }
   pickerchange(e){
     var cont = this.Base.getMyData().cont;
@@ -54,36 +55,29 @@ class Content extends AppBase {
       })
       return 
     }
-    if(names == '未返还' ){
-      var dingdanzhuangtai = 'D';
-    }else if('强制校对'){
-      var dingdanzhuangtai ='C';
-    }
-    api.addjiaodui({ danhao: dianhao, dingdanzhuangtai: dingdanzhuangtai},(ret)=>{
-      if(ret.code=='0'){
-        wx.redirectTo({
-          url: '/pages/rengongsuccess/rengongsuccess?diandan=' + dianhao +'&xuanze='+names,
-        })
-      }else if(ret.code == '-1'){
+  
 
-        if(names=='强制校对'){
-          api.jiaodui({ danhao: dianhao},(ret)=>{
-            if(ret.code=='0'){
+    api.fuhuolist({danhao: dianhao}, (fuhuolist) => {
+      console.log(fuhuolist)
+      if (fuhuolist.length>0){
+        if (names == '强制校对') {
+          api.jiaodui({ danhao: dianhao }, (ret) => {
+            if (ret.code == '0') {
               wx.redirectTo({
                 url: '/pages/rengongsuccess/rengongsuccess?diandan=' + dianhao + '&xuanze=' + names,
               })
             }
           })
-        }else if(names == '删除此条'){
-          api.deleteorder({ danhao: dianhao},(ret)=>{
-            if(ret.code=='0'){
+        } else if (names == '删除此条') {
+          api.deleteorder({ danhao: dianhao }, (ret) => {
+            if (ret.code == '0') {
               wx.redirectTo({
                 url: '/pages/rengongsuccess/rengongsuccess?diandan=' + dianhao + '&xuanze=' + names,
               })
             }
           })
         } else if (names == '未返还') {
-          api.jiaodui({ danhao: dianhao, flag:'Y' }, (ret) => {
+          api.jiaodui({ danhao: dianhao, flag: 'Y' }, (ret) => {
             if (ret.code == '0') {
               wx.redirectTo({
                 url: '/pages/rengongsuccess/rengongsuccess?diandan=' + dianhao + '&xuanze=' + names,
@@ -91,9 +85,43 @@ class Content extends AppBase {
             }
           })
         }
+        
+      }else {
+        wx.navigateTo({
+          url: '/pages/jdtijiao/jdtijiao?barcode=' + dianhao,
+        })
+        return 
+      }
+    })
+    
 
         
+  }
+  checkno(dianhao,arr){
+    for(var i=0;i<arr.length;i++){
+      if(dianhao==arr.danhao){
+        return false
       }
+    }
+    return true
+  }
+  getinfo(){
+    var api = new OrderApi;
+    var that = this;
+    api.fuhuolist({}, (fuhuolist) => {
+      console.log(fuhuolist);
+      var weijiaodui = [];
+      var yijiaodui = [];
+      for (var i = 0; i < fuhuolist.length; i++) {
+        if (fuhuolist[i].dingdanzhuangtai == 'A') {
+          weijiaodui.push(fuhuolist[i]);
+        } else {
+          yijiaodui.push(fuhuolist[i])
+        }
+      }
+      that.Base.setMyData({
+        fuhuolist, weijiaodui, yijiaodui
+      })
     })
   }
 }
@@ -105,5 +133,7 @@ body.onMyShow = content.onMyShow;
 body.pickerchange = content.pickerchange;
 body.tijiao = content.tijiao;
 body.dianFn = content.dianFn;
+body.getinfo = content.getinfo;
+body.checkno = content.checkno;
 
 Page(body)

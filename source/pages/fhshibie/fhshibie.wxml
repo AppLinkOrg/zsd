@@ -27,7 +27,7 @@
         <view class="txt-78 flex-row flex-center">二级地址：
 
 
-          <input class=" flex-1" value="{{dizhi2}}" bindinput="erjiFn" cursor="{{dizhii2len}}"></input>
+          <input class=" flex-1" value="{{dizhi2}}" bindinput="erjiFn" ></input>
           <picker range='{{erjilist}}' mode='selector' bindchange='pickerchange2' id='id' range-key='name'>
             <view class="cy">常用</view>
           </picker>

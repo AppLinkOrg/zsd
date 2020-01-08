@@ -80,15 +80,15 @@ class Content extends AppBase {
             })
           } else {
             console.log('333333')
-            api.addjiaodui({
-              danhao: code, dingdanzhuangtai: 'C'
-            }, (ret) => {
-              if (ret.code == '0') {
+            // api.addjiaodui({
+            //   danhao: code, dingdanzhuangtai: 'C'
+            // }, (ret) => {
+            //   if (ret.code == '0') {
                 wx.redirectTo({
                   url: '/pages/jdtijiao/jdtijiao?barcode=' + code
                 })
-              }
-            })
+              // }
+            // })
            
           }
         }

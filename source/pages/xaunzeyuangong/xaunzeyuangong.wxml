@@ -1,0 +1,26 @@
+<view class="flex-row flex-column" style="background:#EDEDED;height:100vh;">
+<view class="xuan">请选择您的职务身份： </view>
+  <view class="flex-row flex-center aa" wx:if='{{fa==true}}' bindtap="detail" id='发货员'> 
+ 
+    <image src="{{uploadpath}}resource/{{res.fahuoyuan}}" class="icon-100 margin-38"></image>
+
+    <view class="fa fc text-center margin-right-28">发货员</view>
+    <image src="{{uploadpath}}resource/{{res.arrowfa}}" class="icon-24"></image>
+  </view>
+  <view style="height:40rpx;"></view>
+  <view class="flex-row flex-center aa" wx:if='{{jd==true}}'  bindtap="detail" id='校对员'> 
+ 
+    <image src="{{uploadpath}}resource/{{res.jiaoduiyuan}}" class="icon-100 margin-38"></image>
+
+    <view class="fa text-center margin-right-28 jc">校对员</view>
+    <image src="{{uploadpath}}resource/{{res.arrowjiao}}" class="icon-24"></image>
+  </view>
+  <view style="height:40rpx;"></view>
+  <view class="flex-row flex-center aa" wx:if='{{ls==true}}' bindtap="detail" id='揽收员'> 
+ 
+    <image src="{{uploadpath}}resource/{{res.lanshouyuan}}" class="icon-100 margin-38"></image>
+
+    <view class="fa text-center margin-right-28 lc">揽收员</view>
+    <image src="{{uploadpath}}resource/{{res.arrowlan}}" class="icon-24"></image>
+  </view>
+</view>

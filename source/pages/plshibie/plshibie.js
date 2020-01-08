@@ -52,119 +52,167 @@ class Content extends AppBase {
     var that = this;
     api.erjilist({}, (erjilist) => {
       this.Base.setMyData({ erjilist })
-      this.getinfo(currentImg);
+      this.getinfo();
     })
   }
-  getinfo(uri) {
+  getinfo() {
     var yijidizhi = this.Base.getMyData().yijilist;
     var erjidizhi = this.Base.getMyData().erjilist;
     // var uri = this.Base.options.uri;
     //  var uri = 'https://alioss.app-link.org/alucard263096/zsd/test/0e267aec7231bbfbc9c9c2ea8d3107c4_19122614005_1012978076.jpg';
-    console.log(uri);
-    
+    // console.log(uri);
+    var imgs = this.Base.getMyData().imgs;
+    var arr = this.Base.getMyData().arr;
+    var zl = this.Base.getMyData().zl;
+    var tj = this.Base.getMyData().tj;
+    var pl = this.Base.getMyData().pl;
+    var dk = this.Base.getMyData().dk;
+    var bz = this.Base.getMyData().bz;
+    var remark = this.Base.getMyData().remark;
     var api = new TestApi();
-    api.test({ photo: uri }, (res) => {
-      var list = res.words_result;
-      console.log(list);
-      var dindanhao;
-      var housiwei;
-      var dizhi;
-      var dizhi1;
-      var dizhi2;
-      var shulian;
-      var name;
-      var shouji;
-      list.map((item, idx) => {
+      for(var i=0;i<imgs.length;i++){
+        api.test({ photo: imgs[i] }, (res) => {
+          var list = res.words_result;
+          console.log(list);
+          var dindanhao;
+          var housiwei;
+          var dizhi;
+          var dizhi1;
+          var dizhi2;
+          var shulian;
+          var name;
+          var shouji;
+          list.map((item, idx) => {
 
-        if (item.words.indexOf("订单号:") != -1) {
+            if (item.words.indexOf("订单号:") != -1) {
 
-          dindanhao = item.words.split('订单号:')[1];
-          housiwei = dindanhao.substring(dindanhao.length - 4);
+              dindanhao = item.words.split('订单号:')[1];
+              housiwei = dindanhao.substring(dindanhao.length - 4);
 
 
-        }
-        if (item.words.indexOf("地址:") != -1) {
-          dizhi = item.words.split('地址:')[1];
-
-          if (list[idx + 1].words.indexOf("*请核对以上信息,") != -1) {
-
-          }
-          else {
-            dizhi += list[idx + 1].words;
-          }
-          var reg = /.+?(省|市|自治区|自治州|县|区)/g;
-
-          var dizhilist = dizhi.match(reg);
-
-          dizhi1 = '';
-       var    dizhi3 = '';
-          console.log(dizhilist);
-          for (var i = 0; i < dizhilist.length && i < 1; i++) {
-            dizhi1 += dizhilist[i];
-             
-          }
-
-          for (var i = 0; i < yijidizhi.length; i++) {
-            if (dizhi1.indexOf(yijidizhi[i].name) > -1) {
-              dizhi1 = yijidizhi[i].name
             }
-          }
+            if (item.words.indexOf("地址:") != -1) {
+              dizhi = item.words.split('地址:')[1];
 
-          for (var i = 0; i < dizhilist.length-1 ; i++) {
-            dizhi3 += dizhilist[i];
+              if (list[idx + 1].words.indexOf("*请核对以上信息,") != -1) {
 
-          }
+              }
+              else {
+                dizhi += list[idx + 1].words;
+              }
+              var reg = /.+?(省|市|自治区|自治州|县|区)/g;
+
+              var dizhilist = dizhi.match(reg);
+
+              dizhi1 = '';
+              var dizhi3 = '';
+              console.log(dizhilist);
+              for (var i = 0; i < dizhilist.length && i < 1; i++) {
+                dizhi1 += dizhilist[i];
+
+              }
+
+              for (var i = 0; i < yijidizhi.length; i++) {
+                if (dizhi1.indexOf(yijidizhi[i].name) > -1) {
+                  dizhi1 = yijidizhi[i].name
+                }
+              }
+
+              for (var i = 0; i < dizhilist.length - 2; i++) {
+                dizhi3 += dizhilist[i];
+
+              }
 
 
-         
 
 
-          dizhi2 = dizhi.split(dizhi3)[1];
-          for (var i = 0; i < erjidizhi.length; i++) {
-            if (dizhi1.indexOf(erjidizhi[i].name) > -1) {
-              dizhi2 = erjidizhi[i].name
+
+              dizhi2 = dizhi.split(dizhi3)[1];
+              for (var i = 0; i < erjidizhi.length; i++) {
+                if (dizhi1.indexOf(erjidizhi[i].name) > -1) {
+                  dizhi2 = erjidizhi[i].name
+                }
+              }
+
             }
+            if (item.words.indexOf("数量:") != -1) {
+
+              shulian = item.words.split('数量:')[1];
+
+
+              console.log(shulian);
+
+            }
+            if (item.words.indexOf("姓名:") != -1) {
+
+              name = item.words.split('姓名:')[1];
+
+
+              console.log(name);
+
+            }
+
+            if (item.words.indexOf("电话:") != -1) {
+
+              shouji = item.words.split('电话:')[1];
+
+
+              console.log(shouji);
+
+            }
+
+
+
+          })
+
+          var json = {
+            // imgurl: currentImg,
+            danhao: dindanhao,
+            housiwei: housiwei,
+            yijidizhi: dizhi1,
+            erjidizhi: dizhi2,
+            shuliang: shulian,
+            xingming: name,
+            shoujihao: shouji,
+            chongliang: zl,
+            tiji: tj,
+            pinlei: pl,
+            daikuan: dk,
+            tezhunsong: bz,
+            beizhu: remark
           }
+          arr.push(json);
+          // for(var j=0;j<arr.length;j++){
+          //   if(arr[i].danhao!=json.dnahao){
+          //     console.log('jinl')
+          //     arr.push(json);
+          //   }
+          // }
+      // if(arr.length==imgs.length){
+        this.Base.setMyData({
+          dindanhao: arr[0].danhao,
+          housiwei: arr[0].housiwei,
+          dizhi1: arr[0].yijidizhi,
+          dizhi2: arr[0].erjidizhi,
+          name: arr[0].xingming,
+          shouji: arr[0].shoujihao,
+          shulian: arr[0].shuliang,
+        })
+      // }
 
-        }
-        if (item.words.indexOf("数量:") != -1) {
-
-          shulian = item.words.split('数量:')[1];
-
-
+       
+          console.log(dindanhao);
+          console.log(housiwei);
+          console.log(dizhi1);
+          console.log(dizhi2);
           console.log(shulian);
+          console.log(arr,'arr');
 
-        }
-        if (item.words.indexOf("姓名:") != -1) {
-
-          name = item.words.split('姓名:')[1];
-
-
-          console.log(name);
-
-        }
-
-        if (item.words.indexOf("电话:") != -1) {
-
-          shouji = item.words.split('电话:')[1];
-
-
-          console.log(shouji);
-
-        }
-
-
-
-      })
-      this.Base.setMyData({ dindanhao, housiwei, dizhi1, dizhi2, name, shouji, shulian, uri })
-      console.log(dindanhao);
-      console.log(housiwei);
-      console.log(dizhi1);
-      console.log(dizhi2);
-      console.log(shulian);
-
-    })
+        })
+      }
+   
   }
+  
   zlFn(e) {
     this.Base.setMyData({
       zl: e.detail.value
@@ -211,6 +259,7 @@ class Content extends AppBase {
     var dk = this.Base.getMyData().dk;
     var bz = this.Base.getMyData().bz;
     var remark = this.Base.getMyData().remark;
+    var current = this.Base.getMyData().current;
     var api = new OrderApi;
     var that = this;
     if (zl=='手动填写'){
@@ -225,17 +274,12 @@ class Content extends AppBase {
     if (dk == '手动填写') {
       dk = ''
     }
-    // if (bz == '否') {
-    //   bz = 'N';
-    // } else {
-    //   bz = 'Y';
-    // }
     if (remark == '请输入备注信息...') {
       remark = ''
     }
 
     var json = {
-      imgurl: currentImg,
+      // imgurl: currentImg,
       danhao: dindanhao,
       housiwei: housiwei,
       yijidizhi: dizhi1,
@@ -250,22 +294,39 @@ class Content extends AppBase {
       tezhunsong: bz,
       beizhu: remark
     }
-    arr.push(json);
-    zl='';
-    tj='';
-    pl='';
-    dk='';
-    bz='否';
-    remark='';
+    zl = '';
+    tj = '';
+    pl = '';
+    dk = '';
+    bz = '否';
+    remark = '';
+
+    for(var i=0;i<arr.length;i++){
+      if (arr[i].danhao == json.danhao){
+        console.log('考生几个')
+        arr[i]=json;
+        
+      }
+    }
     this.Base.setMyData({
-      arr, zl: '手动填写', tj: '手动填写', pl: '手动填写', dk: '手动填写', bz: '否', remark: '请输入备注信息...'
+      arr, zl: '手动填写', tj: '手动填写', pl: '手动填写', dk: '手动填写', bz: '否', remark: '请输入备注信息...',
+      dindanhao: arr[current].danhao,
+      housiwei: arr[current].housiwei,
+      dizhi1: arr[current].yijidizhi,
+      dizhi2: arr[current].erjidizhi,
+      name: arr[current].xingming,
+      shouji: arr[current].shoujihao,
+      shulian: arr[current].shuliang,
     })
+    // arr.push(json);
+   console.log(current,arr)
+    
    
   }
 
   prePage(){
     var arr = this.Base.getMyData().arr;
-    // this.yicishuju();
+   
     var imgs = this.Base.getMyData().imgs;
     var current = this.Base.getMyData().current;
     var currentImg = this.Base.getMyData().currentImg;
@@ -275,31 +336,32 @@ class Content extends AppBase {
       current, currentImg,
     })
     var json ={}; 
-    for(var i=0;i<arr.length;i++){
-      if(arr[i].imgurl==currentImg){
-        this.Base.setMyData({
-          dindanhao: arr[i].danhao, 
-          housiwei: arr[i].housiwei, 
-          dizhi1: arr[i].yijidizhi,  
-          dizhi2: arr[i].erjidizhi,  
-          name: arr[i].xingming,  
-          shuliang: arr[i].shuliang,
-          shouji: arr[i].shoujihao,  
-          shulian: arr[i].shuliang,  
-          currentImg: arr[i].imgurl,  
-          zl: arr[i].chongliang,  
-          tj: arr[i].tiji,  
-          pl: arr[i].pinlei,  
-          dk: arr[i].daikuan,  
-          bz: arr[i].tezhunsong,  
-          remark: arr[i].beizhu,  
-        })
-      }
-    }
+    this.yicishuju();
+    // for(var i=0;i<arr.length;i++){
+    //   if(arr[i].imgurl==currentImg){
+    //     this.Base.setMyData({
+    //       dindanhao: arr[i].danhao, 
+    //       housiwei: arr[i].housiwei, 
+    //       dizhi1: arr[i].yijidizhi,  
+    //       dizhi2: arr[i].erjidizhi,  
+    //       name: arr[i].xingming,  
+    //       shuliang: arr[i].shuliang,
+    //       shouji: arr[i].shoujihao,  
+    //       shulian: arr[i].shuliang,  
+    //       currentImg: arr[i].imgurl,  
+    //       zl: arr[i].chongliang,  
+    //       tj: arr[i].tiji,  
+    //       pl: arr[i].pinlei,  
+    //       dk: arr[i].daikuan,  
+    //       bz: arr[i].tezhunsong,  
+    //       remark: arr[i].beizhu,  
+    //     })
+    //   }
+    // }
     // this.getinfo(currentImg);
   }
   nexPage(){
-    this.yicishuju();
+   
     var imgs = this.Base.getMyData().imgs;
     var current = this.Base.getMyData().current;
     var currentImg = this.Base.getMyData().currentImg;
@@ -309,7 +371,8 @@ class Content extends AppBase {
       current, currentImg
     })
     this.goTop();
-    this.getinfo(currentImg);
+    this.yicishuju();
+    // this.getinfo(currentImg);
   }
   tijiao(){
     this.yicishuju();
@@ -444,11 +507,11 @@ class Content extends AppBase {
   }
   erjiFn(e) {
     console.log(e);
-    var cur = e.detail.cursor;
-    var dizhi2 = this.Base.getMyData().dizhi2;
-    dizhi2 = dizhi2.slice(cur + 1, dizhi2.length);
-    var dizhii2len = dizhi2.length;
-    this.Base.setMyData({ dizhi2, dizhii2len })
+    // var cur = e.detail.cursor;
+    // var dizhi2 = this.Base.getMyData().dizhi2;
+    // dizhi2 = dizhi2.slice(cur + 1, dizhi2.length);
+    // var dizhii2len = dizhi2.length;
+    // this.Base.setMyData({ dizhi2, dizhii2len })
   }
   pickerchange3(e) {
     console.log(e)
