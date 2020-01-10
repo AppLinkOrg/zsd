@@ -153,6 +153,13 @@
 					"id": -1,
 					"name": "pages/xaunzeyuangong/xaunzeyuangong",
 					"pathName": "pages/xaunzeyuangong/xaunzeyuangong",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/zongdanhao/zongdanhao",
+					"pathName": "pages/zongdanhao/zongdanhao",
 					"scene": null
 				}
 			]

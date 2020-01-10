@@ -24,19 +24,19 @@ class Content extends AppBase {
   }
   fanhui() {
     var memberinfo = this.Base.getMyData().memberinfo;
-    if (memberinfo.juese == 'A') {
-      wx.redirectTo({
-        url: '/pages/fahuo/fahuo',
-      })
-    } else if (memberinfo.juese == 'B') {
-      wx.redirectTo({
-        url: '/pages/jiaodui/jiaodui',
-      })
-    } else if (memberinfo.juese == 'C') {
+    // if (memberinfo.juese == 'A') {
+    //   wx.redirectTo({
+    //     url: '/pages/fahuo/fahuo',
+    //   })
+    // } else if (memberinfo.juese == 'B') {
+    //   wx.redirectTo({
+    //     url: '/pages/jiaodui/jiaodui',
+    //   })
+    // } else if (memberinfo.juese == 'C') {
       wx.redirectTo({
         url: '/pages/lanhuo/lanhuo',
       })
-    }
+    // }
   }
 
   jixu(e) {

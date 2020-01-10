@@ -65,7 +65,7 @@ class Content extends AppBase {
     api.test({
       photo: uri
     }, (res) => {
-      var list = res.words_result;
+      var list = res[0].words_result;
       console.log(list);
       var dindanhao;
       var housiwei;

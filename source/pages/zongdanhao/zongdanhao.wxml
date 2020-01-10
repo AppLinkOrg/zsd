@@ -2,7 +2,8 @@
   <view class='f-40 txt-bold' style='padding:20rpx 0 10rpx 0;'>日期：{{item.fahuoshijian}}</view>
   <view class='f-40 txt-bold' style='padding:20rpx 0 10rpx 0;'>车号：{{item.chehao}}</view>
   <view class='f-40 txt-bold' style='padding:20rpx 0 10rpx 0;'>未校对订单号</view>
-  <view wx:for='{{arr}}' wx:key='k' class='aa margin-top-20 f-40 txt-red txt-bold' style='padding:20rpx 0 5rpx 0;'>订单号：{{item.danhao}}</view>
+  <view wx:for='{{arr}}' wx:key='k' class='aa margin-top-20 f-40 txt-red txt-bold flex-row' style='padding:20rpx 0 5rpx 0;'>订单号：{{item.danhao}} <view class="flex-1 text-right"></view> <view class="qz" bindtap="qiangzhi" id="{{item.danhao}}">强制校对</view>   </view>
+ 
 </view>
 <view class='flex-row flex-center margin-top-5'>
   <view class='flex-1'></view>
@@ -12,6 +13,10 @@
 
 
 <view class='margin-40'></view>
+<view class="text-center flex-row flex-column" bindtap="jiandui">
+    <view class='bg-green txt-white f-40 radius-4 padding-top-10' style='width:320rpx;height:70rpx'>一键强制校对</view>
+  </view>
+  <view style="height:30rpx;"></view>
 <view class="flex-row flex-center">
   <view class='flex-1'></view>
   <view class="text-center" bindtap="fanhui">

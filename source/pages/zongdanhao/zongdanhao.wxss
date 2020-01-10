@@ -3,3 +3,14 @@
   width: 94%;
   border-top: 1rpx solid #ccc;
 }
+.qz {
+  width: 125rpx;
+  height: 50rpx;
+  background:#2d9149; 
+  font-size: 28rpx;
+  color: #ffffff;
+  text-align: center;
+  line-height: 50rpx;
+  border-radius: 8rpx;
+  margin-left: 20rpx;
+}

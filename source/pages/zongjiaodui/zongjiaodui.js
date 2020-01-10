@@ -40,12 +40,12 @@ class Content extends AppBase {
     var riqi= [];
     var api = new OrderApi;
     var that = this;
-    api.fuhuolist({ dingdanzhuangtai: 'A' }, (fuhuolist) => {
+    api.fuhuolist({ dingdanzhuangtai: 'A', orderby:'r_main.fahuoshijian desc' }, (fuhuolist) => {
       console.log(fuhuolist, 'fuhuolist');
       if (fuhuolist.length > 0) {
         riqi.push(fuhuolist[0]);
         for (var i = 0; i < fuhuolist.length; i++) {
-          if (that.checkcar(fuhuolist[i], riqi)) {
+          if (that.checktime(fuhuolist[i], riqi)) {
             riqi.push(fuhuolist[i])
           }
         }
@@ -54,9 +54,9 @@ class Content extends AppBase {
 
     })
   }
-  checktime(item,car){
+  checktime(item,arr){
     for (var i = 0; i < arr.length; i++) {
-      if (item.fahuoshijian_timespan == arr[i].fahuoshijian_timespan) {
+      if (item.fahuoshijian == arr[i].fahuoshijian) {
         return false
       }
     }

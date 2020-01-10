@@ -24,13 +24,20 @@ class Content extends AppBase {
     var api = new OrderApi;
     var that = this;
     var item = JSON.parse(this.Base.options.item);
+    console.log(item,'item')
     api.fuhuolist({ dingdanzhuangtai: 'A' }, (fuhuolist) => {
       console.log(fuhuolist, 'fuhuolist');
       if (fuhuolist.length > 0) {
         for (var i = 0; i < fuhuolist.length; i++) {
-          if (item.chehao == fuhuolist[i].chehao) {
+          var times = (new Date(item.fahuoshijian)).getTime();
+          fuhuolist[i].tiemss = (new Date(fuhuolist[i].fahuoshijian)).getTime();
+          
+          if (times == fuhuolist[i].tiemss){
+            if (item.chehao == fuhuolist[i].chehao) {
               arr.push(fuhuolist[i]);
+            }
           }
+         
 
         }
         this.Base.setMyData({ fuhuolist, arr ,item})
@@ -41,19 +48,20 @@ class Content extends AppBase {
 
   fanhui() {
     var memberinfo = this.Base.getMyData().memberinfo;
-    if (memberinfo.juese == 'A') {
-      wx.redirectTo({
-        url: '/pages/fahuo/fahuo',
-      })
-    } else if (memberinfo.juese == 'B') {
+    // if (memberinfo.juese == 'A') {
+    //   wx.redirectTo({
+    //     url: '/pages/fahuo/fahuo',
+    //   })
+    // } else if (memberinfo.juese == 'B') {
       wx.redirectTo({
         url: '/pages/jiaodui/jiaodui',
       })
-    } else if (memberinfo.juese == 'C') {
-      wx.redirectTo({
-        url: '/pages/lanhuo/lanhuo',
-      })
-    }
+    // } 
+    // else if (memberinfo.juese == 'C') {
+    //   wx.redirectTo({
+    //     url: '/pages/lanhuo/lanhuo',
+    //   })
+    // }
   }
   jixu(e) {
     var fuhuolist = this.Base.getMyData().fuhuolist;
@@ -145,6 +153,83 @@ class Content extends AppBase {
       })
     })
   }
+  qiangzhi(e){
+    console.log(e);
+    var api = new OrderApi;
+    var dianhao = e.currentTarget.id;
+    var that = this;
+    var arr = this.Base.getMyData().arr;
+    wx.showModal({
+      title: '提示',
+      content: '是否要强制校对',
+      confirmText: "是",
+      cancelText: '否',
+      success: function (res) {
+        if (res.confirm) {
+          api.jiaodui({ danhao: dianhao }, (ret) => {
+            if (ret.code == '0') {
+             
+              if(arr.length==1){
+                wx.redirectTo({
+                  url: '/pages/jiaodui/jiaodui',
+                })
+              }else {
+                that.onMyShow();
+              }
+
+            }else {
+              wx.showToast({
+                title: '校对失败',
+                icon:'none'
+              })
+            }
+          })
+
+        }
+
+      }
+    })
+    
+  }
+  jiandui(){
+    var arr = this.Base.getMyData().arr;
+    console.log(arr);
+    var that = this;
+    wx.showModal({
+      title: '提示',
+      content: '是否要全部强制校对',
+      confirmText: "是",
+      cancelText: '否',
+      success: function (res) {
+
+        if (res.confirm) {
+          for (let i = 0; i < arr.length; i++) {
+            that.jiaoduixinx(arr[i].danhao, i, arr.length)
+          }
+        }
+
+      }
+    })
+    
+
+  }
+  jiaoduixinx(dianhao,i,len){
+    var api = new OrderApi;
+    setTimeout(()=>{
+      api.jiaodui({ danhao: dianhao }, (ret) => {
+        if (ret.code == '0') {
+          this.onMyShow();
+        }
+      })
+    },i*300)
+    if(i==len-1){
+    
+        wx.redirectTo({
+          url: '/pages/jiaodui/jiaodui',
+        })
+      
+    }
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -157,5 +242,8 @@ body.getinfos = content.getinfos;
 body.checkno = content.checkno;
 body.checkyijiaodui = content.checkyijiaodui;
 body.jixu = content.jixu;
+body.qiangzhi = content.qiangzhi;
+body.jiandui = content.jiandui;
+body.jiaoduixinx = content.jiaoduixinx;
 
 Page(body)

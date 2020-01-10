@@ -28,7 +28,9 @@ class Content extends AppBase {
       if (fuhuolist.length > 0) {
         // arr.push(fuhuolist[0]);
         for (var i = 0; i < fuhuolist.length; i++) {
-          if (item.fahuoshijian_timespan == fuhuolist[i].fahuoshijian_timespan){
+          var times = (new Date(item.fahuoshijian)).getTime();
+          fuhuolist[i].tiemss = (new Date(fuhuolist[i].fahuoshijian)).getTime();
+          if (times == fuhuolist[i].tiemss){
             if (that.checkcar(fuhuolist[i], arr)) {
               arr.push(fuhuolist[i]);
             }
@@ -50,6 +52,7 @@ class Content extends AppBase {
     return true
   }
   detail(e) {
+    var item = this.Base.getMyData().item;
     wx.navigateTo({
       url: '/pages/zongdanhao/zongdanhao?item=' + JSON.stringify(e.currentTarget.dataset.current),
     })

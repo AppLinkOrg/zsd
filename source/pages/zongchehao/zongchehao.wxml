@@ -3,7 +3,8 @@
   <view class='f-40 txt-bold'>未校对所属车号</view>
   <view wx:for="{{arr}}" wx:key='k' class="aa margin-top-20" bindtap="detail" data-current="{{item}}">
     <view class="flex-row flex-center">
-      <view class="f-40 flex-1 pa">{{item.chehao}}</view>
+      <view class="f-40 flex-1 pa" wx:if='{{item.chehao!=""}}'>{{item.chehao}}</view>
+      <view class="f-40 flex-1 pa" wx:if='{{item.chehao==""}}'>再  投</view>
       <image src="{{uploadpath}}resource/{{res.arrowright}}" class="icon-30"></image>
     </view>
   </view>
