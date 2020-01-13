@@ -4,7 +4,7 @@
   <view wx:for="{{arr}}" wx:key='k' class="aa margin-top-20" bindtap="detail" data-current="{{item}}">
     <view class="flex-row flex-center">
       <view class="f-40 flex-1 pa" wx:if='{{item.chehao!=""}}'>{{item.chehao}}</view>
-      <view class="f-40 flex-1 pa" wx:if='{{item.chehao==""}}'>再  投</view>
+      <view class="f-40 flex-1 pa" wx:if='{{item.chehao==""}}'>暂无车号</view>
       <image src="{{uploadpath}}resource/{{res.arrowright}}" class="icon-30"></image>
     </view>
   </view>
