@@ -77,10 +77,20 @@ class Content extends AppBase {
       var shouji;
       list.map((item, idx) => {
 
-        if (item.words.indexOf("订单号:") != -1) {
+        if (item.words.indexOf("订单号:") != -1 || item.words.indexOf("订单") != -1) {
 
+          if (item.words.indexOf("订单号:") != -1)
+          {
+ 
           dindanhao = item.words.split('订单号:')[1];
           housiwei = dindanhao.substring(dindanhao.length - 4);
+          }
+          else{
+
+            dindanhao = item.words.split('订单')[1];
+            housiwei = dindanhao.substring(dindanhao.length - 4);
+
+          }
 
 
         }
