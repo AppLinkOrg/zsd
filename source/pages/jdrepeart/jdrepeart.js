@@ -77,15 +77,15 @@ class Content extends AppBase {
               url: '/pages/jdrepeart/jdrepeart?barcode=' + code
             })
           } else {
-            // api.addjiaodui({
-            //   danhao: code, dingdanzhuangtai: 'C'
-            // }, (ret) => {
-            //   if (ret.code == '0') {
+            api.addjiaodui({
+              danhao: code, dingdanzhuangtai: 'C'
+            }, (ret) => {
+              if (ret.code == '0') {
                 wx.redirectTo({
                   url: '/pages/jdtijiao/jdtijiao?barcode=' + code
                 })
-              // }
-            // })
+              }
+            })
 
           }
         }

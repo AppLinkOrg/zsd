@@ -12,7 +12,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.9.4",
+	"libVersion": "1.6.6",
 	"appid": "wxc5a4caa95726a40d",
 	"projectname": "%E6%AD%A3%E6%97%B6%E8%BE%BE",
 	"debugOptions": {
@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 12,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
@@ -160,6 +160,7 @@
 					"id": -1,
 					"name": "pages/zongdanhao/zongdanhao",
 					"pathName": "pages/zongdanhao/zongdanhao",
+					"query": "",
 					"scene": null
 				}
 			]

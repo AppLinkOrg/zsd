@@ -8,10 +8,12 @@
   <view style="height:100rpx;"></view>
   <view class="ym">
     <view class="txt-bold margin-bottom-20">用户名/手机号码</view>
-    <input name='asd' placeholder="请输入用户名或者手机号码" placeholder-style="color:#A9A6AB;" bindinput="nameFn"></input>
+    <input name='asd' wx:if='{{pp==true}}' placeholder="{{name}}" placeholder-style="color:#A9A6AB;" bindinput="nameFn"></input>
+    <input name='asd'  wx:if='{{pp==false}}' value="{{name}}" bindinput="nameFn"></input>
     <view class="line"></view>
     <view class="txt-bold margin-bottom-20">密码</view>
-    <input placeholder="请输入密码" type="password" placeholder-style="color:#A9A6AB;" bindinput="pwdFn"></input>
+    <input wx:if='{{pp==true}}' placeholder="{{password}}" type="password" placeholder-style="color:#A9A6AB;" bindinput="pwdFn"></input>
+     <input value="{{password}}"  wx:if='{{pp==false}}' type="password" bindinput="pwdFn"></input>
     <view class="line"></view>
   </view>
 

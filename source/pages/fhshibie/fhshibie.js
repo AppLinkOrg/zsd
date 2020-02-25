@@ -112,7 +112,7 @@ class Content extends AppBase {
             }
           }
           
-          for (var i = 0; i < dizhilist.length - 2; i++) {
+          for (var i = 0; i < dizhilist.length - 1; i++) {
             dizhi3 += dizhilist[i];
 
           }
@@ -120,7 +120,7 @@ class Content extends AppBase {
           dizhi2 = dizhi.split(dizhi3)[1];
 
           for (var i = 0; i < erjidizhi.length; i++) {
-            if (dizhi1.indexOf(erjidizhi[i].name) > -1) {
+            if (dizhi2.indexOf(erjidizhi[i].name) > -1) {
               dizhi2 = erjidizhi[i].name
             }
           }

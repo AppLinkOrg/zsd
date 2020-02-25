@@ -157,7 +157,7 @@ class Content extends AppBase {
             }
           }
 
-          for (var i = 0; i < dizhilist.length - 2; i++) {
+          for (var i = 0; i < dizhilist.length - 1; i++) {
             dizhi3 += dizhilist[i];
 
           }

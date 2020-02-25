@@ -21,6 +21,22 @@ class Content extends AppBase {
     //options.id=5;
     super.onLoad(options);
     this.Base.needauth = true;
+    var loginname = wx.getStorageSync("loginname");
+    var loginpwd = wx.getStorageSync("loginpwd");
+    console.log(loginname, loginpwd,'uuu');
+    if(loginname==''){
+      this.Base.setMyData({
+        pp:true,
+        name: '请输入用户名或者手机号码',
+        password: '请输入密码'
+      })
+    }else {
+      this.Base.setMyData({
+        pp: false,
+        name: loginname,
+        password: loginpwd
+      })
+    }
    
   }
   onMyShow() {
@@ -35,6 +51,19 @@ class Content extends AppBase {
       })
       return 
     }
+    // if(this.Base.logname!=""){
+    // //  var name=this.Base.logname;
+    // //   var password=this.Base.loginpwd;
+    //   this.Base.setMyData({
+    //     name: this.Base.logname,
+    //     password: this.Base.loginpwd
+    //     })
+    // }else {
+    //   this.Base.setMyData({
+    //     name: '',
+    //     password:''
+    //   })
+    // }
   }
   nameFn(e) {
     console.log(e);
@@ -49,12 +78,17 @@ class Content extends AppBase {
   }
   
   login() {
-
+    
     var name = this.Base.getMyData().name;
     var password = this.Base.getMyData().password;
     console.log(name, password);
     var api = new MemberApi;
     var that = this;
+    this.Base.logname = name;
+    this.Base.loginpwd = password;
+
+    console.log(this.Base.logname)
+    console.log(this.Base.loginpwd)
     api.login({
       name: name,
       password: password
@@ -62,6 +96,8 @@ class Content extends AppBase {
       console.log(ret);
       if (ret.code == '0') {
         wx.setStorageSync("token", ret.return);
+        wx.setStorageSync("loginname", name);
+        wx.setStorageSync("loginpwd",password);
         that.Base.needauth = true;
         if (ret.result == 1) {
           wx.redirectTo({

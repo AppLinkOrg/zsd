@@ -27,7 +27,10 @@
     "pages/zongjiaodui/zongjiaodui",
     "pages/zongchehao/zongchehao",
     "pages/zongdanhao/zongdanhao",
-    "pages/xaunzeyuangong/xaunzeyuangong"
+    "pages/xaunzeyuangong/xaunzeyuangong",
+    "pages/content/content",
+    "pages/index/index",
+    "pages/logs/logs"
   ],
   "permission": {
     "scope.userLocation": {

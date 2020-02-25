@@ -37,6 +37,9 @@ class Content extends AppBase {
     })
   }
   getriqi(){
+    console.log(this.getDay(0));
+    console.log(this.getDay(-15));
+
     var riqi= [];
     var api = new OrderApi;
     var that = this;
@@ -45,15 +48,60 @@ class Content extends AppBase {
       if (fuhuolist.length > 0) {
         riqi.push(fuhuolist[0]);
         for (var i = 0; i < fuhuolist.length; i++) {
-          if (that.checktime(fuhuolist[i], riqi)) {
-            riqi.push(fuhuolist[i])
+          if (fuhuolist[i].fahuoshijian_formatting>that.getDay(-15)){
+            if (that.checktime(fuhuolist[i], riqi)) {
+              riqi.push(fuhuolist[i])
+            }
           }
+          
         }
         this.Base.setMyData({ fuhuolist, riqi })
       }
 
     })
   }
+
+ getDay(day) {
+
+  　　var today = new Date();
+
+
+
+  　　var targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * day;
+
+
+
+  　　today.setTime(targetday_milliseconds); //注意，这行是关键代码
+
+
+
+  　　var tYear = today.getFullYear();
+
+  　　var tMonth = today.getMonth();
+
+  　　var tDate = today.getDate();
+
+  　　tMonth = this.doHandleMonth(tMonth + 1);
+
+  　　tDate = this.doHandleMonth(tDate);
+
+  　　return tYear + "-" + tMonth + "-" + tDate;
+
+}
+
+doHandleMonth(month) {
+
+  　　var m = month;
+
+  　　if (month.toString().length == 1) {
+
+    　　　　m = "0" + month;
+
+  　　}
+
+  　　return m;
+
+}
   checktime(item,arr){
     for (var i = 0; i < arr.length; i++) {
       if (item.fahuoshijian == arr[i].fahuoshijian) {
@@ -86,5 +134,7 @@ body.checkcar = content.checkcar;
 body.getriqi = content.getriqi;
 body.checktime = content.checktime;
 body.detail = content.detail;
+body.getDay = content.getDay;
+body.doHandleMonth = content.doHandleMonth;
 
 Page(body)

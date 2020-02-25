@@ -35,6 +35,8 @@ export class AppBase {
       website: "mecloud.com"
     }
   };
+  logname='';
+  loginpwd='';
   Page = null;
   util = ApiUtil;
   constructor() {
@@ -161,6 +163,7 @@ export class AppBase {
   onShow() {
     var token = wx.getStorageSync("token");
     ApiConfig.SetToken(token);
+    console.log(token,'登录啦')
     var that = this;
     var instapi = new InstApi();
     instapi.resources({}, (res) => {
