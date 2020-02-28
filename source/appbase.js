@@ -535,7 +535,7 @@ export class AppBase {
     });
   }
 
-  uploadimagecallback(module,filepath,seq,callback){
+  uploadimagecallback(module,filepath,seq,count,callback){
 
     wx.uploadFile({
       url: ApiConfig.GetFileUploadAPI(), //仅为示例，非真实的接口地址
@@ -551,7 +551,7 @@ export class AppBase {
         if (data.substr(0, 7) == "success") {
           data = data.split("|");
           var photo = data[2];
-          callback(photo, filepath,seq);
+          callback(photo, count,seq);
         } else {
           console.error(res.data);
           wx.showToast({
@@ -582,7 +582,7 @@ export class AppBase {
         console.log(tempFilePaths);
         
         for (var i = 0; i < tempFilePaths.length; i++) {
-          that.Base.uploadimagecallback(modul,tempFilePaths[i],i,callback);
+          that.uploadimagecallback(modul, tempFilePaths[i], i, tempFilePaths.length,callback);
         }
         if (completecallback != undefined) {
           completecallback();

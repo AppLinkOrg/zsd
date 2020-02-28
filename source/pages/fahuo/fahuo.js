@@ -51,9 +51,10 @@ class Content extends AppBase {
 
       imgs[seq]=(uri);
       
-      if(imgs.length==q.length){
+      if(imgs.length==q){
         that.detail(imgs);
       }
+      console.log(imgs)
 
     }, undefined);
    
