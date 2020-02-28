@@ -116,6 +116,7 @@ export class AppBase {
       contactkefu: base.contactkefu,
       contactweixin: base.contactweixin,
       download: base.download,
+      uploadimagecallback: base.uploadimagecallback,
       checkPermission: base.checkPermission
 
 
@@ -533,6 +534,37 @@ export class AppBase {
       }
     });
   }
+
+  uploadimagecallback(module,filepath,seq,callback){
+
+    wx.uploadFile({
+      url: ApiConfig.GetFileUploadAPI(), //仅为示例，非真实的接口地址
+      filePath: filepath,
+      name: 'file',
+      formData: {
+        'module': module,
+        "field": "file"
+      },
+      success: function (res) {
+        console.log(res);
+        var data = res.data
+        if (data.substr(0, 7) == "success") {
+          data = data.split("|");
+          var photo = data[2];
+          callback(photo, filepath,seq);
+        } else {
+          console.error(res.data);
+          wx.showToast({
+            title: '上传失败，请重试',
+            icon: 'warn',
+            duration: 2000
+          })
+        }
+        //do something
+      }
+    });
+  }
+
   uploadImage(modul, callback, count, completecallback) {
     var that = this;
 
@@ -550,35 +582,7 @@ export class AppBase {
         console.log(tempFilePaths);
         
         for (var i = 0; i < tempFilePaths.length; i++) {
-
-          wx.uploadFile({
-            url: ApiConfig.GetFileUploadAPI(), //仅为示例，非真实的接口地址
-            filePath: tempFilePaths[i],
-            name: 'file',
-            formData: {
-              'module': modul,
-              "field": "file"
-            },
-            success: function(res) {
-              console.log(res);
-              var data = res.data
-              if (data.substr(0, 7) == "success") {
-                data = data.split("|");
-                var photo = data[2];
-                console.log(tempFilePaths);
-                console.log(555555555);
-                callback(photo,tempFilePaths);
-              } else {
-                console.error(res.data);
-                wx.showToast({
-                  title: '上传失败，请重试',
-                  icon: 'warn',
-                  duration: 2000
-                })
-              }
-              //do something
-            }
-          });
+          that.Base.uploadimagecallback(modul,tempFilePaths[i],i,callback);
         }
         if (completecallback != undefined) {
           completecallback();

@@ -42,13 +42,14 @@ class Content extends AppBase {
     var that = this;
     var imgs = [];
 
-    this.Base.uploadImage("test", (ret,q) => {
+    this.Base.uploadImage("test", (ret, q, seq) => {
+      console.log(seq);
       console.log(q);
       console.log(ApiConfig.GetUploadPath() + 'test/' + ret);
 
       var uri = ApiConfig.GetUploadPath() + 'test/' + ret;
 
-      imgs.push(uri);
+      imgs[seq]=(uri);
       
       if(imgs.length==q.length){
         that.detail(imgs);
