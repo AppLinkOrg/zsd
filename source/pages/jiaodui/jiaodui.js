@@ -15,12 +15,13 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
-    this.getinfo();
+    // this.getinfo();
+    console.log('一次一次')
   }
   bindtodetail(e) {
-    var fuhuolist = this.Base.getMyData().fuhuolist;
-    var weijiaodui = this.Base.getMyData().weijiaodui;
-    var yijiaodui = this.Base.getMyData().yijiaodui;
+    // var fuhuolist = this.Base.getMyData().fuhuolist;
+    // var weijiaodui = this.Base.getMyData().weijiaodui;
+    // var yijiaodui = this.Base.getMyData().yijiaodui;
     var that = this;
     var api = new OrderApi;
     wx.scanCode({
@@ -30,31 +31,53 @@ class Content extends AppBase {
         var index = res.result.indexOf('-');
         var code = res.result.slice(0,index);
         console.log(index,'index',code);
-        if (that.checkno(code, weijiaodui)){
-          api.jiaodui({ danhao:code},(ret)=>{
-            if(ret.code=='0'){
+
+        api.fuhuolist({ danhao: code }, (fuhuolist) => {
+          if (fuhuolist.length > 0) {
+            if (fuhuolist[0].ingdanzhuangtai == 'A') {
+              api.jiaodui({ danhao: code }, (ret) => {
+                if (ret.code == '0') {
+                  wx.navigateTo({
+                    url: '/pages/jddetails/jddetails?barcode=' + code
+                  })
+                }
+              })
+            } else {
               wx.navigateTo({
-                url: '/pages/jddetails/jddetails?barcode=' + code
+                url: '/pages/jdrepeart/jdrepeart?barcode=' + code
               })
             }
-          })
-         
-        }else {
-          if (that.checkyijiaodui(code, yijiaodui)){
+          } else {
             wx.navigateTo({
-              url: '/pages/jdrepeart/jdrepeart?barcode=' + code 
+              url: '/pages/jdtijiao/jdtijiao?barcode=' + code
             })
-          }else {
-            api.addjiaodui({ danhao: code, dingdanzhuangtai:'C'},(ret)=>{
-              if(ret.code=='0'){
-                wx.navigateTo({
-                  url: '/pages/jdtijiao/jdtijiao?barcode=' + code
-                })
-              }
-            })
-           
           }
-        } 
+
+        })
+        // if (that.checkno(code, weijiaodui)){
+        //   api.jiaodui({ danhao:code},(ret)=>{
+        //     if(ret.code=='0'){
+        //       wx.navigateTo({
+        //         url: '/pages/jddetails/jddetails?barcode=' + code
+        //       })
+        //     }
+        //   })
+        // }else {
+        //   if (that.checkyijiaodui(code, yijiaodui)){
+        //     wx.navigateTo({
+        //       url: '/pages/jdrepeart/jdrepeart?barcode=' + code 
+        //     })
+        //   }else {
+        //     // api.addjiaodui({ danhao: code, dingdanzhuangtai:'C'},(ret)=>{
+        //     //   if(ret.code=='0'){
+        //         wx.navigateTo({
+        //           url: '/pages/jdtijiao/jdtijiao?barcode=' + code
+        //         })
+        //     //   }
+        //     // })
+           
+        //   }
+        // } 
         
       }
 
