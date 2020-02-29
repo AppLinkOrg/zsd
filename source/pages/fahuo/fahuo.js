@@ -41,20 +41,23 @@ class Content extends AppBase {
   test2() {
     var that = this;
     var imgs = [];
+    var len=[];
 
     this.Base.uploadImage("test", (ret, q, seq) => {
       console.log(seq);
       console.log(q);
+      len.push(seq);
       console.log(ApiConfig.GetUploadPath() + 'test/' + ret);
 
       var uri = ApiConfig.GetUploadPath() + 'test/' + ret;
 
       imgs[seq]=(uri);
-      
-      if(imgs.length==q){
+      console.log(imgs.length, 'img.length', seq, 'len.legnth', len.length)
+      console.log(len,'222')
+      if(len.length==q){
         that.detail(imgs);
       }
-      console.log(imgs)
+      // console.log(imgs)
 
     }, undefined);
    
@@ -63,7 +66,8 @@ class Content extends AppBase {
   detail(imgs){
  
     
-    console.log(imgs,'qqq')
+    console.log(imgs, 'qqq')
+    console.log(imgs.length,'qqq')
     wx.navigateTo({
         url: '/pages/plshibie/plshibie?imgs=' + JSON.stringify(imgs) ,
       })

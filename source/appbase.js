@@ -551,6 +551,7 @@ export class AppBase {
         if (data.substr(0, 7) == "success") {
           data = data.split("|");
           var photo = data[2];
+          console.log(seq,count,'callback')
           callback(photo, count,seq);
         } else {
           console.error(res.data);
@@ -579,9 +580,10 @@ export class AppBase {
         //  photos: that.data.photos.concat(res.tempFilePaths)
         //});
         var tempFilePaths = res.tempFilePaths
-        console.log(tempFilePaths);
+        // console.log(tempFilePaths);
         
         for (var i = 0; i < tempFilePaths.length; i++) {
+          console.log(tempFilePaths.length,i,'xunhuan');
           that.uploadimagecallback(modul, tempFilePaths[i], i, tempFilePaths.length,callback);
         }
         if (completecallback != undefined) {
