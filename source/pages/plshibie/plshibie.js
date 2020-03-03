@@ -14,7 +14,9 @@ import {
 import {
   OrderApi
 } from "../../apis/order.api.js";
-
+import {
+  DataApi
+} from "../../apis/data.api.js";
 class Content extends AppBase {
   constructor() {
     super();
@@ -434,12 +436,16 @@ class Content extends AppBase {
   }
   add(i, json) {
     var api = new OrderApi;
+    var dataapi = new DataApi;
     var ordernos = this.Base.getMyData().ordernos;
     var repnos = this.Base.getMyData().repnos;
     setTimeout(() => {
       api.addfuhuo(json, (ret) => {
         console.log(ret);
         if (ret.code == '0') {
+          dataapi.combine({}, (ret) => {
+
+          })
           ordernos.push(json.danhao);
         } else if (ret.code == '-1') {
           repnos.push(json.danhao);

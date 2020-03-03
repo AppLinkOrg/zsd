@@ -14,7 +14,9 @@ import {
 import {
   OrderApi
 } from "../../apis/order.api.js";
-
+import {
+  DataApi
+} from "../../apis/data.api.js";
 class Content extends AppBase {
   constructor() {
     super();
@@ -232,6 +234,7 @@ class Content extends AppBase {
     var bz = this.Base.getMyData().bz;
     var remark = this.Base.getMyData().remark;
     var api = new OrderApi;
+    var dataapi = new DataApi;
     var that = this;
     if (zl =='手动填写'){
       zl='';
@@ -271,6 +274,9 @@ class Content extends AppBase {
     api.addfuhuo(json, (ret) => {
       console.log(ret);
       if (ret.code == '0') {
+        dataapi.combine({},(ret)=>{
+          
+        })
         wx.redirectTo({
           url: '/pages/fhsuccess/fhsuccess?diandan=' + dindanhao + '&fhsb=' + 'A',
         })
