@@ -24,9 +24,11 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
-    var barcode = this.Base.options.barcode;
     this.Base.setMyData({
-      barcode
+      wu: this.Base.options.wu,
+      chong: this.Base.options.chong,
+      dui: this.Base.options.dui,
+      barcode: this.Base.options.barcode
     })
     // this.getinfo();
   }
@@ -56,34 +58,58 @@ class Content extends AppBase {
     wx.scanCode({
       scanType: ['barCode'],
       success(res) {
-        console.log(res.result)
+        console.log(res.result);
+        console.log(res);
         var index = res.result.indexOf('-');
-        var code = res.result.slice(0, index);
+        if (index > -1) {
+          var code = res.result.slice(0, index);
+        } else {
+          var code = res.result;
+        }
+
         console.log(index, 'index', code);
 
         api.fuhuolist({ danhao: code }, (fuhuolist) => {
           if (fuhuolist.length > 0) {
-            if (fuhuolist[0].ingdanzhuangtai == 'A') {
+            if (fuhuolist[0].dingdanzhuangtai == 'A') {
               api.jiaodui({ danhao: code }, (ret) => {
                 if (ret.code == '0') {
-                  wx.navigateTo({
-                    url: '/pages/jddetails/jddetails?barcode=' + code
-                  })
+                  that.Base.options.barcode = code;
+                  that.Base.options.wu = "false";
+                  that.Base.options.chong = "false";
+                  that.Base.options.dui = "true";
+                  that.onMyShow();
+                  // wx.navigateTo({
+                  //   url: '/pages/jddetails/jddetails?barcode=' + code
+                  // })
                 }
               })
             } else {
-              wx.navigateTo({
-                url: '/pages/jdrepeart/jdrepeart?barcode=' + code
-              })
+              // wx.navigateTo({
+              //   url: '/pages/jdrepeart/jdrepeart?barcode=' + code
+              // })
+              that.Base.options.barcode = code;
+              that.Base.options.wu = "false";
+              that.Base.options.chong = "true";
+              that.Base.options.dui = "false";
+              that.onMyShow();
+
             }
           } else {
-            wx.navigateTo({
-              url: '/pages/jdtijiao/jdtijiao?barcode=' + code
-            })
+            // wx.navigateTo({
+            //   url: '/pages/jdtijiao/jdtijiao?barcode=' + code
+            // })
+
+            that.Base.options.barcode = code;
+            that.Base.options.wu = "true";
+            that.Base.options.chong = "false";
+            that.Base.options.dui = "false";
+            that.onMyShow();
           }
 
         })
-        
+
+
         // if (that.checkno(code, weijiaodui)) {
         //   api.jiaodui({
         //     danhao: code
@@ -114,6 +140,14 @@ class Content extends AppBase {
         //   }
         // }
 
+      },
+      fail(res) {
+        console.log('fail', res);
+        wx.showToast({
+          title: '此单无法识别！！',
+          icon: 'none'
+        })
+        return
       }
 
     })

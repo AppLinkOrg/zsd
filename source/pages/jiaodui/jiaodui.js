@@ -29,27 +29,32 @@ class Content extends AppBase {
       success(res) {
         console.log(res.result)
         var index = res.result.indexOf('-');
-        var code = res.result.slice(0,index);
+        if (index > -1) {
+          var code = res.result.slice(0, index);
+        } else {
+          var code = res.result;
+        }
         console.log(index,'index',code);
 
         api.fuhuolist({ danhao: code }, (fuhuolist) => {
+          console.log(fuhuolist, fuhuolist.length)
           if (fuhuolist.length > 0) {
-            if (fuhuolist[0].ingdanzhuangtai == 'A') {
+            if (fuhuolist[0].dingdanzhuangtai == 'A') {
               api.jiaodui({ danhao: code }, (ret) => {
                 if (ret.code == '0') {
                   wx.navigateTo({
-                    url: '/pages/jddetails/jddetails?barcode=' + code
+                    url: '/pages/jddetails/jddetails?barcode=' + code + "&dui=true" +  "&wu=false" + "&chong=false"
                   })
                 }
               })
             } else {
               wx.navigateTo({
-                url: '/pages/jdrepeart/jdrepeart?barcode=' + code
+                url: '/pages/jdrepeart/jdrepeart?barcode=' + code + "&chong=true" +  "&dui=false" +"&wu=false"
               })
             }
           } else {
             wx.navigateTo({
-              url: '/pages/jdtijiao/jdtijiao?barcode=' + code
+              url: '/pages/jdtijiao/jdtijiao?barcode=' + code + "&wu=true" + "&chong=false" + "&dui=false"
             })
           }
 
@@ -79,6 +84,14 @@ class Content extends AppBase {
         //   }
         // } 
         
+      },
+      fail(res) {
+        console.log('fail', res);
+        wx.showToast({
+          title: '此单无法识别！！',
+          icon: 'none'
+        })
+        return
       }
 
     })

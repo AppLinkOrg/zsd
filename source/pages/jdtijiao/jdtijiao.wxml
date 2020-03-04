@@ -1,24 +1,38 @@
 <view class='flex-row flex-center margin-top-100'>
-<view class='flex-1'></view>
-<image src='{{uploadpath}}resource/{{res.xx}}' class='icon-200'></image>
-<view class='flex-1'></view>
+  <view class='flex-1'></view>
+  <image src='{{uploadpath}}resource/{{res.	zhuangtai}}' wx:if='{{chong=="true"}}' class='icon-200'></image>
+  <image src='{{uploadpath}}resource/{{res.	xx}}' wx:if='{{wu=="true"}}' class='icon-200'></image>
+  <image src='{{uploadpath}}resource/{{res.	jiaodui}}' wx:if='{{dui=="true"}}' class='icon-200'></image>
+  <view class='flex-1'></view>
 </view>
 
 
-<view class='flex-row flex-column margin-top-100'>
-<view class='txt-red txt-bold f-40'>订单号：{{barcode}}</view>
+<view class='flex-row flex-column margin-top-100' wx:if='{{wu=="true"}}'>
+  <view class='txt-red txt-bold f-40'>订单号：{{barcode}}</view>
   <view class='margin-top-20 txt-black txt-bold f-40'>查无此单号，校对不成功</view>
 </view>
 
-  <view class='margin-40'></view>
-  <view class="flex-row flex-center ">
+<view class='flex-row flex-column margin-top-100' wx:if='{{chong=="true"}}'>
+  <view class='txt-red txt-bold f-40'>订单号：{{barcode}}</view>
+  <view class='margin-top-20 txt-black txt-bold f-40'>重复提交</view>
+</view>
+
+<view class='flex-row flex-column margin-top-100' wx:if='{{dui=="true"}}'>
+  <view class='txt-red txt-bold f-40'>订单号：{{barcode}}</view>
+  <view class='margin-top-20 txt-black txt-bold f-40'>校对成功</view>
+</view>
+
+
+
+<view class='margin-40'></view>
+<view class="flex-row flex-center ">
   <view class='flex-1'></view>
-   <view class="text-center"  bindtap="fanhui" >
-    <view class='bg-green txt-white f-40 radius-4 padding-top-10'style='width:320rpx;height:70rpx'>返回首页</view>
-    </view>
-    <view class='flex-1'></view>
-    <view class='text-center' bindtap="jixu">
-   <view class="bg-orange txt-white f-40 radius-4 padding-top-10" style='width:320rpx;height:70rpx'>继续校对</view>
-    </view>
-<view class='flex-1'></view>
+  <view class="text-center" bindtap="fanhui">
+    <view class='bg-green txt-white f-40 radius-4 padding-top-10' style='width:320rpx;height:70rpx'>返回首页</view>
   </view>
+  <view class='flex-1'></view>
+  <view class='text-center' bindtap="jixu">
+    <view class="bg-orange txt-white f-40 radius-4 padding-top-10" style='width:320rpx;height:70rpx'>继续校对</view>
+  </view>
+  <view class='flex-1'></view>
+</view>

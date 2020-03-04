@@ -56,8 +56,10 @@ class Content extends AppBase {
           
         }
         this.Base.setMyData({ fuhuolist, riqi })
+      }else {
+        this.Base.setMyData({ riqi })
       }
-
+      
     })
   }
 
