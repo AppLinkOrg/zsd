@@ -38,26 +38,30 @@ class Content extends AppBase {
         console.log(res);
         console.log(res.result)
         var index = res.result.indexOf('-');
-        var code = res.result.slice(0, index);
+        if (index > -1) {
+          var code = res.result.slice(0, index);
+        } else {
+          var code = res.result;
+        }
         console.log(index, 'index', code);
         if (that.checkno(code, weilanhuo)) {
           api.yilanhuo({ danhao:code}, (ret) => {
             if (ret.code == '0') {
               wx.navigateTo({
-                url: '/pages/lhsuccess/lhsuccess?barcode=' + code
+                url: '/pages/lhsuccess/lhsuccess?barcode=' + code + "&chong=false" + "&cheng=true" + "&dui=false"
               })
             }
           })
         }else {
           if (that.checklanhuo(code, yilanhuo)){
             wx.navigateTo({
-              url: '/pages/lhrepeart/lhrepeart?barcode=' + code
+              url: '/pages/lhrepeart/lhrepeart?barcode=' + code + "&chong=true" + "&cheng=false" + "&dui=false"
             })
           }else {
             api.lanhuotijiao({ danhao: code }, (ret) => {
               if (ret.code == '0') {
                 wx.navigateTo({
-                  url: '/pages/lhtijiao/lhtijiao?barcode=' + code
+                  url: '/pages/lhtijiao/lhtijiao?barcode=' + code + "&chong=false" + "&cheng=false" + "&dui=true"
                 })
               }
             })
@@ -66,6 +70,14 @@ class Content extends AppBase {
           
         }
 
+      },
+      fail(res) {
+        console.log('fail', res);
+        wx.showToast({
+          title: '此单无法识别！！',
+          icon: 'none'
+        })
+        return
       }
 
     })

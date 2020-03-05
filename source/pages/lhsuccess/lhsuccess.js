@@ -15,10 +15,13 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
-    var diandan = this.Base.options.barcode;
-    console.log(diandan)
+    // var diandan = this.Base.options.barcode;
+    // console.log(diandan)
     this.Base.setMyData({
-      diandan
+      diandan: this.Base.options.barcode,
+      cheng: this.Base.options.cheng,
+      dui: this.Base.options.dui,
+      chong: this.Base.options.chong
     })
     this.getinfo();
   }
@@ -50,27 +53,48 @@ class Content extends AppBase {
         console.log(res.result)
         console.log(res.result)
         var index = res.result.indexOf('-');
-        var code = res.result.slice(0, index);
+        if (index > -1) {
+          var code = res.result.slice(0, index);
+        } else {
+          var code = res.result;
+        }
+
         console.log(index, 'index', code);
         if (that.checkno(code, weilanhuo)) {
           api.yilanhuo({ danhao: code }, (ret) => {
             if (ret.code == '0') {
-              wx.redirectTo({
-                url: '/pages/lhsuccess/lhsuccess?barcode=' + code
-              })
+              // wx.redirectTo({
+              //   url: '/pages/lhsuccess/lhsuccess?barcode=' + code
+              // })
+
+              that.Base.options.barcode = code;
+              that.Base.options.cheng = "true";
+              that.Base.options.dui = "false";
+              that.Base.options.chong = 'false';
+              that.onMyShow();
             }
           })
         } else {
           if (that.checklanhuo(code, yilanhuo)) {
-            wx.redirectTo({
-              url: '/pages/lhrepeart/lhrepeart?barcode=' + code
-            })
+            // wx.redirectTo({
+            //   url: '/pages/lhrepeart/lhrepeart?barcode=' + code
+            // })
+            that.Base.options.barcode = code;
+            that.Base.options.cheng = "false";
+            that.Base.options.dui = "false";
+            that.Base.options.chong = 'true';
+            that.onMyShow();
           } else {
             api.lanhuotijiao({ danhao: code }, (ret) => {
               if (ret.code == '0') {
-                wx.redirectTo({
-                  url: '/pages/lhtijiao/lhtijiao?barcode=' + code
-                })
+                // wx.redirectTo({
+                //   url: '/pages/lhtijiao/lhtijiao?barcode=' + code
+                // })
+                that.Base.options.barcode = code;
+                that.Base.options.cheng = "false";
+                that.Base.options.dui = "true";
+                that.Base.options.chong = 'false';
+                that.onMyShow();
               }
             })
           }
@@ -78,6 +102,14 @@ class Content extends AppBase {
 
         }
 
+      },
+      fail(res) {
+        console.log('fail', res);
+        wx.showToast({
+          title: '此单无法识别！！',
+          icon: 'none'
+        })
+        return
       }
 
     })
