@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-1">
+
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{floor==null?"Select floor":floor.name}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#" *ngFor="let floor of floorlist" (click)='setFloor(floor)' >{{floor.name}}</a>
+            </div>
+          </div>
+    </div>
+</div>
+<div *ngIf="floor!=null">
+<h2>
+    {{floor.name}}
+</h2>
+<div class="flex-row flex-wrap" *ngFor="let row of floor.seatmap;let rowidx=index"  [ngStyle]="{'width.px':40*((floor.seatmapinfo.maxcol*1)+1) }" >
+    <div  *ngFor="let col of row;let colidx=index" class="seat">
+        <div *ngIf="col==''"></div>
+        <div *ngIf="col!=''" class="isseat"  [ngStyle]="{'background-color': col.staff!=''?col.staff.teamcolor:'' }" >
+            {{col.staff.name}}
+        </div>
+    </div>
+</div>
+</div>

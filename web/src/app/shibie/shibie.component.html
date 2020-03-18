@@ -1,0 +1,24 @@
+
+
+
+
+<div class="flex-row flex-column">
+    <div style="height:100px;"></div>
+    <div class="dan h3 " >
+        
+        <div>单个识别</div>
+        
+        <input type="file" class="inf" ngFileSelect [options]="options" (change)="startUpload()" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" />
+
+        
+    </div>
+    <!-- <img src="{{uploadpath}}test/{{photo}}" class="photo" /> -->
+    <div style="height:100px;"></div>
+
+    <div class="pi h3" >
+        <div>批量识别</div>
+        <input type="file" class="inf" ngFileSelect [options]="options" (change)="startUpload()" (uploadOutput)="onUploadOutput2($event)" [uploadInput]="uploadInput" multiple> 
+    </div>
+
+
+</div>

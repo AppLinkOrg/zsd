@@ -1,0 +1,43 @@
+<div style="height: 100px;"></div>
+<div class="flex-row flex-center">
+    <div class="flex-1"></div>
+    <img [src]='url' style="width: 30%;" />
+
+    <div class="flex-1"></div>
+    <div style="width: 40%;">
+        <div class="flex-row flex-center">
+            <div class="txt-78  margin-right-20 "> 交易序号:</div>
+            <div class="flex-1 "><input type="text" [(ngModel)]='jiaoyixvhao'></div>
+        </div>
+        <div class="line"></div>
+
+        <div class="flex-row flex-center">
+            <div  class="txt-78  margin-right-20">交易序号后四位:</div>
+            <div class="flex-1 "><input type="text" [(ngModel)]='housiwei'></div>
+        </div>
+        <div class="line"></div>
+
+        <div class="flex-row flex-center">
+            <div class="txt-78  margin-right-20">站点编码:</div>
+            <div class="flex-1 "><input type="text" [(ngModel)]='dizhibianma'></div>
+        </div>
+        <div class="line"></div>
+
+        <div class="flex-row flex-center">
+            <div class="txt-78  margin-right-20">出货总量:</div>
+            <div class="flex-1 "><input type="text" [(ngModel)]='chuhuozongliang'></div>
+        </div>
+        <div class="line"></div>
+
+        <div class="flex-row flex-center">
+            <div class="txt-78  margin-right-20">折扣后金额:</div>
+            <div class="flex-1 "> <input type="text" [(ngModel)]='zhekouhoujine'></div>
+        </div>
+        <div class="line"></div>
+
+        <div class="tj {{success=='A'?'wei':'yi'}}" *ngIf='success=="A"' (click)='tijiao()'>提交</div>
+        <div class="tj {{success=='A'?'wei':'yi'}}" *ngIf='success=="B"' >已提交成功</div>
+        <div class="tj {{success=='A'?'wei':'yi'}}" *ngIf='success=="C"' >重复提交</div>
+    </div>
+    <div class="flex-1"></div>
+</div>

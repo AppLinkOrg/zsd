@@ -1,0 +1,50 @@
+<div style="height: 100px;"></div>
+<div class="flex-row flex-center">
+    <div class="flex-1"></div>
+    <img [src]="currentimg" style="width: 30%;" />
+    <div class="flex-1"></div>
+    <div style="width: 40%;">
+        <div class="flex-row flex-center">
+            <div class="txt-78  margin-right-20 "> 交易序号:</div>
+            <div class="flex-1 "><input type="text" [(ngModel)]='jiaoyixvhao'></div>
+        </div>
+        <div class="line"></div>
+
+        <div class="flex-row flex-center">
+            <div class="txt-78  margin-right-20">交易序号后四位:</div>
+            <div class="flex-1 "><input type="text" [(ngModel)]='housiwei'></div>
+        </div>
+        <div class="line"></div>
+
+        <div class="flex-row flex-center">
+            <div class="txt-78  margin-right-20">站点编码:</div>
+            <div class="flex-1 "><input type="text" [(ngModel)]='dizhibianma'></div>
+        </div>
+        <div class="line"></div>
+
+        <div class="flex-row flex-center">
+            <div class="txt-78  margin-right-20">出货总量:</div>
+            <div class="flex-1 "><input type="text" [(ngModel)]='chuhuozongliang'></div>
+        </div>
+        <div class="line"></div>
+
+        <div class="flex-row flex-center">
+            <div class="txt-78  margin-right-20">折扣后金额:</div>
+            <div class="flex-1 "> <input type="text" [(ngModel)]='zhekouhoujine'></div>
+        </div>
+        <div class="line"></div>
+        <div class="flex-row flex-center">
+            <div class="flex-1"></div>
+            <div *ngIf='current!=0' class="tj {{current!=0?'bg-45': ''}}" (click)="prePage()">上一张</div>
+            <div class="tj {{current==0?'bg-45':'bg-ed'}}" *ngIf='current!=(imgs.length-1)' (click)="nexPage()">下一张
+            </div>
+            <div *ngIf='current==(imgs.length-1) && success=="A"' class="tj {{current==(imgs.length-1)?'bg-ed':''}}"
+                (click)="tijiao()">
+                提交</div>
+            <div *ngIf='success=="B"' class="tj {{success=='B'?'yi':''}}">
+                已提交</div>
+            <div class="flex-1"></div>
+        </div>
+    </div>
+    <div class="flex-1"></div>
+</div>
