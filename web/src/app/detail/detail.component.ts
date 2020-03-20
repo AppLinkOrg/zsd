@@ -32,9 +32,6 @@ export class DetailComponent extends AppBase {
   jiaoyixvhao;
   housiwei;
   dizhibianma;
-  name;
-  dianhua;
-  dizhi;
   chuhuozongliang;
   zhekouhoujine;
 
@@ -55,6 +52,11 @@ success='A';
         if (item.words.indexOf("交易序号:") != -1) {
 
           this.jiaoyixvhao = item.words.split('交易序号:')[1];
+          if( this.jiaoyixvhao.indexOf('站点电话:')>-1){
+            var index= this.jiaoyixvhao.indexOf('站点电话:');
+            this.jiaoyixvhao= this.jiaoyixvhao.slice(0,index);
+
+          }
           this.housiwei = this.jiaoyixvhao.substring(this.jiaoyixvhao.length - 4);
 
         }
@@ -80,6 +82,9 @@ success='A';
 
 
   }
+  chong=[];
+  dizhi=[];
+  chen=[];
   tijiao() {
     this.orderApi.addhuodanshuju({
       jiaoyixvhao:this.jiaoyixvhao,
@@ -91,12 +96,20 @@ success='A';
       console.log(addhuodanshuju);
         if(addhuodanshuju.code=='0'){
           this.success='B';
+          this.chen.push(this.jiaoyixvhao);
         }else if(addhuodanshuju.code=='-1'){
-          this.success='C'
+          this.success='C';
+          if(addhuodanshuju.result.indexOf('交易序号')>-1){
+            this.chong.push(this.jiaoyixvhao);
+          }else if(addhuodanshuju.result.indexOf('地址编码')>-1) {
+            this.dizhi.push(this.jiaoyixvhao);
+          }
         }
-       setTimeout(() => {
-          window.history.go(-1);
-       }, 3000);
+        var re = JSON.stringify(this.chong);
+        var re2 = JSON.stringify(this.dizhi);
+        var re3 = JSON.stringify(this.chen);
+       this.navigate('/result',{chong:re,dizhi:re2,chen:re3})
+  
     })
   }
 

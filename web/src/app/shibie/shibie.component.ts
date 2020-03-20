@@ -31,7 +31,7 @@ export class ShibieComponent extends AppBase {
   ) { 
     super(router,activeRoute,instApi);
     // this.test = {};
-    this.options = { concurrency: 1, maxUploads: 3 };
+    this.options = { concurrency: 1, maxUploads: 99 };
     this.files = []; // local uploading files array
     this.uploadInput = new EventEmitter<UploadInput>(); // input events, we use this to emit data to ngx-uploader
     this.humanizeBytes = humanizeBytes;

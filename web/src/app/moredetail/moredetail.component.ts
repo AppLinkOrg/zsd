@@ -54,11 +54,17 @@ export class MoredetailComponent extends AppBase {
       var zhekouhoujine1='';
       list.map((item, idx) => {
         if (item.words.indexOf("交易序号:") != -1) {
-
+           
           jiaoyixvhao1 = item.words.split('交易序号:')[1];
-          housiwei1 = jiaoyixvhao1.substring(jiaoyixvhao1.length - 4);
+          if(jiaoyixvhao1.indexOf('站点电话:')>-1){
+            var index=jiaoyixvhao1.indexOf('站点电话:');
+            jiaoyixvhao1=jiaoyixvhao1.slice(0,index);
 
+          }
+          housiwei1 = jiaoyixvhao1.substring(jiaoyixvhao1.length - 4);
+          console.log(jiaoyixvhao1,'xuhao')
         }
+        
 
         if (item.words.indexOf("站点编码:") != -1) {
          dizhibianma1 = item.words.split('站点编码:')[1];
@@ -73,35 +79,28 @@ export class MoredetailComponent extends AppBase {
         if (item.words.indexOf("折扣后金额:") != -1) {
           zhekouhoujine1 = item.words.split('折扣后金额:')[1];
         }
-        var json = {
-          jiaoyixvhao:jiaoyixvhao1,
-          housiwei:housiwei1,
-          dizhibianma:dizhibianma1,
-          chuhuozongliang:chuhuozongliang1,
-          zhekouhoujine:zhekouhoujine1
-        }
-        if(this.checkkong(json)){
-          if(this.arr.length>0){
-            if(this.checkre(json)){
-              this.arr.push(json);
-            }
-          }else {
-            this.arr.push(json);
-          }
-          
-         
-        }
        
-        console.log(this.arr);
-        if(this.arr.length>0){
-          this.jiaoyixvhao=this.arr[0].jiaoyixvhao;
-          this.housiwei=this.arr[0].housiwei;
-          this.dizhibianma=this.arr[0].dizhibianma;
-          this.chuhuozongliang=this.arr[0].chuhuozongliang;
-          this.zhekouhoujine=this.arr[0].zhekouhoujine;
-        }
         
       })
+      var json = {
+        jiaoyixvhao:jiaoyixvhao1,
+        housiwei:housiwei1,
+        dizhibianma:dizhibianma1,
+        chuhuozongliang:chuhuozongliang1,
+        zhekouhoujine:zhekouhoujine1
+      }
+  
+      this.arr.push(json);
+          
+     
+      console.log(this.arr);
+      if(this.arr.length>0){
+        this.jiaoyixvhao=this.arr[0].jiaoyixvhao;
+        this.housiwei=this.arr[0].housiwei;
+        this.dizhibianma=this.arr[0].dizhibianma;
+        this.chuhuozongliang=this.arr[0].chuhuozongliang;
+        this.zhekouhoujine=this.arr[0].zhekouhoujine;
+      }
     }
     })
 
@@ -109,7 +108,7 @@ export class MoredetailComponent extends AppBase {
    
   } 
   checkre(json){
-    console.log(json,json.jiaoyixvhao);
+    
     for(let item of this.arr){
       if(item.jiaoyixvhao==json.jiaoyixvhao){
         return false
@@ -177,6 +176,9 @@ export class MoredetailComponent extends AppBase {
      this.add(this.arr[i],this.arr.length,i)
     }
   }
+  chong=[];
+  dizhi=[];
+  chen=[];
   add(json,len,i){
     setTimeout(() => {
       this.orderApi.addhuodanshuju({
@@ -189,15 +191,25 @@ export class MoredetailComponent extends AppBase {
         console.log(addhuodanshuju);
           if(addhuodanshuju.code=='0'){
             this.success='B';
+            this.chen.push(json.jiaoyixvhao);
           }else if(addhuodanshuju.code=='-1'){
             this.success='B'
+            if(addhuodanshuju.result.indexOf('交易序号')>-1){
+              this.chong.push(json.jiaoyixvhao);
+            }else if(addhuodanshuju.result.indexOf('地址编码')>-1) {
+              this.dizhi.push(json.jiaoyixvhao);
+            }
           }
          
       })
     }, i*300);
     
     setTimeout(() => {
-     this.navigate('/shibie')
+      var re = JSON.stringify(this.chong);
+      var re2 = JSON.stringify(this.dizhi);
+      var re3 = JSON.stringify(this.chen);
+     this.navigate('/result',{chong:re,dizhi:re2,chen:re3})
+
    }, 5000);
   }
 }

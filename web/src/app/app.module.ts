@@ -12,6 +12,7 @@ import { DetailComponent } from './detail/detail.component';
 import { MoredetailComponent } from './moredetail/moredetail.component';
 import {FormsModule} from '@angular/forms';
 import { NgxUploaderModule } from 'ngx-uploader';
+import { ResultComponent } from './result/result.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +21,7 @@ import { NgxUploaderModule } from 'ngx-uploader';
     ShibieComponent,
     DetailComponent,
     MoredetailComponent,
+    ResultComponent,
   ],
   imports: [
     BrowserModule,

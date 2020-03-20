@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { ShibieComponent } from './shibie/shibie.component';
 import { DetailComponent } from './detail/detail.component';
 import { MoredetailComponent } from './moredetail/moredetail.component';
+import { ResultComponent } from './result/result.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'shibie', component: ShibieComponent },
   { path: 'detail', component: DetailComponent },
   { path: 'moredetail', component: MoredetailComponent },
+  { path: 'result', component: ResultComponent },
 ];
 
 @NgModule({

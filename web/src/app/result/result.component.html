@@ -1,0 +1,30 @@
+<div class="flex-row flex-column" style="width: 100%;">
+    <div style="height:50px;"></div>
+    <h4>识别结果</h4>
+
+    <div style="width: 30%;">
+        <div class="margin-bottom-10 txt-bold text-center">提交成功的订单</div>
+        <div class="aa pa" *ngFor='let item of chen'>交易序号：{{item}}</div>
+        <div class="aa pa text-center" *ngIf='chen.length==0' >无</div>
+        <div style=' border-bottom: 1px solid #ccc;width:94%'></div>
+        <div style="height:50px;"></div>
+        <div class="margin-bottom-10 txt-bold text-center">提交失败的订单</div>
+        <div class="margin-bottom-10 txt-bold txt-gray">重复的订单</div>
+        <div class="aa pa" *ngFor='let item of chong'>交易序号：{{item}}</div>
+        <div class="aa pa text-center" *ngIf='chong.length==0' >无</div>
+        <div style=' border-bottom: 1px solid #ccc;width:94%'></div>
+        <div style="height:20px;"></div>
+        <div class="margin-bottom-10 txt-bold txt-gray">站点名称为空的订单</div>
+        <div class="aa pa" *ngFor='let items of dizhi'>交易序号：{{items}}</div>
+        <div class="aa pa text-center" *ngIf='dizhi.length==0' >无</div>
+        <div style=' border-bottom: 1px solid #ccc;width:94%'></div>
+
+
+    </div>
+    <div style="height:50px;"></div>
+    <div>
+
+        <div class="jx bg-green text-center cur-po txt-white" routerLink='/shibie'>继续识别</div>
+    </div>
+
+</div>
