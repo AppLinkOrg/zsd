@@ -34,7 +34,10 @@ export class DetailComponent extends AppBase {
   dizhibianma;
   chuhuozongliang;
   zhekouhoujine;
-
+  zongxianshu;
+  beizhu='';
+  zhonglian='';
+  jianshu='';
   onMyLoad() {
     this.params;
     this.url = ApiConfig.getUploadPath() + 'test/' + this.params.url;
@@ -60,6 +63,11 @@ success='A';
           this.housiwei = this.jiaoyixvhao.substring(this.jiaoyixvhao.length - 4);
 
         }
+
+        if (item.words.indexOf("总箱数:") != -1) {
+          this.zongxianshu= item.words.split('总箱数:')[1];
+         }
+        
 
         if (item.words.indexOf("站点编码:") != -1) {
           this.dizhibianma = item.words.split('站点编码:')[1];
@@ -92,6 +100,11 @@ success='A';
       dizhibianma:this.dizhibianma,
       chuhuozongliang:this.chuhuozongliang,
       zhekouhoujine:this.zhekouhoujine,
+      zongxianshu:this.zongxianshu,
+      beizhu:this.beizhu,
+      zhonglian:this.zhonglian,
+      jianshu:this.jianshu
+
     }).then((addhuodanshuju:any) => {
       console.log(addhuodanshuju);
         if(addhuodanshuju.code=='0'){
@@ -112,5 +125,16 @@ success='A';
   
     })
   }
-
+  fanda=false;
+  images='';
+  bigImg(img){
+    console.log(img);
+    this.fanda = true;
+    this.images=img;
+  }
+  shuoxiao(){
+    console.log('555555555')
+    this.fanda=false;
+    // this.onMyShow();
+  }
 }

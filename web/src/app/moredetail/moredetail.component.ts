@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
 import { InstApi } from 'src/providers/inst.api';
 import { DomSanitizer } from '@angular/platform-browser';
-import { TestApi } from 'src/providers/test.api'
-import { OrderApi } from 'src/providers/order.api'
+import { TestApi } from 'src/providers/test.api';
+import { OrderApi } from 'src/providers/order.api';
 @Component({
   selector: 'app-moredetail',
   templateUrl: './moredetail.component.html',
@@ -39,7 +39,10 @@ export class MoredetailComponent extends AppBase {
   dizhibianma;
   chuhuozongliang;
   zhekouhoujine;
-
+  zongxianshu;
+  beizhu;
+  zhonglian;
+  jianshu;
   onMyShow(){
 
     this.testApi.test({ photo: this.imgs }).then((res:any) => {
@@ -52,6 +55,7 @@ export class MoredetailComponent extends AppBase {
       var dizhibianma1='';
       var chuhuozongliang1='';
       var zhekouhoujine1='';
+      var zongxianshu1='';
       list.map((item, idx) => {
         if (item.words.indexOf("交易序号:") != -1) {
            
@@ -64,8 +68,10 @@ export class MoredetailComponent extends AppBase {
           housiwei1 = jiaoyixvhao1.substring(jiaoyixvhao1.length - 4);
           console.log(jiaoyixvhao1,'xuhao')
         }
+        if (item.words.indexOf("总箱数:") != -1) {
+          zongxianshu1 = item.words.split('总箱数:')[1];
+         }
         
-
         if (item.words.indexOf("站点编码:") != -1) {
          dizhibianma1 = item.words.split('站点编码:')[1];
         }
@@ -87,7 +93,11 @@ export class MoredetailComponent extends AppBase {
         housiwei:housiwei1,
         dizhibianma:dizhibianma1,
         chuhuozongliang:chuhuozongliang1,
-        zhekouhoujine:zhekouhoujine1
+        zhekouhoujine:zhekouhoujine1,
+        zongxianshu:zongxianshu1,
+        jianshu:'',
+        beizhu:'',
+        zhonglian:'',
       }
   
       this.arr.push(json);
@@ -100,6 +110,7 @@ export class MoredetailComponent extends AppBase {
         this.dizhibianma=this.arr[0].dizhibianma;
         this.chuhuozongliang=this.arr[0].chuhuozongliang;
         this.zhekouhoujine=this.arr[0].zhekouhoujine;
+        this.zongxianshu=this.arr[0].zongxianshu;
       }
     }
     })
@@ -132,7 +143,10 @@ export class MoredetailComponent extends AppBase {
     this.arr[this.current].housiwei = this.housiwei;
     this.arr[this.current].dizhibianma = this.dizhibianma;
     this.arr[this.current].zhekouhoujine = this.zhekouhoujine;
-
+    this.arr[this.current].zongxianshu=this.zongxianshu;
+    this.arr[this.current].beizhu = this.beizhu;
+    this.arr[this.current].zhonglian = this.zhonglian;
+    this.arr[this.current].jianshu = this.jianshu;
     if(this.current>0){
       this.current--;
     }else {
@@ -144,6 +158,10 @@ export class MoredetailComponent extends AppBase {
     this.dizhibianma=this.arr[this.current].dizhibianma;
     this.chuhuozongliang=this.arr[this.current].chuhuozongliang;
     this.zhekouhoujine=this.arr[this.current].zhekouhoujine;
+    this.zongxianshu = this.arr[this.current].zongxianshu;
+    this.beizhu=this.arr[this.current].beizhu;
+    this.zhonglian=this.arr[this.current].zhonglian;
+    this.jianshu=this.arr[this.current].jianshu;
   }
   nexPage(){
 
@@ -152,7 +170,10 @@ export class MoredetailComponent extends AppBase {
     this.arr[this.current].housiwei = this.housiwei;
     this.arr[this.current].dizhibianma = this.dizhibianma;
     this.arr[this.current].zhekouhoujine = this.zhekouhoujine;
-
+    this.arr[this.current].zongxianshu=this.zongxianshu;
+    this.arr[this.current].beizhu = this.beizhu;
+    this.arr[this.current].zhonglian = this.zhonglian;
+    this.arr[this.current].jianshu = this.jianshu;
 
     if(this.current<this.imgs.length){
       this.current++;
@@ -168,6 +189,10 @@ export class MoredetailComponent extends AppBase {
     this.dizhibianma=this.arr[this.current].dizhibianma;
     this.chuhuozongliang=this.arr[this.current].chuhuozongliang;
     this.zhekouhoujine=this.arr[this.current].zhekouhoujine;
+    this.zongxianshu=this.arr[this.current].zongxianshu;
+    this.beizhu=this.arr[this.current].beizhu;
+    this.zhonglian=this.arr[this.current].zhonglian;
+    this.jianshu=this.arr[this.current].jianshu;
   }
   success='A';
   tijiao(){
@@ -187,6 +212,10 @@ export class MoredetailComponent extends AppBase {
         dizhibianma:json.dizhibianma,
         chuhuozongliang:json.chuhuozongliang,
         zhekouhoujine:json.zhekouhoujine,
+        zongxianshu:json.zongxianshu,
+        beizhu:json.beizhu,
+        zhonglian:json.zhonglian,
+        jianshu:json.jianshu
       }).then((addhuodanshuju:any) => {
         console.log(addhuodanshuju);
           if(addhuodanshuju.code=='0'){
@@ -211,5 +240,17 @@ export class MoredetailComponent extends AppBase {
      this.navigate('/result',{chong:re,dizhi:re2,chen:re3})
 
    }, 5000);
+  }
+  fanda=false;
+  images='';
+  bigImg(img){
+    console.log(img);
+    this.fanda = true;
+    this.images=img;
+  }
+  shuoxiao(){
+    console.log('555555555')
+    this.fanda=false;
+    // this.onMyShow();
   }
 }

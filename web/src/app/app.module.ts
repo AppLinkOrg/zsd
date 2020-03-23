@@ -28,7 +28,7 @@ import { ResultComponent } from './result/result.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxUploaderModule
+    NgxUploaderModule,
   ],
   providers: [InstApi],
   bootstrap: [AppComponent]
