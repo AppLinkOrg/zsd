@@ -22,7 +22,7 @@
     "angular-file-upload": "^2.5.0",
     "angular-pan-zoom": "^1.0.18",
     "bootstrap": "^4.3.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ng2-file-upload": "^1.4.0",
     "ngx-bootstrap": "^5.5.0",
     "ngx-uploader": "^8.0.0",
